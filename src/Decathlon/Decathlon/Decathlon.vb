@@ -17,10 +17,19 @@
 '*   file.                                                                     *
 '*******************************************************************************
 
+''' <summary>
+''' The main application class.
+''' </summary>
 Module Decathlon
 
-    Sub Main()
+#Region "Internal Methods"
 
+    ''' <summary>
+    ''' Defines the entry point of the application.
+    ''' </summary>
+    Sub Main()
     End Sub
+    
+#End Region
 
 End Module
