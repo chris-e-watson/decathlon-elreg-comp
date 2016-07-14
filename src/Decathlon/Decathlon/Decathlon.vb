@@ -256,6 +256,36 @@ Friend Class InputFileParser
 
 #Region "Private Methods"
 
+    'TODO: Add documentation for InputFileParser.ParseFileContents().
+    Private Sub ParseFileContents()
+
+        ' Iterate over each line from the file.
+        '
+        For Each line As String In Me._fileContents
+
+            ' If the line starts with "##", this indicates the end of the file.
+            ' Stop processing.
+            '
+            If Not line Is Nothing AndAlso line.StartsWith("##") Then
+                Exit Sub
+            End If
+
+            
+            ' If the line starts with "##", this indicates the end of the data
+            ' set. Start a new data set.
+            '
+            If Not line Is Nothing AndAlso line.StartsWith("##") Then
+                'TODO: Start new data set.
+            End If
+
+
+            'TODO: Parse entrant name, event type and score from this line.
+
+        Next
+
+    End Sub
+
+
     ''' <summary>
     ''' Reads the file.
     ''' </summary>
@@ -308,6 +338,8 @@ Friend Class InputFileParser
         ' Read the file, obtain the contents.
         '
         Me.ReadFile()
+
+        Me.ParseFileContents()
 
     End Sub
 
