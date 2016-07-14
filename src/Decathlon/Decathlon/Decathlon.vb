@@ -235,12 +235,59 @@ End Class
 ''' </summary>
 Friend Class InputFileParser
 
+    #Region "Private Fields"
+
+    ''' <summary>
+    ''' The contents of the file being parsed.
+    ''' </summary>
+    ''' <seealso cref="ReadFile" />
+    Private _fileContents As List(Of String)
+
+    #End Region
+
 #Region "Internal Properties"
 
     ''' <summary>
     ''' Gets or sets the path to the input file to be read and parsed.
     ''' </summary>
     Friend Property FilePath() As String
+
+#End Region
+
+#Region "Private Methods"
+
+    ''' <summary>
+    ''' Reads the file.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="FilePath" /> was <c>null</c>, empty or consisted entirely of
+    ''' white-space.
+    ''' </exception>
+    ''' <seealso cref="_fileContents" />
+    Private Sub ReadFile()
+
+        '
+        ' Class state validation.
+        '
+
+        If String.IsNullOrWhiteSpace(Me.FilePath) Then
+
+            Throw New InvalidOperationException(
+                "InputFileParser.FilePath cannot be null, empty or consist" _
+                & " entirely of white-space.")
+
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        Dim contents As String() = System.IO.File.ReadAllLines(Me.FilePath)
+
+        Me._fileContents = contents.ToList()
+
+    End Sub
 
 #End Region
 
@@ -257,6 +304,10 @@ Friend Class InputFileParser
         ' 3. Parse each line in to entrant, event and score.
         ' 4. Start new data set on a line starting with "#".
         ' 5. Stop processing on a line starting with "##".
+
+        ' Read the file, obtain the contents.
+        '
+        Me.ReadFile()
 
     End Sub
 
