@@ -189,6 +189,52 @@ Friend Class InputDataSet
 
 End Class
 
+
+''' <summary>
+''' Provides the functionality to read and parse an input file from disk.
+''' </summary>
+Friend Class InputFileParser
+
+#Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets or sets the path to the input file to be read and parsed.
+    ''' </summary>
+    Friend Property FilePath() As String
+
+#End Region
+
+#Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="InputFileParser"/> class.
+    ''' </summary>
+    Friend Sub New()
+        
+        ' Set the file path to the default. A file named "Decathlon.dat" in the
+        ' application directory.
+        '
+        Me.FilePath = "Decathlon.dat"
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="InputFileParser"/> class.
+    ''' </summary>
+    ''' <param name="filePath">
+    ''' The path to the input file to be read and parsed.
+    ''' </param>
+    Friend Sub New(ByVal filePath As String)
+
+        Me.FilePath = filePath
+
+    End Sub
+
+#End Region
+
+End Class
+
 #End Region
 
 #Region "Modules"
