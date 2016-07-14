@@ -204,6 +204,19 @@ Friend Class InputFileParser
 
 #End Region
 
+#Region "Internal Methods"
+
+    ''' <summary>
+    ''' Parses the input file.
+    ''' </summary>
+    Friend Sub Parse()
+
+        'TODO: Implement InputFileParser.Parse().
+
+    End Sub
+
+#End Region
+
 #Region "Internal Constructors"
 
     ''' <summary>
