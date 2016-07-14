@@ -191,6 +191,46 @@ End Class
 
 
 ''' <summary>
+''' Represents a single input file. An input file contains multiple data sets,
+''' each data set represents information for a single decathlon.
+''' </summary>
+Friend Class InputFile
+
+#Region "Private Fields"
+
+    ''' <summary>
+    ''' The list of data sets contained by this input file.
+    ''' </summary>
+    Private _dataSets As List(Of InputDataSet) = New List(Of InputDataSet)
+
+#End Region
+
+#Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets the list of data sets contained by this input file.
+    ''' </summary>
+    Friend ReadOnly Property DataSets As List(Of InputDataSet)
+        Get
+            Return _dataSets
+        End Get
+    End Property
+
+#End Region
+
+#Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="InputFile"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+#End Region
+
+End Class
+
+''' <summary>
 ''' Provides the functionality to read and parse an input file from disk.
 ''' </summary>
 Friend Class InputFileParser
