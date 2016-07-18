@@ -235,6 +235,18 @@ End Class
 ''' </summary>
 Friend Class InputFileParser
 
+    #Region "Static Private Fields"
+
+    ''' <summary>
+    ''' A map of event types to their abbreviations, as used in an input file.
+    ''' </summary>
+    ''' <remarks>
+    ''' The abbreviations, in the key, are in uppercase.
+    ''' </remarks>
+    Private Shared _eventTypeAbbrMap As Dictionary(Of String, EventType)
+
+    #End Region
+
     #Region "Private Fields"
 
     ''' <summary>
@@ -253,6 +265,31 @@ Friend Class InputFileParser
     Friend Property FilePath() As String
 
 #End Region
+
+    #Region "Private Static Methods"
+    
+    ''' <summary>
+    ''' Initialises the event type / abbreviation map.
+    ''' </summary>
+    ''' <seealso cref="_eventTypeAbbrMap" />
+    Private Shared Sub InitialiseEventTypeAbbrMap()
+
+        _eventTypeAbbrMap = New Dictionary(Of String, EventType)
+
+        _eventTypeAbbrMap.Add("100M",    EventType.OneHundredMetreSprint)
+        _eventTypeAbbrMap.Add("110M",    EventType.OneHundredAndTenMetreHurdles)
+        _eventTypeAbbrMap.Add("400M",    EventType.FourHundredMetreSprint)
+        _eventTypeAbbrMap.Add("1500M",   EventType.FifteenHundredMetreSprint)
+        _eventTypeAbbrMap.Add("DISCUS",  EventType.Discus)
+        _eventTypeAbbrMap.Add("JAVELIN", EventType.Javelin)
+        _eventTypeAbbrMap.Add("SHOT",    EventType.ShotPut)
+        _eventTypeAbbrMap.Add("LONG",    EventType.LongJump)
+        _eventTypeAbbrMap.Add("HIGH",    EventType.HughJump)
+        _eventTypeAbbrMap.Add("POLE",    EventType.PoleVault)
+
+    End Sub
+
+    #End Region
 
 #Region "Private Methods"
 
@@ -424,6 +461,22 @@ Friend Class InputFileParser
     End Sub
 
 #End Region
+
+    #Region "Static Constructors"
+
+    ''' <summary>
+    ''' Initialises the <see cref="InputFileParser"/> class.
+    ''' </summary>
+    Shared Sub New()
+
+        ' Initialise the event type / abbreviation map.
+        '
+        InitialiseEventTypeAbbrMap()
+
+    End Sub
+
+
+    #End Region
 
 #Region "Internal Constructors"
 
