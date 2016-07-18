@@ -72,7 +72,7 @@ Friend Enum EventType
     ''' <summary>
     ''' The high jump event.
     ''' </summary>
-    HughJump                     = 9
+    HighJump                     = 9
         
     ''' <summary>
     ''' The pole vault event.
@@ -284,7 +284,7 @@ Friend Class InputFileParser
         _eventTypeAbbrMap.Add("JAVELIN", EventType.Javelin)
         _eventTypeAbbrMap.Add("SHOT",    EventType.ShotPut)
         _eventTypeAbbrMap.Add("LONG",    EventType.LongJump)
-        _eventTypeAbbrMap.Add("HIGH",    EventType.HughJump)
+        _eventTypeAbbrMap.Add("HIGH",    EventType.HighJump)
         _eventTypeAbbrMap.Add("POLE",    EventType.PoleVault)
 
     End Sub
