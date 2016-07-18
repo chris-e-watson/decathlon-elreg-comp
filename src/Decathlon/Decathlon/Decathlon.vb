@@ -338,11 +338,12 @@ Friend Class InputFileParser
             End If
 
             
-            ' If the line starts with "##", this indicates the end of the data
-            ' set. Start a new data set.
+            ' If the line starts with "#", this indicates the end of the data
+            ' set. Start a new data set. Move to the next line.
             '
-            If Not line Is Nothing AndAlso line.StartsWith("##") Then
+            If Not line Is Nothing AndAlso line.StartsWith("#") Then
                 Me.InputFile.DataSets.Add(New InputDataSet())
+                Continue For
             End If
 
 
