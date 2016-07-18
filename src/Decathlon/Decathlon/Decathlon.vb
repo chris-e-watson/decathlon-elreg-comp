@@ -114,6 +114,87 @@ End Enum
 
 #Region "Classes"
 
+'TODO:
+Friend NotInheritable Class EventTypeHelper
+    
+    #Region "Private Static Fields"
+
+    ''' <summary>
+    ''' The map of event type groups to event types.
+    ''' </summary>
+    Private Shared _eventTypeGroupEventTypeMap _
+        As Dictionary(Of EventType, EventTypeGroup)
+
+    #End Region
+
+    #Region "Private Static Methods"
+    
+    ''' <summary>
+    ''' Initialises the event type group / event type map.
+    ''' </summary>
+    ''' <seealso cref="_eventTypeGroupEventTypeMap" />
+    Private Shared Sub InitialiseEventTypeGroupEventTypeMap()
+
+        _eventTypeGroupEventTypeMap = _
+            New Dictionary(Of EventType, EventTypeGroup)
+
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.OneHundredMetreSprint,        EventTypeGroup.Running)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.OneHundredAndTenMetreHurdles, EventTypeGroup.Running)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.FourHundredMetreSprint,       EventTypeGroup.Running)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.FifteenHundredMetreSprint,    EventTypeGroup.Running)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.Discus,                       EventTypeGroup.Throwing)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.Javelin,                      EventTypeGroup.Throwing)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.ShotPut,                      EventTypeGroup.Throwing)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.LongJump,                     EventTypeGroup.Jumping)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.HighJump,                     EventTypeGroup.Jumping)
+        _eventTypeGroupEventTypeMap.Add(
+            EventType.PoleVault,                    EventTypeGroup.Jumping)
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Static Methods"
+
+    'TODO:
+    Friend Shared Function GetEventTypeGroupFromEventType(
+        ByVal eventType As EventType) As EventTypeGroup
+
+        'TODO:
+
+    End Function
+
+    #End Region
+
+    #Region "Static Constructors"
+
+    'TODO:
+
+    #End Region
+
+    #Region "Private Constructors"
+
+    ''' <summary>
+    ''' Prevents a default instance of the <see cref="EventTypeHelper"/> class
+    ''' from being created.
+    ''' </summary>
+    Private Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
 ''' <summary>
 ''' Represents a single input data item.
 ''' </summary>
