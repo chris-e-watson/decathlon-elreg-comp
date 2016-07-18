@@ -111,6 +111,28 @@ Friend Class InputDataItem
     
     #End Region
 
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "EntrantName: ""{0}"", EventType: {1}, Score: {2}"
+
+        Dim value As String = 
+            String.Format(format, Me.EntrantName, Me.EventType, Me.Score)
+
+        Return value
+
+    End Function
+
+    #End Region
+
     #Region "Internal Constructors"
 
     ''' <summary>
