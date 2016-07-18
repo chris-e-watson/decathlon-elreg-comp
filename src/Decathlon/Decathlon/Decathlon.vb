@@ -578,6 +578,40 @@ End Class
 ''' </summary>
 Friend Class PointsCalculator
 
+    #Region "Nested Types"
+
+    ' TODO: Is a delegate a type?
+    
+    ''' <summary>
+    ''' Represents a method which can calculate the (unrounded) points for a
+    ''' event, given the A, B and C configuration variables and the score.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The 'A' variable value.
+    ''' </param>
+    ''' <param name="b">
+    ''' The 'B' variable value.
+    ''' </param>
+    ''' <param name="c">
+    ''' The 'C' variable value.
+    ''' </param>
+    ''' <param name="score">
+    ''' The score.
+    ''' </param>
+    ''' <returns>
+    ''' Decimal
+    ''' <para>
+    ''' The unrounded points for the given inputs. The caller is responsible for
+    ''' appropriate rounding. The points should be rounded ^down^ to the nearest
+    ''' integer.
+    ''' </para>
+    ''' </returns>
+    Private Delegate Function PointsCalculationEquation(
+        ByVal a As Decimal, ByVal b As Decimal, ByVal c As Decimal, 
+        ByVal score As Decimal) As Double
+
+    #End Region
+
     #Region "Private Fields"
     
     ''' <summary>
@@ -596,6 +630,148 @@ Friend Class PointsCalculator
     ''' The score from which to calculate the points.
     ''' </summary>
     Private ReadOnly _score As Decimal
+
+    #End Region
+
+    #Region "Private Static Methods"
+
+    ''' <summary>
+    ''' Calculates the (unrounded) points for a jumping event, given the A, B
+    ''' and C configuration variables and the score.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The 'A' variable value.
+    ''' </param>
+    ''' <param name="b">
+    ''' The 'B' variable value.
+    ''' </param>
+    ''' <param name="c">
+    ''' The 'C' variable value.
+    ''' </param>
+    ''' <param name="score">
+    ''' The score.
+    ''' </param>
+    ''' <returns>
+    ''' Decimal
+    ''' <para>
+    ''' The unrounded points for the given inputs. The caller is responsible for
+    ''' appropriate rounding. The points should be rounded ^down^ to the nearest
+    ''' integer.
+    ''' </para>
+    ''' </returns>
+    ''' <remarks>
+    ''' The competition rules specify the following equation for jumping events:
+    '''
+    '''           C
+    ''' P = A(M-B)
+    ''' 
+    ''' Note: C is a power.
+    '''       M is the measurement in centimetres for jumps.
+    ''' </remarks>
+    Private Shared Function CalculateJumpingEventsPoints(
+        ByVal a As Decimal, ByVal b As Decimal, ByVal c As Decimal,
+        ByVal score As Decimal) As Double
+
+
+        Dim points As Double
+        points = a * ((score - b) ^ c)
+
+        Return points
+
+    End Function
+
+    
+    ''' <summary>
+    ''' Calculates the (unrounded) points for a running event, given the A, B
+    ''' and C configuration variables and the score.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The 'A' variable value.
+    ''' </param>
+    ''' <param name="b">
+    ''' The 'B' variable value.
+    ''' </param>
+    ''' <param name="c">
+    ''' The 'C' variable value.
+    ''' </param>
+    ''' <param name="score">
+    ''' The score.
+    ''' </param>
+    ''' <returns>
+    ''' Decimal
+    ''' <para>
+    ''' The unrounded points for the given inputs. The caller is responsible for
+    ''' appropriate rounding. The points should be rounded ^down^ to the nearest
+    ''' integer.
+    ''' </para>
+    ''' </returns>
+    ''' <remarks>
+    ''' The competition rules specify the following equation for running events:
+    '''
+    '''           C
+    ''' P = A(B-T)
+    ''' 
+    ''' Note: C is a power.
+    '''       T is the time in seconds for running events. 
+    ''' </remarks>
+    Private Shared Function CalculateRunningEventsPoints(
+        ByVal a As Decimal, ByVal b As Decimal, ByVal c As Decimal,
+        ByVal score As Decimal) As Double
+
+
+        Dim points As Double
+        points = a * ((b - score) ^ c)
+
+        Return points
+
+    End Function
+
+
+    ''' <summary>
+    ''' Calculates the (unrounded) points for a throwing event, given the A, B
+    ''' and C configuration variables and the score.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The 'A' variable value.
+    ''' </param>
+    ''' <param name="b">
+    ''' The 'B' variable value.
+    ''' </param>
+    ''' <param name="c">
+    ''' The 'C' variable value.
+    ''' </param>
+    ''' <param name="score">
+    ''' The score.
+    ''' </param>
+    ''' <returns>
+    ''' Decimal
+    ''' <para>
+    ''' The unrounded points for the given inputs. The caller is responsible for
+    ''' appropriate rounding. The points should be rounded ^down^ to the nearest
+    ''' integer.
+    ''' </para>
+    ''' </returns>
+    ''' <remarks>
+    ''' The competition rules specify the following equation for throwing
+    ''' events:
+    '''
+    '''           C
+    ''' P = A(D-B)
+    ''' 
+    ''' Note: C is a power.
+    '''       D is the distance in metres achieved in a throwing event. 
+    ''' </remarks>
+    Private Shared Function CalculateThrowingEventsPoints(
+        ByVal a As Decimal, ByVal b As Decimal, ByVal c As Decimal,
+        ByVal score As Decimal) As Double
+
+
+        Dim points As Double
+        points = a * ((score - b) ^ c)
+
+        Return points
+
+    End Function
 
     #End Region
 
