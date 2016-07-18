@@ -104,10 +104,10 @@ Friend Class InputDataItem
 
 
     ''' <summary>
-    ''' Gets or sets the measurement for the named entrant's performance in the
-    ''' specified event.
+    ''' Gets or sets the score achieved by the named entrant's in the specified
+    ''' event.
     ''' </summary>
-    Friend Property Measurement As Decimal
+    Friend Property Score As Decimal
     
 #End Region
 
@@ -129,15 +129,15 @@ Friend Class InputDataItem
     ''' <param name="eventType">
     ''' The type of the event.
     ''' </param>
-    ''' <param name="measurement">
-    ''' The measurement.
+    ''' <param name="score">
+    ''' The score.
     ''' </param>
     Friend Sub New(ByVal entrantName As String, ByVal eventType As EventType,
-                   ByVal measurement As Decimal)
+                   ByVal score As Decimal)
 
         Me.EntrantName = entrantName
         Me.EventType   = eventType
-        Me.Measurement = measurement
+        Me.Score       = score
 
     End Sub
 
