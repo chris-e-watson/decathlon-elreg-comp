@@ -280,10 +280,90 @@ Friend Class InputFileParser
 
 
             'TODO: Parse entrant name, event type and score from this line.
+            Dim inputDataItem As InputDataItem = ParseFileLine(line)
+
+            'TODO: Add new data item to an appropriate list.
 
         Next
 
     End Sub
+
+    
+    ''' <summary>
+    ''' Parses a single line from an input file in to a
+    ''' <see cref="InputDataItem" />.
+    ''' </summary>
+    ''' <param name="input">
+    ''' A single line from an input file.
+    ''' </param>
+    ''' <returns>
+    ''' <see cref="InputDataItem" />
+    ''' <para>
+    ''' A single input data item taking its values from the specified
+    ''' <paramref name="input" /> line data.
+    ''' </para>
+    ''' </returns>
+    ''' <exception cref="ArgumentNullException">
+    ''' <paramref name="input" /> was <c>null</c>.
+    ''' </exception>
+    Private Function ParseFileLine(ByVal input As String) As InputDataItem
+
+        '
+        ' Parameter validation.
+        '
+
+        If input Is Nothing Then
+            Throw New ArgumentNullException("input")
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        ' From the rules:
+        ' "The items on each line will be separated by one or more whitespace
+        ' characters (tabs and/or spaces) and may have trailing whitespace."
+        '
+
+        Dim items() As String = 
+            input.Split(New String() { "\t", " " },
+                        StringSplitOptions.RemoveEmptyEntries)
+
+
+        ' Entrant name.
+        '
+        Dim entrantName As String = Nothing
+        If items.Length >= 1 Then
+            entrantName = items(0).ToUpper()
+        End If
+
+
+        ' Event name.
+        '
+        Dim eventAbbr As String
+        If items.Length >= 2 Then
+            eventAbbr = items(1)
+            ' TODO: Get event from abbreviation.
+        End If
+
+
+        ' Score.
+        '
+        Dim score As Decimal
+        If items.Length >= 3 Then
+            score = Decimal.Parse(items(2))
+        End If
+
+
+        ' Assembly an InputDataItem.
+        '
+        Dim inputDataItem As InputDataItem =
+            New InputDataItem(entrantName, EventType.None, score)
+
+        Return inputDataItem
+
+    End Function
 
 
     ''' <summary>
