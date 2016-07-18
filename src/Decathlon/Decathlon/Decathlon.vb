@@ -612,6 +612,17 @@ Friend Class PointsCalculator
 
     #End Region
 
+    #Region "Private Static Fields"
+    
+    ''' <summary>
+    ''' A map of <see cref="PointsCalculationEquation" />s to
+    ''' <see cref="EventType" />s.
+    ''' </summary>
+    Private Shared _pointsCalculationEquationEventTypeMap _
+        As Dictionary(Of EventType, PointsCalculationEquation)
+
+    #End Region
+
     #Region "Private Fields"
     
     ''' <summary>
@@ -624,6 +635,13 @@ Friend Class PointsCalculator
     ''' The calculated points.
     ''' </summary>
     Private _points As Long
+
+
+    ''' <summary>
+    ''' A points calculation equation appropriate for the specified event type.
+    ''' </summary>
+    ''' <seealso cref="_eventType" />
+    Private _pointsCalculationEquation As PointsCalculationEquation
     
     
     ''' <summary>
@@ -775,6 +793,17 @@ Friend Class PointsCalculator
 
     #End Region
 
+    #Region "Private Methods"
+
+    'TODO: Add summary for PointsCalculator.SetPointsCalculationEquation().
+    Private Sub SetPointsCalculationEquation()
+
+        'TODO: Implement PointsCalculator.SetPointsCalculationEquation().
+
+    End Sub
+
+    #End Region
+
     #Region "Internal Properties"
     
     ''' <summary>
@@ -808,6 +837,22 @@ Friend Class PointsCalculator
 
     #End Region
 
+    #Region "Private Static Methods"
+
+    ''' <summary>
+    ''' Initialises the points calculation equation / event type map.
+    ''' </summary>
+    Private Shared Sub InitialisePointsCalculationEquationEventTypeMap()
+
+        _pointsCalculationEquationEventTypeMap = 
+            New Dictionary(Of EventType, PointsCalculationEquation)
+
+        'TODO: These equations don't map to event types, but event type groups.
+
+    End Sub
+
+    #End Region
+
     #Region "Internal Methods"
     
     ''' <summary>
@@ -816,6 +861,21 @@ Friend Class PointsCalculator
     Friend Sub CalculatePoints()
 
         ' TODO: Implement PointsCalculator.CalculatePoints().
+
+    End Sub
+
+    #End Region
+
+    #Region "Static Constructors"
+
+    ''' <summary>
+    ''' Initialises the <see cref="PointsCalculator"/> class.
+    ''' </summary>
+    Shared Sub New()
+
+        ' Initialise the points calculation equation / event type map.
+        '
+        InitialisePointsCalculationEquationEventTypeMap()
 
     End Sub
 
