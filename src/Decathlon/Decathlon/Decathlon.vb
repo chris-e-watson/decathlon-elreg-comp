@@ -668,6 +668,117 @@ Friend Class PointsCalculator
 End Class
 
 ''' <summary>
+''' Represents configuration information for a points calculator for a specific
+''' event type.
+''' </summary>
+Friend Class PointsCalculatorConfiguration
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The 'A' variable value for the points calculation algorithm.
+    ''' </summary>
+    Private ReadOnly _a As Decimal
+    
+
+    ''' <summary>
+    ''' The 'B' variable value for the points calculation algorithm.
+    ''' </summary>
+    Private ReadOnly _b As Decimal
+    
+
+    ''' <summary>
+    ''' The 'C' variable value for the points calculation algorithm.
+    ''' </summary>
+    Private ReadOnly _c As Decimal
+    
+
+    ''' <summary>
+    ''' The type of the event for which this configuration class contains
+    ''' calculation algorithm variable values.
+    ''' </summary>
+    Private ReadOnly _eventType As EventType 
+
+    #End Region
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets the 'A' variable value for the points calculation algorithm.
+    ''' </summary>
+    Friend ReadOnly Property A As Decimal
+        Get
+            Return _a
+        End Get
+    End Property
+
+
+    ''' <summary>
+    ''' Gets the 'B' variable value for the points calculation algorithm.
+    ''' </summary>
+    Friend ReadOnly Property B As Decimal
+        Get
+            Return _b
+        End Get
+    End Property
+
+
+    ''' <summary>
+    ''' Gets the 'C' variable value for the points calculation algorithm.
+    ''' </summary>
+    Friend ReadOnly Property C As Decimal
+        Get
+            Return _c
+        End Get
+    End Property
+
+    
+    ''' <summary>
+    ''' Gets the type of the event for which this configuration class contains
+    ''' calculation algorithm variable values.
+    ''' </summary>
+    Friend ReadOnly Property EventType As EventType
+        Get
+            Return _eventType 
+        End Get
+    End Property
+
+    #End Region 
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="PointsCalculatorConfiguration"/> class.
+    ''' </summary>
+    ''' <param name="eventType">
+    ''' The type of the event for which this configuration class contains
+    ''' calculation algorithm variable values.
+    ''' </param>
+    ''' <param name="a">
+    ''' The 'A' variable value for the points calculation algorithm.
+    ''' </param>
+    ''' <param name="b">
+    ''' The 'B' variable value for the points calculation algorithm.
+    ''' </param>
+    ''' <param name="c">
+    ''' The 'C' variable value for the points calculation algorithm.
+    ''' </param>
+    Friend Sub New(ByVal eventType As EventType, ByVal a As Decimal, 
+                   ByVal b As Decimal, ByVal c As Decimal)
+
+        Me._eventType = eventType
+        Me._a         = a
+        Me._b         = b
+        Me._c         = c
+
+    End Sub
+
+    #End Region
+
+End Class
+
+''' <summary>
 ''' Provides the functionality to process the results of a set of Decathlons.
 ''' Data is sourced from an input file and the results are written to an output
 ''' file.
