@@ -376,12 +376,16 @@ Friend Class InputFileParser
         End If
 
 
-        ' Event name.
+        ' Event type.
         '
-        Dim eventAbbr As String
+        Dim eventAbbr As String = Nothing
         If items.Length >= 2 Then
-            eventAbbr = items(1)
-            ' TODO: Get event from abbreviation.
+            eventAbbr = items(1).ToUpper()
+        End If
+
+        Dim eventType As EventType
+        If Not _eventTypeAbbrMap.TryGetValue(eventAbbr, eventType) Then
+            eventType = EventType.None
         End If
 
 
@@ -396,7 +400,7 @@ Friend Class InputFileParser
         ' Assembly an InputDataItem.
         '
         Dim inputDataItem As InputDataItem =
-            New InputDataItem(entrantName, EventType.None, score)
+            New InputDataItem(entrantName, eventType, score)
 
         Return inputDataItem
 
