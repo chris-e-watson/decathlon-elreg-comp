@@ -80,6 +80,36 @@ Friend Enum EventType
     PoleVault                    = 10
 End Enum
 
+
+''' <summary>
+''' Enumeration of the different event type groups.
+''' </summary>
+Friend Enum EventTypeGroup
+        
+    ''' <summary>
+    ''' The event type group is unknown or not specified.
+    ''' </summary>
+    None     = 0
+        
+    ''' <summary>
+    ''' The jumping event type group.
+    ''' </summary>
+    Jumping  = 1
+    
+
+    ''' <summary>
+    ''' The running event type group.
+    ''' </summary>
+    Running  = 2
+    
+
+    ''' <summary>
+    ''' The throwing event type group.
+    ''' </summary>
+    Throwing = 3
+
+End Enum
+
 #End Region
 
 #Region "Classes"
