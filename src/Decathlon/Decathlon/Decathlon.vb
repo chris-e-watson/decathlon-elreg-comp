@@ -313,7 +313,11 @@ Friend Class InputFileParser
 
 #Region "Private Methods"
 
-    'TODO: Add documentation for InputFileParser.ParseFileContents().
+    ''' <summary>
+    ''' Parses an <see cref="InputFile" /> from the file contents.
+    ''' </summary>
+    ''' <seealso cref="_fileContents" />
+    ''' <seealso cref="InputFile" />
     Private Sub ParseFileContents()
 
         ' Iterate over each line from the file.
