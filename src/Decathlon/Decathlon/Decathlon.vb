@@ -320,6 +320,12 @@ Friend Class InputFileParser
     ''' <seealso cref="InputFile" />
     Private Sub ParseFileContents()
 
+        ' Create an initial data set in the input file.
+        '
+        Me.InputFile.DataSets.Add(New InputDataSet())
+
+
+
         ' Iterate over each line from the file.
         '
         For Each line As String In Me._fileContents
