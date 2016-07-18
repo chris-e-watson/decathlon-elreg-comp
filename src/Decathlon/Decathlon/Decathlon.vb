@@ -572,6 +572,100 @@ Friend Class InputFileParser
 
 End Class
 
+''' <summary>
+''' Provides the functionality to calculate the points awarded for a given
+''' score and event type combination.
+''' </summary>
+Friend Class PointsCalculator
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The type of the event for which to calculate the points.
+    ''' </summary>
+    Private ReadOnly _eventType As EventType
+        
+
+    ''' <summary>
+    ''' The calculated points.
+    ''' </summary>
+    Private _points As Long
+    
+    
+    ''' <summary>
+    ''' The score from which to calculate the points.
+    ''' </summary>
+    Private ReadOnly _score As Decimal
+
+    #End Region
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets the type of the event for which to calculate the points.
+    ''' </summary>
+    Friend ReadOnly Property EventType As EventType
+        Get
+            Return _eventType
+        End Get
+    End Property
+
+    
+    ''' <summary>
+    ''' Gets the calculated points.
+    ''' </summary>
+    Friend ReadOnly Property Points As Long
+        Get
+            Return _points
+        End Get
+    End Property
+
+    
+    ''' <summary>
+    ''' Gets score from which to calculate the points.
+    ''' </summary>
+    Friend ReadOnly Property Score As Decimal
+        Get
+            Return _score
+        End Get
+    End Property
+
+    #End Region
+    
+    #Region "Internal Constructors"
+    
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="PointsCalculator"/> class.
+    ''' </summary>
+    ''' <param name="eventType">
+    ''' The type of the event for which to calculate the points.
+    ''' </param>
+    ''' <param name="score">
+    ''' The score from which to calculate the points.
+    ''' </param>
+    Friend Sub New(ByVal eventType As EventType, ByVal score As Decimal)
+
+        Me._eventType = eventType
+        Me._score     = score
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Calculates the points.
+    ''' </summary>
+    Friend Sub CalculatePoints()
+
+        ' TODO: Implement PointsCalculator.CalculatePoints().
+
+    End Sub
+
+    #End Region
+
+End Class
 
 ''' <summary>
 ''' Provides the functionality to process the results of a set of Decathlons.
