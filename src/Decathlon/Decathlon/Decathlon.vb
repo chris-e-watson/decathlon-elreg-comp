@@ -550,6 +550,26 @@ Friend Class InputFileParser
 
 End Class
 
+
+''' <summary>
+''' Provides the functionality to process the results of a set of Decathlons.
+''' Data is sourced from an input file and the results are written to an output
+''' file.
+''' </summary>
+Friend Class ResultProcessor
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="ResultProcessor"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
 #End Region
 
 #Region "Modules"
