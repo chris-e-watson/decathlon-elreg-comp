@@ -557,6 +557,13 @@ Module Decathlon
     ''' Defines the entry point of the application.
     ''' </summary>
     Sub Main()
+
+        Dim InputFileParser As New InputFileParser()
+        InputFileParser.Parse()
+        
+        Dim InputFile As InputFile
+        InputFile = InputFileParser.InputFile()
+
     End Sub
     
 #End Region
