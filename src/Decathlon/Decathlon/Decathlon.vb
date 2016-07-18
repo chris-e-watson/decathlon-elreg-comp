@@ -580,6 +580,51 @@ End Class
 ''' </summary>
 Friend Class ResultProcessor
 
+    #Region "Private Fields"
+
+    ''' <summary>
+    ''' The input file.
+    ''' </summary>
+    Private _inputFile As InputFile
+
+    #End Region
+
+    #Region "Private Methods"
+
+    ''' <summary>
+    ''' Reads the input file.
+    ''' </summary>
+    Private Sub ReadInputFile()
+
+        Dim inputFileParser As InputFileParser = New InputFileParser()
+        
+        inputFileParser.Parse()
+
+        _inputFile = inputFileParser.InputFile
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Executes this result processor.
+    ''' </summary>
+    Friend Sub Execute()
+
+        ' Read the input file.
+        '
+        ReadInputFile()
+
+        'TODO: Calculate the points for each Decathlon.
+
+        'TODO: Write the output file.
+
+    End Sub
+
+    #End Region
+
     #Region "Internal Constructors"
 
     ''' <summary>
@@ -608,11 +653,9 @@ Module Decathlon
     ''' </summary>
     Sub Main()
 
-        Dim InputFileParser As New InputFileParser()
-        InputFileParser.Parse()
-        
-        Dim InputFile As InputFile
-        InputFile = InputFileParser.InputFile()
+        Dim resultProcessor As ResultProcessor = New ResultProcessor()
+
+        resultProcessor.Execute()
 
     End Sub
     
