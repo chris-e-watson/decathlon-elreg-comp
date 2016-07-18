@@ -322,8 +322,7 @@ Friend Class InputFileParser
 
         ' Create an initial data set in the input file.
         '
-        Me.InputFile.DataSets.Add(New InputDataSet())
-
+        Dim dataSet As InputDataSet = New InputDataSet()
 
 
         ' Iterate over each line from the file.
@@ -339,10 +338,12 @@ Friend Class InputFileParser
 
             
             ' If the line starts with "#", this indicates the end of the data
-            ' set. Start a new data set. Move to the next line.
+            ' set. Add the completed data set to the InputFile. Start a new data
+            ' set. Move to the next line.
             '
             If Not line Is Nothing AndAlso line.StartsWith("#") Then
-                Me.InputFile.DataSets.Add(New InputDataSet())
+                Me.InputFile.DataSets.Add(dataSet)
+                dataSet = New InputDataSet()
                 Continue For
             End If
 
@@ -353,7 +354,7 @@ Friend Class InputFileParser
 
             ' Append to current data set.
             '
-            Me.InputFile.DataSets.Last().Items.Add(inputDataItem)
+            dataSet.Items.Add(inputDataItem)
 
         Next
 
