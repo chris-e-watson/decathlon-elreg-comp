@@ -631,7 +631,20 @@ Friend Class PointsCalculator
     End Property
 
     #End Region
+
+    #Region "Internal Methods"
     
+    ''' <summary>
+    ''' Calculates the points.
+    ''' </summary>
+    Friend Sub CalculatePoints()
+
+        ' TODO: Implement PointsCalculator.CalculatePoints().
+
+    End Sub
+
+    #End Region
+
     #Region "Internal Constructors"
     
     ''' <summary>
@@ -647,19 +660,6 @@ Friend Class PointsCalculator
 
         Me._eventType = eventType
         Me._score     = score
-
-    End Sub
-
-    #End Region
-
-    #Region "Internal Methods"
-    
-    ''' <summary>
-    ''' Calculates the points.
-    ''' </summary>
-    Friend Sub CalculatePoints()
-
-        ' TODO: Implement PointsCalculator.CalculatePoints().
 
     End Sub
 
