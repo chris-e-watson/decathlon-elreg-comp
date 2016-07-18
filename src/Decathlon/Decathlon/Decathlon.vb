@@ -248,6 +248,12 @@ Friend Class InputFileParser
     #End Region
 
     #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The input file which was parsed.
+    ''' </summary>
+    Private _inputFile As InputFile
+
 
     ''' <summary>
     ''' The contents of the file being parsed.
@@ -258,6 +264,20 @@ Friend Class InputFileParser
     #End Region
 
 #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets the input file which was parsed from the file specified in
+    ''' <see cref="FilePath" />.
+    ''' </summary>
+    Friend Property InputFile As InputFile
+        Get
+            Return _inputFile
+        End Get
+        Private Set
+            _inputFile = Value
+        End Set
+    End Property
+    
 
     ''' <summary>
     ''' Gets or sets the path to the input file to be read and parsed.
@@ -312,14 +332,17 @@ Friend Class InputFileParser
             ' set. Start a new data set.
             '
             If Not line Is Nothing AndAlso line.StartsWith("##") Then
-                'TODO: Start new data set.
+                Me.InputFile.DataSets.Add(New InputDataSet())
             End If
 
 
-            'TODO: Parse entrant name, event type and score from this line.
+            ' Parse entrant name, event type and score from this line.
+            '
             Dim inputDataItem As InputDataItem = ParseFileLine(line)
 
-            'TODO: Add new data item to an appropriate list.
+            ' Append to current data set.
+            '
+            Me.InputFile.DataSets.Last().Items.Add(inputDataItem)
 
         Next
 
@@ -455,6 +478,8 @@ Friend Class InputFileParser
         ' 3. Parse each line in to entrant, event and score.
         ' 4. Start new data set on a line starting with "#".
         ' 5. Stop processing on a line starting with "##".
+
+        Me.InputFile = New InputFile()
 
         ' Read the file, obtain the contents.
         '
