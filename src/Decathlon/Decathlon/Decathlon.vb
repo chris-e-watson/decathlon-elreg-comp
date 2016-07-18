@@ -89,7 +89,7 @@ End Enum
 ''' </summary>
 Friend Class InputDataItem
 
-#Region "Internal Properties"
+    #Region "Internal Properties"
 
     ''' <summary>
     ''' Gets or sets the name of the entrant.
@@ -109,9 +109,9 @@ Friend Class InputDataItem
     ''' </summary>
     Friend Property Score As Decimal
     
-#End Region
+    #End Region
 
-#Region "Internal Constructors"
+    #Region "Internal Constructors"
 
     ''' <summary>
     ''' Initialises a new instance of the <see cref="InputDataItem"/> class.
@@ -141,7 +141,7 @@ Friend Class InputDataItem
 
     End Sub
 
-#End Region
+    #End Region
 
 End Class
 
@@ -152,16 +152,16 @@ End Class
 ''' </summary>
 Friend Class InputDataSet
 
-#Region "Private Fields"
+    #Region "Private Fields"
         
     ''' <summary>
     ''' The collection of input data items.
     ''' </summary>
     Private _items As List(Of InputDataItem) = New List(Of InputDataItem)
 
-#End Region
+    #End Region
 
-#Region "Internal Properties"
+    #Region "Internal Properties"
     
     ''' <summary>
     ''' Gets the items.
@@ -175,9 +175,9 @@ Friend Class InputDataSet
         End Get
     End Property
 
-#End Region
+    #End Region
 
-#Region "Internal Constructors"
+    #Region "Internal Constructors"
 
     ''' <summary>
     ''' Initialises a new instance of the <see cref="InputDataSet"/> class.
@@ -185,7 +185,7 @@ Friend Class InputDataSet
     Friend Sub New()
     End Sub
 
-#End Region
+    #End Region
 
 End Class
 
@@ -196,16 +196,16 @@ End Class
 ''' </summary>
 Friend Class InputFile
 
-#Region "Private Fields"
+    #Region "Private Fields"
 
     ''' <summary>
     ''' The list of data sets contained by this input file.
     ''' </summary>
     Private _dataSets As List(Of InputDataSet) = New List(Of InputDataSet)
 
-#End Region
+    #End Region
 
-#Region "Internal Properties"
+    #Region "Internal Properties"
 
     ''' <summary>
     ''' Gets the list of data sets contained by this input file.
@@ -216,9 +216,9 @@ Friend Class InputFile
         End Get
     End Property
 
-#End Region
+    #End Region
 
-#Region "Internal Constructors"
+    #Region "Internal Constructors"
 
     ''' <summary>
     ''' Initialises a new instance of the <see cref="InputFile"/> class.
@@ -226,7 +226,7 @@ Friend Class InputFile
     Friend Sub New()
     End Sub
 
-#End Region
+    #End Region
 
 End Class
 
@@ -263,7 +263,7 @@ Friend Class InputFileParser
 
     #End Region
 
-#Region "Internal Properties"
+    #Region "Internal Properties"
 
     ''' <summary>
     ''' Gets the input file which was parsed from the file specified in
@@ -284,7 +284,7 @@ Friend Class InputFileParser
     ''' </summary>
     Friend Property FilePath() As String
 
-#End Region
+    #End Region
 
     #Region "Private Static Methods"
     
@@ -311,7 +311,7 @@ Friend Class InputFileParser
 
     #End Region
 
-#Region "Private Methods"
+    #Region "Private Methods"
 
     ''' <summary>
     ''' Parses an <see cref="InputFile" /> from the file contents.
@@ -475,9 +475,9 @@ Friend Class InputFileParser
 
     End Sub
 
-#End Region
+    #End Region
 
-#Region "Internal Methods"
+    #Region "Internal Methods"
 
     ''' <summary>
     ''' Parses the input file.
@@ -501,7 +501,7 @@ Friend Class InputFileParser
 
     End Sub
 
-#End Region
+    #End Region
 
     #Region "Static Constructors"
 
@@ -519,7 +519,7 @@ Friend Class InputFileParser
 
     #End Region
 
-#Region "Internal Constructors"
+    #Region "Internal Constructors"
 
     ''' <summary>
     ''' Initialises a new instance of the <see cref="InputFileParser"/> class.
@@ -546,7 +546,7 @@ Friend Class InputFileParser
 
     End Sub
 
-#End Region
+    #End Region
 
 End Class
 
@@ -559,7 +559,7 @@ End Class
 ''' </summary>
 Module Decathlon
 
-#Region "Internal Methods"
+    #Region "Internal Methods"
 
     ''' <summary>
     ''' Defines the entry point of the application.
@@ -574,7 +574,7 @@ Module Decathlon
 
     End Sub
     
-#End Region
+    #End Region
 
 End Module
 
