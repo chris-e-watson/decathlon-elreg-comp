@@ -981,6 +981,25 @@ Friend Class PointsCalculator
 
     End Sub
 
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="_pointsCalculationEquation" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_pointsCalculationEquation" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfPointsCalculationEquationIsNull()
+
+        If Me._pointsCalculationEquation Is Nothing
+
+            Throw New InvalidOperationException(
+                "PointsCalculator._pointsCalculationEquation cannot be null.")
+
+        End If
+
+    End Sub
+
     #End Region
 
     #Region "Internal Properties"
@@ -1043,6 +1062,17 @@ Friend Class PointsCalculator
     ''' Calculates the points.
     ''' </summary>
     Friend Sub CalculatePoints()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfPointsCalculationEquationIsNull()
+        
+
+        '
+        ' Main work.
+        '
 
         ' TODO: Implement PointsCalculator.CalculatePoints().
 
