@@ -1266,6 +1266,145 @@ End Class
 
 
 ''' <summary>
+''' Provides a repository of <see cref="PointsCalculatorConfiguration" />s.
+''' </summary>
+Friend Class PointsCalculatorConfigurationRepository
+
+    #Region "Private Static Fields"
+
+    ''' <summary>
+    ''' The default instance of the
+    ''' <see cref="PointsCalculatorConfigurationRepository" /> class.
+    ''' </summary>
+    Private Shared _defaultInstance As PointsCalculatorConfigurationRepository =
+        New PointsCalculatorConfigurationRepository()
+
+    #End Region
+
+    #Region "Private Fields"
+
+    ''' <summary>
+    ''' The collection of points calculator configurations.
+    ''' </summary>
+    Private _items As List(Of PointsCalculatorConfiguration) =
+        New List(Of PointsCalculatorConfiguration)
+    
+    #End Region
+
+    #Region "Internal Static Properties"
+
+    ''' <summary>
+    ''' Gets the default instance of the
+    ''' <see cref="PointsCalculatorConfigurationRepository" /> class.
+    ''' </summary>
+    Friend Shared ReadOnly Property [Default] _
+        As PointsCalculatorConfigurationRepository
+        Get
+            Return _defaultInstance
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Private Methods"
+    
+    ''' <summary>
+    ''' Initialises the items.
+    ''' </summary>
+    Private Sub InitialiseItems()
+
+        ' 100m
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.OneHundredMetreSprint,
+                       CDec(25.4347),
+                       CDec(18),
+                       CDec(1.81)))
+
+        ' 110m hurdles
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.OneHundredAndTenMetreHurdles,
+                       CDec(5.74352),
+                       CDec(28.5),
+                       CDec(1.92)))
+
+        'TODO: The rest of the event point calculation configurations.
+
+    End Sub
+    
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Gets the points calculation configuration for the specified event type.
+    ''' </summary>
+    ''' <param name="eventType">
+    ''' The event type.
+    ''' </param>
+    ''' <returns>
+    ''' A <see cref="PointsCalculatorConfiguration" /> for the event type
+    ''' specified in <paramref name="eventType" />.
+    ''' </returns>
+    ''' <exception cref="KeyNotFoundException">
+    ''' A PointsCalculatorConfiguration could not be found for the event type
+    ''' specified in <paramref name="eventType" />.
+    ''' </exception>
+    Friend Function GetByEventType(ByVal eventType As EventType) _
+        As PointsCalculatorConfiguration 
+
+        Dim config as PointsCalculatorConfiguration = 
+            _items.FirstOrDefault(Function(c) c.EventType = eventType)
+
+        If config Is Nothing Then
+
+            Dim format As String =
+                "A PointsCalculatorConfiguration could not be found for the" & _
+                " requested event type ({0})."
+
+            Dim message As String = 
+                String.Format(format, eventType)
+
+            Throw New KeyNotFoundException(message)
+
+        End If
+
+        Return config
+
+    End Function
+    
+    #End Region
+
+    #Region "Static Constructors"
+
+    ''' <summary>
+    ''' Initialises the <see cref="PointsCalculatorConfigurationRepository"/>
+    ''' class.
+    ''' </summary>
+    Shared Sub New()
+    End Sub
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="PointsCalculatorConfigurationRepository"/> class.
+    ''' </summary>
+    Friend Sub New()
+
+        InitialiseItems()
+
+    End Sub
+    
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides the functionality to process the results of a set of Decathlons.
 ''' Data is sourced from an input file and the results are written to an output
 ''' file.
