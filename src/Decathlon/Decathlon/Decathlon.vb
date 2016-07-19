@@ -788,6 +788,12 @@ Friend Class PointsCalculator
     ''' </summary>
     Private _points As Long
 
+    
+    ''' <summary>
+    ''' The points calculation configuration for the specified event type.
+    ''' </summary>
+    Private _pointsCalculationConfiguration As PointsCalculatorConfiguration
+
 
     ''' <summary>
     ''' A points calculation equation appropriate for the specified event type.
@@ -998,6 +1004,14 @@ Friend Class PointsCalculator
 
     #Region "Private Methods"
 
+    'TODO: Add documentation for SetPointsCalculationConfiguration().
+    Private Sub SetPointsCalculationConfiguration()
+
+        'TODO: Implement PointsCalculator.SetPointsCalculationConfiguration().
+
+    End Sub
+
+
     ''' <summary>
     ''' Sets the points calculation equation.
     ''' </summary>
@@ -1035,6 +1049,26 @@ Friend Class PointsCalculator
 
     ''' <summary>
     ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="_pointsCalculationConfiguration" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_pointsCalculationConfiguration" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfPointsCalculationConfigurationIsNull()
+
+        If Me._pointsCalculationConfiguration Is Nothing
+
+            Throw New InvalidOperationException(
+                "PointsCalculator._pointsCalculationConfiguration cannot be" & _
+                " null.")
+
+        End If
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
     ''' <see cref="_pointsCalculationEquation" /> is <c>null</c>.
     ''' </summary>
     ''' <exception cref="InvalidOperationException">
@@ -1064,6 +1098,7 @@ Friend Class PointsCalculator
         ' Class state validation.
         '
 
+        ThrowIfPointsCalculationConfigurationIsNull()
         ThrowIfPointsCalculationEquationIsNull()
         
 
@@ -1108,6 +1143,7 @@ Friend Class PointsCalculator
         Me._eventType = eventType
         Me._score     = score
         
+        SetPointsCalculationConfiguration()
         SetPointsCalculationEquation()
 
     End Sub
