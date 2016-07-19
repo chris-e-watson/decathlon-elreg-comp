@@ -803,6 +803,39 @@ Friend Class PointsCalculator
 
     #End Region
 
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets the type of the event for which to calculate the points.
+    ''' </summary>
+    Friend ReadOnly Property EventType As EventType
+        Get
+            Return _eventType
+        End Get
+    End Property
+
+    
+    ''' <summary>
+    ''' Gets the calculated points.
+    ''' </summary>
+    Friend ReadOnly Property Points As Long
+        Get
+            Return _points
+        End Get
+    End Property
+
+    
+    ''' <summary>
+    ''' Gets score from which to calculate the points.
+    ''' </summary>
+    Friend ReadOnly Property Score As Decimal
+        Get
+            Return _score
+        End Get
+    End Property
+
+    #End Region
+
     #Region "Private Static Methods"
 
     ''' <summary>
@@ -943,6 +976,24 @@ Friend Class PointsCalculator
 
     End Function
 
+
+    ''' <summary>
+    ''' Initialises the points calculation equation / event type group map.
+    ''' </summary>
+    Private Shared Sub InitialisePointsCalculationEquationEventTypeGroupMap()
+
+        _pointsCalculationEquationEventTypeGroupMap = 
+            New Dictionary(Of EventTypeGroup, PointsCalculationEquation)
+
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Jumping,  AddressOf CalculateJumpingEventsPoints)
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Running,  AddressOf CalculateRunningEventsPoints)
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Throwing, AddressOf CalculateThrowingEventsPoints)
+
+    End Sub
+
     #End Region
 
     #Region "Private Methods"
@@ -997,60 +1048,6 @@ Friend Class PointsCalculator
                 "PointsCalculator._pointsCalculationEquation cannot be null.")
 
         End If
-
-    End Sub
-
-    #End Region
-
-    #Region "Internal Properties"
-    
-    ''' <summary>
-    ''' Gets the type of the event for which to calculate the points.
-    ''' </summary>
-    Friend ReadOnly Property EventType As EventType
-        Get
-            Return _eventType
-        End Get
-    End Property
-
-    
-    ''' <summary>
-    ''' Gets the calculated points.
-    ''' </summary>
-    Friend ReadOnly Property Points As Long
-        Get
-            Return _points
-        End Get
-    End Property
-
-    
-    ''' <summary>
-    ''' Gets score from which to calculate the points.
-    ''' </summary>
-    Friend ReadOnly Property Score As Decimal
-        Get
-            Return _score
-        End Get
-    End Property
-
-    #End Region
-
-    #Region "Private Static Methods"
-
-    ''' <summary>
-    ''' Initialises the points calculation equation / event type group map.
-    ''' </summary>
-    Private Shared Sub InitialisePointsCalculationEquationEventTypeGroupMap()
-
-        _pointsCalculationEquationEventTypeGroupMap = 
-            New Dictionary(Of EventTypeGroup, PointsCalculationEquation)
-
-        _pointsCalculationEquationEventTypeGroupMap.Add(
-            EventTypeGroup.Jumping,  AddressOf CalculateJumpingEventsPoints)
-        _pointsCalculationEquationEventTypeGroupMap.Add(
-            EventTypeGroup.Running,  AddressOf CalculateRunningEventsPoints)
-        _pointsCalculationEquationEventTypeGroupMap.Add(
-            EventTypeGroup.Throwing, AddressOf CalculateThrowingEventsPoints)
 
     End Sub
 
