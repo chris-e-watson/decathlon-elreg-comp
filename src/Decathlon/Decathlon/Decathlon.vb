@@ -768,10 +768,10 @@ Friend Class PointsCalculator
     
     ''' <summary>
     ''' A map of <see cref="PointsCalculationEquation" />s to
-    ''' <see cref="EventType" />s.
+    ''' <see cref="EventTypeGroup" />s.
     ''' </summary>
-    Private Shared _pointsCalculationEquationEventTypeMap _
-        As Dictionary(Of EventType, PointsCalculationEquation)
+    Private Shared _pointsCalculationEquationEventTypeGroupMap _
+        As Dictionary(Of EventTypeGroup, PointsCalculationEquation)
 
     #End Region
 
@@ -992,14 +992,19 @@ Friend Class PointsCalculator
     #Region "Private Static Methods"
 
     ''' <summary>
-    ''' Initialises the points calculation equation / event type map.
+    ''' Initialises the points calculation equation / event type group map.
     ''' </summary>
-    Private Shared Sub InitialisePointsCalculationEquationEventTypeMap()
+    Private Shared Sub InitialisePointsCalculationEquationEventTypeGroupMap()
 
-        _pointsCalculationEquationEventTypeMap = 
-            New Dictionary(Of EventType, PointsCalculationEquation)
+        _pointsCalculationEquationEventTypeGroupMap = 
+            New Dictionary(Of EventTypeGroup, PointsCalculationEquation)
 
-        'TODO: These equations don't map to event types, but event type groups.
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Jumping,  AddressOf CalculateJumpingEventsPoints)
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Running,  AddressOf CalculateRunningEventsPoints)
+        _pointsCalculationEquationEventTypeGroupMap.Add(
+            EventTypeGroup.Throwing, AddressOf CalculateThrowingEventsPoints)
 
     End Sub
 
@@ -1027,7 +1032,7 @@ Friend Class PointsCalculator
 
         ' Initialise the points calculation equation / event type map.
         '
-        InitialisePointsCalculationEquationEventTypeMap()
+        InitialisePointsCalculationEquationEventTypeGroupMap()
 
     End Sub
 
