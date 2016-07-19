@@ -725,6 +725,80 @@ End Class
 
 
 ''' <summary>
+''' Represents a single output data item.
+''' </summary>
+Friend Class OutputDataItem
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets or sets the name of the entrant.
+    ''' </summary>
+    Friend Property EntrantName As String
+
+
+    ''' <summary>
+    ''' Gets or sets the total points achieved by the named entrant across all
+    ''' events in a decathlon.
+    ''' </summary>
+    Friend Property Points As Long
+    
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "EntrantName: ""{0}"", Points: {1}"
+
+        Dim value As String = 
+            String.Format(format, Me.EntrantName, Me.Points)
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputDataItem"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputDataItem"/> class.
+    ''' </summary>
+    ''' <param name="entrantName">
+    ''' The name of the entrant.
+    ''' </param>
+    ''' <param name="points">
+    ''' The total points achieved by the entrant across all the events in a
+    ''' decathlon.
+    ''' </param>
+    Friend Sub New(ByVal entrantName As String, ByVal points As Long)
+
+        Me.EntrantName = entrantName
+        Me.Points      = points
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides the functionality to calculate the points awarded for a given
 ''' score and event type combination.
 ''' </summary>
