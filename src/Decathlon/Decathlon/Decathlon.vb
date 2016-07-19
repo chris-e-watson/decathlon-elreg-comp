@@ -324,6 +324,45 @@ End Class
 
 
 ''' <summary>
+''' Represents information about a single score in a event.
+''' </summary>
+Friend Class EventScore
+    
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets or sets the event type.
+    ''' </summary>
+    Friend Property EventType As EventType
+    
+
+    ''' <summary>
+    ''' Gets or sets the points achieved in the event. Derived from the score.
+    ''' </summary>
+    Friend Property Points As Long
+    
+
+    ''' <summary>
+    ''' Gets or sets the score set in the event.
+    ''' </summary>
+    Friend Property Score As Decimal
+
+    #End Region
+
+    #Region "Internal Constructors"
+    
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="EventScore"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Represents a single input data item.
 ''' </summary>
 Friend Class InputDataItem
