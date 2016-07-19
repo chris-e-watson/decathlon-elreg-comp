@@ -1114,7 +1114,17 @@ Friend Class PointsCalculator
         ' Main work.
         '
 
-        ' TODO: Implement PointsCalculator.CalculatePoints().
+        Dim pointsUnrounded As Double =
+            Me._pointsCalculationEquation(Me._pointsCalculationConfiguration.A,
+                                          Me._pointsCalculationConfiguration.B,
+                                          Me._pointsCalculationConfiguration.C,
+                                          Me._score)
+
+        Dim pointsRoundedDown As Double = Math.Floor(pointsUnrounded)
+
+        Dim points As Long = Convert.ToInt64(pointsRoundedDown)
+
+        Me._points = points
 
     End Sub
 
