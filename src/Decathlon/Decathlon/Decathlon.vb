@@ -402,6 +402,7 @@ Friend Class InputFile
 
 End Class
 
+
 ''' <summary>
 ''' Provides the functionality to read and parse an input file from disk.
 ''' </summary>
@@ -721,6 +722,7 @@ Friend Class InputFileParser
     #End Region
 
 End Class
+
 
 ''' <summary>
 ''' Provides the functionality to calculate the points awarded for a given
@@ -1053,6 +1055,7 @@ Friend Class PointsCalculator
 
 End Class
 
+
 ''' <summary>
 ''' Represents configuration information for a points calculator for a specific
 ''' event type.
@@ -1163,6 +1166,7 @@ Friend Class PointsCalculatorConfiguration
     #End Region
 
 End Class
+
 
 ''' <summary>
 ''' Provides the functionality to process the results of a set of Decathlons.
