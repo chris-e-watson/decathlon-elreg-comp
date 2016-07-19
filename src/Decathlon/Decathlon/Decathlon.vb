@@ -1632,6 +1632,13 @@ End Class
 Friend Class ResultProcessor
 
     #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The list of combined events.
+    ''' </summary>
+    Private _combinedEvents As List(Of CombinedEvent) =
+        New List(Of CombinedEvent)
+
 
     ''' <summary>
     ''' The input file.
@@ -1643,6 +1650,66 @@ Friend Class ResultProcessor
     #Region "Private Methods"
 
     ''' <summary>
+    ''' Builds the combined events from the data in the input file.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_inputFile" /> was <c>null</c>.
+    ''' </exception>
+    ''' <seealso cref="_inputFile" />
+    Private Sub BuildCombinedEvents()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfInputFileIsNull()
+
+
+        '
+        ' Main work.
+        '
+        
+        For Each dataSet As InputDataSet In Me._inputFile.DataSets
+            
+            Dim combinedEvent As CombinedEvent = New CombinedEvent()
+
+            Dim dataItemsGroupedByEntrant _
+                As IEnumerable(Of IGrouping(Of String, InputDataItem)) = 
+                dataSet.Items.GroupBy(Function(item) item.EntrantName)
+
+            For Each dataItemGroup As IGrouping(Of String, InputDataItem) 
+                In dataItemsGroupedByEntrant
+
+                Dim combinedEventEntrant As CombinedEventEntrant = 
+                    New CombinedEventEntrant() With
+                {
+                    .EntrantName = dataItemGroup.Key
+                }
+
+                For Each dataItem As InputDataItem In dataItemGroup
+                    
+                    Dim eventScore As EventScore = New EventScore() With
+                    {
+                        .EventType = dataItem.EventType,
+                        .Score     = dataItem.Score
+                    }
+
+                    combinedEventEntrant.EventScores.Add(eventScore)
+
+                Next
+
+                combinedEvent.Entrants.Add(combinedEventEntrant)
+
+            Next
+
+            _combinedEvents.Add(combinedEvent)
+
+        Next        
+
+    End Sub
+
+
+    ''' <summary>
     ''' Reads the input file.
     ''' </summary>
     Private Sub ReadInputFile()
@@ -1652,6 +1719,24 @@ Friend Class ResultProcessor
         inputFileParser.Parse()
 
         _inputFile = inputFileParser.InputFile
+
+    End Sub
+
+        
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="_inputFile" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_inputFile" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfInputFileIsNull()
+
+        If Me._inputFile Is Nothing Then
+
+            Throw New InvalidOperationException("Me._inputFile cannot be null.")
+
+        End If
 
     End Sub
 
@@ -1667,6 +1752,11 @@ Friend Class ResultProcessor
         ' Read the input file.
         '
         ReadInputFile()
+
+        ' Build the combined events (one decathlon for each data set in the
+        ' input file).
+        '
+        BuildCombinedEvents()
 
         'TODO: Calculate the points for each Decathlon.
 
