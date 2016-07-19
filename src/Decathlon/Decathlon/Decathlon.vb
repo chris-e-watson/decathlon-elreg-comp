@@ -947,10 +947,37 @@ Friend Class PointsCalculator
 
     #Region "Private Methods"
 
-    'TODO: Add summary for PointsCalculator.SetPointsCalculationEquation().
+    ''' <summary>
+    ''' Sets the points calculation equation.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' A points calculation equation could not be determined for the current
+    ''' event type. The map did not contain a value.
+    ''' </exception>
+    ''' <seealso cref="_pointsCalculationEquation" />
+    ''' <seealso cref="_pointsCalculationEquationEventTypeGroupMap" />
+    ''' <seealso cref="_eventType" />
     Private Sub SetPointsCalculationEquation()
 
-        'TODO: Implement PointsCalculator.SetPointsCalculationEquation().
+        Dim eventTypeGroup As EventTypeGroup =
+            EventTypeHelper.GetEventTypeGroupFromEventType(Me._eventType)
+
+        Dim pointsCalculationEquation As PointsCalculationEquation
+        If Not _pointsCalculationEquationEventTypeGroupMap.TryGetValue(
+            eventTypeGroup, pointsCalculationEquation) Then
+
+            Dim format As String = 
+                "Couldn't determine a 'PointsCalculationEquation'. The map" _
+                & " did not contain the a value for the '{0}' event type group."
+
+            Dim message As String =
+                String.Format(format, eventTypeGroup)
+
+            Throw New InvalidOperationException(message)
+
+        End If
+
+        Me._pointsCalculationEquation = pointsCalculationEquation
 
     End Sub
 
@@ -1053,6 +1080,8 @@ Friend Class PointsCalculator
 
         Me._eventType = eventType
         Me._score     = score
+        
+        SetPointsCalculationEquation()
 
     End Sub
 
