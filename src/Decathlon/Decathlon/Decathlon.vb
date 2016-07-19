@@ -115,6 +115,47 @@ End Enum
 #Region "Classes"
 
 ''' <summary>
+''' Represents a single decathlon combined event.
+''' </summary>
+Friend Class CombinedEvent
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The entrants.
+    ''' </summary>
+    Private _entrants As List(Of CombinedEventEntrant) =
+        New List(Of CombinedEventEntrant)
+
+    #End Region
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets the entrants.
+    ''' </summary>
+    Friend ReadOnly Property Entrants As List(Of CombinedEventEntrant)
+        Get
+            Return _entrants
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="CombinedEvent"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Represents information about a single entrant and their event score/points
 ''' for all events in a single decathlon combined event.
 ''' </summary>
