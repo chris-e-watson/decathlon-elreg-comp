@@ -115,6 +115,54 @@ End Enum
 #Region "Classes"
 
 ''' <summary>
+''' Represents information about a single entrant and their event score/points
+''' for all events in a single decathlon combined event.
+''' </summary>
+Friend Class CombinedEventEntrant
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The event scores.
+    ''' </summary>
+    Private _eventScores As List(Of EventScore) = New List(Of EventScore)
+
+    #End Region
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets or sets the name of the entrant.
+    ''' </summary>
+    Friend Property EntrantName As String
+    
+
+    ''' <summary>
+    ''' Gets the event scores.
+    ''' </summary>
+    Friend ReadOnly Property EventScores As List(Of EventScore)
+        Get
+            Return _eventScores
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="CombinedEventEntrant"/>
+    ''' class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides helper methods for working with <see cref="EventType" />s.
 ''' </summary>
 Friend NotInheritable Class EventTypeHelper
