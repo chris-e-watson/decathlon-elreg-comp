@@ -1003,11 +1003,19 @@ Friend Class PointsCalculator
     #End Region
 
     #Region "Private Methods"
-
-    'TODO: Add documentation for SetPointsCalculationConfiguration().
+    
+    ''' <summary>
+    ''' Sets the points calculation configuration.
+    ''' </summary>
+    ''' <seealso cref="_pointsCalculationConfiguration" />
+    ''' <seealso cref="_eventType" />
     Private Sub SetPointsCalculationConfiguration()
 
-        'TODO: Implement PointsCalculator.SetPointsCalculationConfiguration().
+        Dim config As PointsCalculatorConfiguration = 
+            PointsCalculatorConfigurationRepository _
+                .Default.GetByEventType(Me._eventType)
+
+        Me._pointsCalculationConfiguration = config
 
     End Sub
 
