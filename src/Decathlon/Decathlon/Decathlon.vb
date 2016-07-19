@@ -114,7 +114,9 @@ End Enum
 
 #Region "Classes"
 
-'TODO:
+''' <summary>
+''' Provides helper methods for working with <see cref="EventType" />s.
+''' </summary>
 Friend NotInheritable Class EventTypeHelper
     
     #Region "Private Static Fields"
@@ -164,12 +166,40 @@ Friend NotInheritable Class EventTypeHelper
     #End Region
 
     #Region "Internal Static Methods"
-
-    'TODO:
+    
+    ''' <summary>
+    ''' Gets an event type group from an event type.
+    ''' </summary>
+    ''' <param name="eventType">
+    ''' The type of the event for which to obtain the event type group.
+    ''' </param>
+    ''' <returns>
+    ''' An <see cref="EventTypeGroup" /> for the specified
+    ''' <paramref name="eventType" />.
+    ''' </returns>
+    ''' <exception cref="InvalidOperationException">
+    ''' No mapping to an event type group was configured for the specified event
+    ''' type.
+    ''' </exception>
+    ''' <seealso cref="_eventTypeGroupEventTypeMap" />
     Friend Shared Function GetEventTypeGroupFromEventType(
         ByVal eventType As EventType) As EventTypeGroup
 
-        'TODO:
+        Dim eventTypeGroup As EventTypeGroup
+        If Not _eventTypeGroupEventTypeMap.TryGetValue(eventType, 
+                                                       eventTypeGroup) Then
+
+            Dim format As String = 
+                "No event type group is mapped to the event type '{0}'."
+
+            Dim message As String =
+                String.Format(format, eventType)
+
+            Throw New InvalidOperationException(message)
+
+        End If
+
+        Return eventTypeGroup
 
     End Function
 
@@ -177,7 +207,16 @@ Friend NotInheritable Class EventTypeHelper
 
     #Region "Static Constructors"
 
-    'TODO:
+    ''' <summary>
+    ''' Initialises the <see cref="EventTypeHelper"/> class.
+    ''' </summary>
+    Shared Sub New()
+        
+        ' Initialise the event type group / event type map.
+        '
+        InitialiseEventTypeGroupEventTypeMap()
+
+    End Sub
 
     #End Region
 
