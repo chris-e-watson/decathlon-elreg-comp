@@ -362,7 +362,10 @@ Friend Class EventScore
 End Class
 
 
-' TODO: Document EventScorePointsCalculatorService class.
+''' <summary>
+''' Provides the functionality to calculate the points for an
+''' <see cref="EventScore" />.
+''' </summary>
 Friend Class EventScorePointsCalculatorService
 
     #Region "Internal Properties"
@@ -375,11 +378,21 @@ Friend Class EventScorePointsCalculatorService
     #End Region
 
     #Region "Private Methods"
-
-    ' TODO: Document EventScorePointsCalculatorService.CalculatePoints().
+    
+    ''' <summary>
+    ''' Calculates the points.
+    ''' </summary>
     Private Sub CalculatePoints()
 
-        ' TODO: Implement EventScorePointsCalculatorService.CalculatePoints().
+        Dim pointsCalculator As PointsCalculator = 
+            New PointsCalculator(Me.EventScore.EventType, _
+                                 Me.EventScore.Score)
+
+        pointsCalculator.CalculatePoints()
+
+        Dim points As Long = pointsCalculator.Points
+
+        Me.EventScore.Points = points
 
     End Sub
 
