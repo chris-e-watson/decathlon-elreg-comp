@@ -203,6 +203,107 @@ Friend Class CombinedEventEntrant
 End Class
 
 
+' TODO: Document CombinedEventPointsCalculatorService class.
+Friend Class CombinedEventPointsCalculatorService
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets or sets the event score for which to calculation the points.
+    ''' </summary>
+    Friend Property CombinedEvent As CombinedEvent
+
+    #End Region
+
+    #Region "Private Methods"
+    
+    ''' <summary>
+    ''' Calculates the points.
+    ''' </summary>
+    Private Sub CalculatePoints()
+
+        'TODO: Implement CombinedEventPointsCalculatorService.CalculatePoints().
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="CombinedEvent" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfCombinedEventIsNull()
+
+        If Me.CombinedEvent Is Nothing
+
+            Throw New InvalidOperationException(
+                "CombinedEventPointsCalculatorService.CombinedEvent cannot" & _
+                " be null.")
+
+        End If
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Calculates the points for all event scores for all entrants for the
+    ''' combined event.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent" /> was <c>null</c>.
+    ''' </exception>
+    Friend Sub Execute()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfCombinedEventIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        CalculatePoints()
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Constructors"
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="CombinedEventPointsCalculatorService"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="CombinedEventPointsCalculatorService"/> class.
+    ''' </summary>
+    ''' <param name="combinedEvent">
+    ''' The event score for which to calculate the points.
+    ''' </param>
+    Friend Sub New(ByVal combinedEvent As CombinedEvent)
+
+        Me.CombinedEvent = combinedEvent
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
 ''' <summary>
 ''' Provides helper methods for working with <see cref="EventType" />s.
 ''' </summary>
