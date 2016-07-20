@@ -1673,12 +1673,10 @@ Friend Class ResultProcessor
             
             Dim combinedEvent As CombinedEvent = New CombinedEvent()
 
-            Dim dataItemsGroupedByEntrant _
-                As IEnumerable(Of IGrouping(Of String, InputDataItem)) = 
+            Dim dataItemsGroupedByEntrant = 
                 dataSet.Items.GroupBy(Function(item) item.EntrantName)
 
-            For Each dataItemGroup As IGrouping(Of String, InputDataItem) 
-                In dataItemsGroupedByEntrant
+            For Each dataItemGroup In dataItemsGroupedByEntrant
 
                 Dim combinedEventEntrant As CombinedEventEntrant = 
                     New CombinedEventEntrant() With
