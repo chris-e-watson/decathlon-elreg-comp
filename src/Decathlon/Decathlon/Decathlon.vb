@@ -1673,18 +1673,24 @@ Friend Class ResultProcessor
             
             Dim combinedEvent As CombinedEvent = New CombinedEvent()
 
-            Dim dataItemsGroupedByEntrant = 
-                dataSet.Items.GroupBy(Function(item) item.EntrantName)
+            Dim dataItemsByEntrant =
+                From dataItem In dataSet.Items
+                Group dataItem By dataItem.EntrantName Into grouping = Group
+                Select New With
+                {
+                    .EntrantName = EntrantName,
+                    .Items       = grouping
+                }
 
-            For Each dataItemGroup In dataItemsGroupedByEntrant
+            For Each dataItemGroup In dataItemsByEntrant
 
                 Dim combinedEventEntrant As CombinedEventEntrant = 
                     New CombinedEventEntrant() With
                 {
-                    .EntrantName = dataItemGroup.Key
+                    .EntrantName = dataItemGroup.EntrantName
                 }
 
-                For Each dataItem As InputDataItem In dataItemGroup
+                For Each dataItem As InputDataItem In dataItemGroup.Items
                     
                     Dim eventScore As EventScore = New EventScore() With
                     {
