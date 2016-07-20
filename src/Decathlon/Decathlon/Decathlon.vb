@@ -362,6 +362,104 @@ Friend Class EventScore
 End Class
 
 
+' TODO: Document EventScorePointsCalculatorService class.
+Friend Class EventScorePointsCalculatorService
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets or sets the event score for which to calculation the points.
+    ''' </summary>
+    Friend Property EventScore As EventScore
+
+    #End Region
+
+    #Region "Private Methods"
+
+    ' TODO: Document EventScorePointsCalculatorService.CalculatePoints().
+    Private Sub CalculatePoints()
+
+        ' TODO: Implement EventScorePointsCalculatorService.CalculatePoints().
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="EventScore" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="EventScore" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfEventScoreIsNull()
+
+        If Me.EventScore Is Nothing
+
+            Throw New InvalidOperationException(
+                "EventScorePointsCalculatorService.EventScore cannot be" & _
+                " null.")
+
+        End If
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Calculates the points for the event score.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="EventScore" /> was <c>null</c>.
+    ''' </exception>
+    Friend Sub Execute()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfEventScoreIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        CalculatePoints()
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Constructors"
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="EventScorePointsCalculatorService"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="EventScorePointsCalculatorService"/> class.
+    ''' </summary>
+    ''' <param name="eventScore">
+    ''' The event score for which to calculate the points.
+    ''' </param>
+    Friend Sub New(ByVal eventScore As EventScore)
+
+        Me.EventScore = eventScore
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
 ''' <summary>
 ''' Represents a single input data item.
 ''' </summary>
