@@ -1795,7 +1795,73 @@ Friend Class PointsCalculatorConfigurationRepository
                        CDec(28.5),
                        CDec(1.92)))
 
-        'TODO: The rest of the event point calculation configurations.
+        ' 400m sprint
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.FourHundredMetreSprint,
+                       CDec(1.53775),
+                       CDec(82),
+                       CDec(1.81)))
+
+        ' 1500m sprint
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.FifteenHundredMetreSprint,
+                       CDec(0.03768),
+                       CDec(480),
+                       CDec(1.85)))
+
+        ' Discus
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.Discus,
+                       CDec(12.91),
+                       CDec(4),
+                       CDec(1.1)))
+
+        ' Javelin
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.Javelin,
+                       CDec(10.14),
+                       CDec(7),
+                       CDec(1.08)))
+
+        ' Shot put
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.ShotPut,
+                       CDec(51.39),
+                       CDec(1.5),
+                       CDec(1.05)))
+
+        ' Long jump
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.LongJump,
+                       CDec(0.14354),
+                       CDec(220),
+                       CDec(1.4)))
+
+        ' High jump
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.HighJump,
+                       CDec(0.8465),
+                       CDec(75),
+                       CDec(1.42)))
+
+        ' Pole vault
+        '
+        _items.Add(New PointsCalculatorConfiguration(
+                       EventType.PoleVault,
+                       CDec(0.2797),
+                       CDec(100),
+                       CDec(1.35)))
+        
+        ' TODO: Validate that each event has only one configuration?
+        '       Validate that each event has a configuration?
+        '       Would a dictionary help here?
 
     End Sub
     
