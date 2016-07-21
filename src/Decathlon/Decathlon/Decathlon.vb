@@ -560,6 +560,29 @@ Friend Class EventScore
 
     #End Region
 
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "EventType: {0}, Points: {1}, Score: {2}"
+
+        Dim value As String = 
+            String.Format(format,
+                Me.EventType, Me.Points, Me.Score)
+
+        Return value
+
+    End Function
+
+    #End Region
+
     #Region "Internal Constructors"
     
     ''' <summary>
