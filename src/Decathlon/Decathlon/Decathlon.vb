@@ -769,10 +769,13 @@ Friend Class InputDataItem
     Public Overrides Function ToString() As String
         
         Dim format As String = 
-            "EntrantName: ""{0}"", EventType: {1}, Score: {2}"
+            "EntrantName: {0}, EventType: {1}, Score: {2}"
 
         Dim value As String = 
-            String.Format(format, Me.EntrantName, Me.EventType, Me.Score)
+            String.Format(format,
+                If(Not Me.EntrantName Is Nothing,
+                   """" & Me.EntrantName & """", "null"),
+                Me.EventType, Me.Score)
 
         Return value
 
