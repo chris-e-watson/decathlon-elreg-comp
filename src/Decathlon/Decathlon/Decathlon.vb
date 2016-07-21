@@ -203,7 +203,10 @@ Friend Class CombinedEventEntrant
 End Class
 
 
-' TODO: Document CombinedEventPointsCalculatorService class.
+''' <summary>
+''' Provides the functionality to calculate the points for all event scores for
+''' all entrants for a combined event.
+''' </summary>
 Friend Class CombinedEventPointsCalculatorService
 
     #Region "Internal Properties"
@@ -220,9 +223,40 @@ Friend Class CombinedEventPointsCalculatorService
     ''' <summary>
     ''' Calculates the points.
     ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent.Entrants" /> was <c>null</c>.
+    ''' </exception>
     Private Sub CalculatePoints()
+        
+        '
+        ' Class state validation.
+        '
 
-        'TODO: Implement CombinedEventPointsCalculatorService.CalculatePoints().
+        If Me.CombinedEvent.Entrants Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "CombinedEventPointsCalculatorService.CombinedEvent.Entrants" _
+                & " cannot be null.")
+
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        For Each entrant In Me.CombinedEvent.Entrants
+
+            For Each eventScore In entrant.EventScores
+
+                Dim eventScorePointsCalculatorService = 
+                    New EventScorePointsCalculatorService(eventScore)
+
+                eventScorePointsCalculatorService.Execute()
+
+            Next
+
+        Next
 
     End Sub
 
