@@ -157,8 +157,9 @@ Friend Class CombinedEvent
 
         Dim value As String = 
             String.Format(format, _
-                          If(Not Me.Entrants Is Nothing,
-                             Me.Entrants.Count.ToString() & " items", "null"))
+                If(Not Me.Entrants Is Nothing,
+                   Me.Entrants.Count.ToString() & 
+                   If(Me.Entrants.Count = 1, " item", " items"), "null"))
 
         Return value
 
