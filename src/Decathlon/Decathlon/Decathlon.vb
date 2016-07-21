@@ -1958,6 +1958,39 @@ Friend Class ResultProcessor
 
     End Sub
 
+    
+    ''' <summary>
+    ''' Calculates the points for each event score for each entrant in each
+    ''' combined event.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_combinedEvents" /> was <c>null</c>.
+    ''' </exception>
+    ''' <seealso cref="_combinedEvents" />
+    Private Sub CalculateCombinedEventsPoints()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfCombinedEventsIsNull()
+
+
+        '
+        ' Main work.
+        '
+        
+        For Each combinedEvent In Me._combinedEvents
+
+            Dim combinedEventPointsCalculatorService = 
+                New CombinedEventPointsCalculatorService(combinedEvent)
+
+            combinedEventPointsCalculatorService.Execute()
+
+        Next
+
+    End Sub
+
 
     ''' <summary>
     ''' Reads the input file.
@@ -1969,6 +2002,25 @@ Friend Class ResultProcessor
         inputFileParser.Parse()
 
         _inputFile = inputFileParser.InputFile
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="_combinedEvents" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_combinedEvents" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfCombinedEventsIsNull()
+
+        If Me._combinedEvents Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "Me._combinedEvents cannot be null.")
+
+        End If
 
     End Sub
 
@@ -2007,8 +2059,12 @@ Friend Class ResultProcessor
         ' input file).
         '
         BuildCombinedEvents()
+        
+        ' Calculate the points for all the scores in all the combined events.
+        '
+        CalculateCombinedEventsPoints()
 
-        'TODO: Calculate the points for each Decathlon.
+        'TODO: Build a league table.
 
         'TODO: Write the output file.
 
