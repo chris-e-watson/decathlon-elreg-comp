@@ -846,6 +846,31 @@ Friend Class InputDataSet
 
     #End Region
 
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "Items: {0}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.Items Is Nothing,
+                   Me.Items.Count.ToString() & 
+                   If(Me.Items.Count = 1, " item", " items"), "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
     #Region "Internal Constructors"
 
     ''' <summary>
