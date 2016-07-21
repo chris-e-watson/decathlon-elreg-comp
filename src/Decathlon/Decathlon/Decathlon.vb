@@ -1329,10 +1329,13 @@ Friend Class OutputDataItem
     Public Overrides Function ToString() As String
         
         Dim format As String = 
-            "EntrantName: ""{0}"", Points: {1}"
+            "EntrantName: {0}, Points: {1}"
 
         Dim value As String = 
-            String.Format(format, Me.EntrantName, Me.Points)
+            String.Format(format, 
+                If(Not Me.EntrantName Is Nothing,
+                   """" & Me.EntrantName & """", "null"),
+                Me.Points)
 
         Return value
 
