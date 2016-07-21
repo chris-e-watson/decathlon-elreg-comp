@@ -1223,6 +1223,32 @@ Friend Class InputFileParser
 
     #End Region
 
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "InputFile: {0}, FilePath = {1}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.InputFile Is Nothing,
+                   "{" & Me.InputFile.ToString() & "}", "null"),
+                If(Not Me.FilePath Is Nothing,
+                   """" & Me.FilePath.ToString() & """", "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
     #Region "Static Constructors"
 
     ''' <summary>
