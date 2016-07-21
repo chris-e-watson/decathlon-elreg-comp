@@ -1923,7 +1923,30 @@ Friend Class PointsCalculatorConfiguration
         End Get
     End Property
 
-    #End Region 
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "A: {0}, B: {1}, C: {2}, EventType: {3}"
+
+        Dim value As String = 
+            String.Format(format,
+                Me.A, Me.B, Me.C, Me.EventType)
+
+        Return value
+
+    End Function
+
+    #End Region
 
     #Region "Internal Constructors"
 
