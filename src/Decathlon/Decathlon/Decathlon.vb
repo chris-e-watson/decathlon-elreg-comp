@@ -213,6 +213,33 @@ Friend Class CombinedEventEntrant
 
     #End Region
 
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "EntrantName: {0}, EventScores: {1}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.EntrantName Is Nothing,
+                   """" & Me.EntrantName & """", "null"),
+                If(Not Me.EventScores Is Nothing,
+                   Me.EventScores.Count.ToString() & 
+                   If(Me.EventScores.Count = 1, " item", " items"), "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
     #Region "Internal Constructors"
 
     ''' <summary>
