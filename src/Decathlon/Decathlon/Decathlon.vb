@@ -1767,6 +1767,72 @@ End Class
 
 
 ''' <summary>
+''' Represents a single output file. An output file contains multiple data sets,
+''' each data set represents information for a single decathlon.
+''' </summary>
+Friend Class OutputFile
+
+    #Region "Private Fields"
+
+    ''' <summary>
+    ''' The list of data sets contained by this output file.
+    ''' </summary>
+    Private _dataSets As List(Of OutputDataSet) = New List(Of OutputDataSet)
+
+    #End Region
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets the list of data sets contained by this output file.
+    ''' </summary>
+    Friend ReadOnly Property DataSets As List(Of OutputDataSet)
+        Get
+            Return _dataSets
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "DataSets: {0}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.DataSets Is Nothing,
+                   Me.DataSets.Count.ToString() & 
+                   If(Me.DataSets.Count = 1, " item", " items"), "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputFile"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides the functionality to calculate the points awarded for a given
 ''' score and event type combination.
 ''' </summary>
