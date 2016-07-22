@@ -140,6 +140,12 @@ Friend Class CombinedEvent
         End Get
     End Property
 
+    
+    ''' <summary>
+    ''' Gets or sets the league table.
+    ''' </summary>
+    Friend Property LeagueTable As LeagueTable
+
     #End Region
 
     #Region "Public Methods"
@@ -153,13 +159,15 @@ Friend Class CombinedEvent
     Public Overrides Function ToString() As String
         
         Dim format As String = 
-            "Entrants: {0}"
+            "Entrants: {0}, LeagueTable: {1}"
 
         Dim value As String = 
             String.Format(format, _
                 If(Not Me.Entrants Is Nothing,
                    Me.Entrants.Count.ToString() & 
-                   If(Me.Entrants.Count = 1, " item", " items"), "null"))
+                   If(Me.Entrants.Count = 1, " item", " items"), "null"),
+                If(Not Me.LeagueTable Is Nothing,
+                   "{" & Me.LeagueTable.ToString() & "}", "null"))
 
         Return value
 
