@@ -1957,6 +1957,25 @@ Friend Class OutputFileWriter
 
 
     ''' <summary>
+    ''' Throws an <see cref="InvalidOperationException" /> if
+    ''' <see cref="OutputFile" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="OutputFile" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfOutputFileIsNull()
+
+        If Me.OutputFile Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "OutputFileWriter.OutputFile cannot be null.")
+
+        End If
+
+    End Sub
+
+
+    ''' <summary>
     ''' Writes the file.
     ''' </summary>
     ''' <exception cref="InvalidOperationException">
