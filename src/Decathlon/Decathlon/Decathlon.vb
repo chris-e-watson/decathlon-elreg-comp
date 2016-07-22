@@ -2010,6 +2010,10 @@ Friend Class OutputFileWriter
 
                 streamWriter.WriteLine(line)
 
+                ' TODO: This will result in a new line character after the last
+                '       line in the file. Re-read the rules and decide if this
+                '       is correct.
+
             Next
         
         End Using
