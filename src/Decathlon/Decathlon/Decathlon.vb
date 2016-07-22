@@ -1375,6 +1375,151 @@ End Class
 
 
 ''' <summary>
+''' Provides the functionality to calculate a league table for a combined event.
+''' </summary>
+Friend Class LeagueTableCalculatorService
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets or sets the combined event for which to calculate the league table.
+    ''' </summary>
+    Friend Property CombinedEvent As CombinedEvent
+
+    #End Region
+
+    #Region "Private Methods"
+    
+    ''' <summary>
+    ''' Calculates the league table.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent.Entrants" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub CalculateLeagueTable()
+        
+        '
+        ' Class state validation.
+        '
+
+        If Me.CombinedEvent.Entrants Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "LeagueTableCalculatorService.CombinedEvent.Entrants" _
+                & " cannot be null.")
+
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        ' TODO: Implement LeagueTableCalculatorService.CalculateLeagueTable().
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="CombinedEvent" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfCombinedEventIsNull()
+
+        If Me.CombinedEvent Is Nothing
+
+            Throw New InvalidOperationException(
+                "LeagueTableCalculatorService.CombinedEvent cannot be null.")
+
+        End If
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+    
+    ''' <summary>
+    ''' Calculates a league table for the combined event.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="CombinedEvent" /> was <c>null</c>.
+    ''' </exception>
+    Friend Sub Execute()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfCombinedEventIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        CalculateLeagueTable()
+
+    End Sub
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "CombinedEvent: {0}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.CombinedEvent Is Nothing,
+                   "{" & Me.CombinedEvent.ToString() & "}", "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="LeagueTableCalculatorService"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    
+    ''' <summary>
+    ''' Initialises a new instance of the
+    ''' <see cref="LeagueTableCalculatorService"/> class.
+    ''' </summary>
+    ''' <param name="combinedEvent">
+    ''' The combined event for which to calculate the league table.
+    ''' </param>
+    Friend Sub New(ByVal combinedEvent As CombinedEvent)
+
+        Me.CombinedEvent = combinedEvent
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Represents information about a single entrant and their event score/points
 ''' for all events in a single decathlon combined event.
 ''' </summary>
