@@ -1701,6 +1701,72 @@ End Class
 
 
 ''' <summary>
+''' Represents a single output data set. An output data set contains an ordered
+''' league table for a single decathlon.
+''' </summary>
+Friend Class OutputDataSet
+
+    #Region "Private Fields"
+        
+    ''' <summary>
+    ''' The collection of output data items.
+    ''' </summary>
+    Private _items As List(Of OutputDataItem) = New List(Of OutputDataItem)
+
+    #End Region
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets the items.
+    ''' </summary>
+    Friend ReadOnly Property Items As List(Of OutputDataItem)
+        Get
+            Return _items
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "Items: {0}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.Items Is Nothing,
+                   Me.Items.Count.ToString() & 
+                   If(Me.Items.Count = 1, " item", " items"), "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputDataSet"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides the functionality to calculate the points awarded for a given
 ''' score and event type combination.
 ''' </summary>
