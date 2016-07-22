@@ -1833,6 +1833,190 @@ End Class
 
 
 ''' <summary>
+''' Provides the functionality to write an output file to disk.
+''' </summary>
+Friend Class OutputFileWriter
+
+    #Region "Static Private Fields"
+
+    'TODO: Is the "Static Private Fields" region needed?
+
+    #End Region
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The contents of the file to be written.
+    ''' </summary>
+    ''' <seealso cref="WriteFile" />
+    Private _fileContents As List(Of String)    
+
+
+    ''' <summary>
+    ''' The output file to write to disk.
+    ''' </summary>
+    Private _outputFile As OutputFile
+
+    #End Region
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets or sets the path to which the output file is to be written.
+    ''' </summary>
+    Friend Property FilePath() As String
+
+
+    ''' <summary>
+    ''' Gets the output file to be written to disk.
+    ''' </summary>
+    Friend Property OutputFile As OutputFile
+        Get
+            Return _outputFile
+        End Get
+        Private Set
+            _outputFile = Value
+        End Set
+    End Property
+
+    #End Region
+
+    #Region "Static Private Methods"
+    
+    'TODO: Is the "Static Private Methods" region needed?
+
+    #End Region
+
+    #Region "Private Methods"
+
+    ''' <summary>
+    ''' Writes the file.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="FilePath" /> was <c>null</c>, empty or consisted entirely of
+    ''' white-space.
+    ''' </exception>
+    ''' <para>
+    ''' -or-
+    ''' </para>
+    ''' <para>
+    ''' <see cref="_fileContents" /> was <c>null</c>.
+    ''' </para>
+    ''' <seealso cref="FilePath" />
+    ''' <seealso cref="_fileContents" />
+    Private Sub WriteFile()
+
+        '
+        ' Class state validation.
+        '
+
+        If String.IsNullOrWhiteSpace(Me.FilePath) Then
+
+            Throw New InvalidOperationException(
+                "InputFileParser.FilePath cannot be null, empty or consist" _
+                & " entirely of white-space.")
+
+        End If
+
+        ' TODO: Validate _fileContents.
+
+
+        '
+        ' Main work.
+        '
+
+        ' TODO: Implement OutputFileWriter.WriteFile().
+
+    End Sub
+
+    #End Region
+
+    #Region "Internal Methods"
+
+    ''' <summary>
+    ''' Writes the output file to disk.
+    ''' </summary>
+    Friend Sub Write()
+
+        ' TODO: Implement OutputFileWriter.Write().
+        ' 1. Validate class state.
+        ' 2. Prepare properly formatted data.
+        ' 3. Write file to disk.
+
+    End Sub
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "OutputFile: {0}, FilePath = {1}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.OutputFile Is Nothing,
+                   "{" & Me.OutputFile.ToString() & "}", "null"),
+                If(Not Me.FilePath Is Nothing,
+                   """" & Me.FilePath.ToString() & """", "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Static Constructors"
+
+    ''' <summary>
+    ''' Initialises the <see cref="OutputFileWriter"/> class.
+    ''' </summary>
+    Shared Sub New()
+        ' TODO: Is a static constructor required?
+    End Sub
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputFileWriter"/> class.
+    ''' </summary>
+    Friend Sub New()
+        
+        ' Set the file path to the default. A file named "Decathlon.out" in the
+        ' application directory.
+        '
+        Me.FilePath = "Decathlon.out"
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputFileWriter"/> class.
+    ''' </summary>
+    ''' <param name="filePath">
+    ''' The path to which the output file is to be written.
+    ''' </param>
+    Friend Sub New(ByVal filePath As String)
+
+        Me.FilePath = filePath
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Provides the functionality to calculate the points awarded for a given
 ''' score and event type combination.
 ''' </summary>
