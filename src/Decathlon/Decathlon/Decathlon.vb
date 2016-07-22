@@ -1904,11 +1904,49 @@ Friend Class OutputFileWriter
         '
 
         ThrowIfOutputFileIsNull()
+        ' TODO: Validate OutputFile.DataSets is present.
 
 
         '
         ' Main work.
         '
+
+        Me._fileContents = New List(Of String)
+
+        Const MaxLineLength = 25
+
+        For Each dataSet In Me.OutputFile.DataSets
+
+            For Each dataItem In dataSet.Items
+
+                ' This is messy. New class? Edit OutputDataItem class?
+
+                Dim entrantName       = dataItem.EntrantName
+                Dim entrantNameLength = entrantName.Length ' TODO: Nulls
+                Dim pointsAsString    = dataItem.Points.ToString()
+                Dim pointsLength      = pointsAsString.Length
+
+                If entrantNameLength + pointsLength > MaxLineLength Then
+
+                    ' Need to truncate entrant name.
+                    entrantName = entrantName.Substring(
+                        0, MaxLineLength - pointsLength)
+                    entrantNameLength = entrantName.Length
+
+                End If
+
+                Dim paddingLength = MaxLineLength - 
+                                    entrantNameLength - pointsLength
+                Dim padding = New String(CChar(" "), paddingLength)
+
+                Dim dataLine = String.Format("{0}{1}{2}",
+                    entrantName, padding, pointsAsString)
+
+                _fileContents.Add(dataLine)
+
+            Next
+
+        Next
 
         ' TODO: Implement OutputFileWriter.BuildFileContents().
 
