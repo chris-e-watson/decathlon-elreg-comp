@@ -1936,14 +1936,14 @@ Friend Class OutputFileWriter
 
     ''' <summary>
     ''' Throws an <see cref="InvalidOperationException" /> if
-    ''' <see cref="OutputFile" /> is <c>null</c>, empty or consists entirely of
+    ''' <see cref="FilePath" /> is <c>null</c>, empty or consists entirely of
     ''' white-space.
     ''' </summary>
     ''' <exception cref="InvalidOperationException">
     ''' <see cref="FilePath" /> was <c>null</c>, empty or consisted entirely of
     ''' white-space.
     ''' </exception>
-    Private Sub ThrowIfOutputFileIsEmpty()
+    Private Sub ThrowIfFilePathIsEmpty()
 
         If String.IsNullOrWhiteSpace(Me.FilePath) Then
 
@@ -1977,7 +1977,7 @@ Friend Class OutputFileWriter
         ' Class state validation.
         '
 
-        ThrowIfOutputFileIsEmpty()        
+        ThrowIfFilePathIsEmpty()        
         ThrowIfFileContentsIsNull()
 
 
