@@ -2996,6 +2996,12 @@ Friend Class ResultProcessor
     ''' </summary>
     Private _inputFile As InputFile
 
+    
+    ''' <summary>
+    ''' The output file.
+    ''' </summary>
+    Private _outputFile As OutputFile
+
     #End Region
 
     #Region "Private Methods"
@@ -3179,6 +3185,53 @@ Friend Class ResultProcessor
 
     End Sub
 
+
+    ''' <summary>
+    ''' Throws a <see cref="InvalidOperationException" /> if 
+    ''' <see cref="_outputFile" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_outputFile" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfOutputFileIsNull()
+
+        If Me._outputFile Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "ResultProcessor._outputFile cannot be null.")
+
+        End If
+
+    End Sub
+
+    
+    ''' <summary>
+    ''' Writes the output file.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="outputFile" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub WriteOutputFile()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfOutputFileIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        Dim outputFileWriter = New OutputFileWriter("outputFile")
+        ' TODO: The outputFile should be passed, not a string. But there isn't a
+        '       constructor that accepts one yet.
+
+        outputFileWriter.Write()
+
+    End Sub
+
     #End Region
 
     #Region "Internal Methods"
@@ -3205,7 +3258,11 @@ Friend Class ResultProcessor
         '
         CalculateLeagueTables()
 
-        'TODO: Write the output file.
+        ' TODO: Build the output file.
+
+        ' Write the output file.
+        '
+        WriteOutputFile()
 
     End Sub
 
