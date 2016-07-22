@@ -1890,6 +1890,32 @@ Friend Class OutputFileWriter
     #Region "Private Methods"
     
     ''' <summary>
+    ''' Builds the file contents.
+    ''' </summary>
+    ''' <seealso cref="OutputFile" />
+    ''' <seealso cref="_fileContents" />
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="OutputFile" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub BuildFileContents()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfOutputFileIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        ' TODO: Implement OutputFileWriter.BuildFileContents().
+
+    End Sub
+
+    
+    ''' <summary>
     ''' Throws <see cref="InvalidOperationException" /> if
     ''' <see cref="_fileContents" /> is <c>null</c>.
     ''' </summary>
