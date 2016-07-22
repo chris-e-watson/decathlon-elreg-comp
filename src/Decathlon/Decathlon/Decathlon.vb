@@ -1888,6 +1888,27 @@ Friend Class OutputFileWriter
     #End Region
 
     #Region "Private Methods"
+    
+    ''' <summary>
+    ''' Throws an <see cref="InvalidOperationException" /> if
+    ''' <see cref="OutputFile" /> is <c>null</c>, empty or consists entirely of
+    ''' white-space.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="FilePath" /> was <c>null</c>, empty or consisted entirely of
+    ''' white-space.
+    ''' </exception>
+    Private Sub ThrowIfOutputFileIsEmpty()
+
+        If String.IsNullOrWhiteSpace(Me.FilePath) Then
+
+            Throw New InvalidOperationException(
+                "OutputFileWriter.FilePath cannot be null, empty or consist" _
+                & " entirely of white-space.")
+
+        End If
+
+    End Sub
 
     ''' <summary>
     ''' Writes the file.
@@ -1910,13 +1931,7 @@ Friend Class OutputFileWriter
         ' Class state validation.
         '
 
-        If String.IsNullOrWhiteSpace(Me.FilePath) Then
-
-            Throw New InvalidOperationException(
-                "InputFileParser.FilePath cannot be null, empty or consist" _
-                & " entirely of white-space.")
-
-        End If
+        ThrowIfOutputFileIsEmpty()        
 
         ' TODO: Validate _fileContents.
 
