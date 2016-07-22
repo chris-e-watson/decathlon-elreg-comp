@@ -1301,6 +1301,72 @@ End Class
 
 
 ''' <summary>
+''' Represents a league table for a single decathlon combined event.
+''' </summary>
+Friend Class LeagueTable
+
+    #Region "Private Fields"
+    
+    ''' <summary>
+    ''' The entrants.
+    ''' </summary>
+    Private _entrants As List(Of LeagueTableEntrant) =
+        New List(Of LeagueTableEntrant)
+
+    #End Region
+
+    #Region "Internal Properties"
+
+    ''' <summary>
+    ''' Gets the entrants.
+    ''' </summary>
+    Friend ReadOnly Property Entrants As List(Of LeagueTableEntrant)
+        Get
+            Return _entrants
+        End Get
+    End Property
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "Entrants: {0}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.Entrants Is Nothing,
+                   Me.Entrants.Count.ToString() & 
+                   If(Me.Entrants.Count = 1, " item", " items"), "null"))
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="LeagueTable"/> class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Represents information about a single entrant and their event score/points
 ''' for all events in a single decathlon combined event.
 ''' </summary>
