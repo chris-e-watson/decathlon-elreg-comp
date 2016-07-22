@@ -1415,7 +1415,33 @@ Friend Class LeagueTableCalculatorService
         ' Main work.
         '
 
-        ' TODO: Implement LeagueTableCalculatorService.CalculateLeagueTable().
+        ' Produce an ordered list of entrants and a sum of all the points each
+        ' individual entrant has achieved for all the events in the decathlon.
+        ' The highest scoring entrant should appear as the first item in the
+        ' list.
+        '
+        Dim leagueTableEntrants =
+            From entrant In Me.CombinedEvent.Entrants
+            Let entrantTotalPoints = entrant.EventScores _
+                                            .Sum(Function(score) score.Points)
+            Order By entrantTotalPoints Descending
+            Select New LeagueTableEntrant() With
+            {
+                .EntrantName = entrant.EntrantName,
+                .TotalPoints = entrantTotalPoints
+            }
+        
+
+        ' Initialise a new league table with the computed entrants list.
+        '
+        Dim leagueTable As LeagueTable = New LeagueTable()
+        
+        leagueTable.Entrants.AddRange(leagueTableEntrants)
+
+
+        ' Set the league table to the combined event.
+        '
+        Me.CombinedEvent.LeagueTable = leagueTable
 
     End Sub
 
