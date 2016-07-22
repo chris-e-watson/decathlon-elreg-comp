@@ -1959,7 +1959,15 @@ Friend Class OutputFileWriter
         ' Main work.
         '
 
-        ' TODO: Implement OutputFileWriter.WriteFile().
+        Using streamWriter = New System.IO.StreamWriter(Me.FilePath)
+
+            For Each line In Me._fileContents
+
+                streamWriter.WriteLine(line)
+
+            Next
+        
+        End Using
 
     End Sub
 
