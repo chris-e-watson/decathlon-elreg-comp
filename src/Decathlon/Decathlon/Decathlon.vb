@@ -2147,6 +2147,21 @@ Friend Class OutputFileWriter
 
     End Sub
 
+    
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputFileWriter"/> class.
+    ''' </summary>
+    ''' <param name="outputFile">
+    ''' The output file to be written to disk.
+    ''' </param>
+    Friend Sub New(ByVal outputFile As OutputFile)
+
+        Me.New()
+
+        Me._outputFile = outputFile
+
+    End Sub
+
 
     ''' <summary>
     ''' Initialises a new instance of the <see cref="OutputFileWriter"/> class.
@@ -2157,6 +2172,23 @@ Friend Class OutputFileWriter
     Friend Sub New(ByVal filePath As String)
 
         Me.FilePath = filePath
+
+    End Sub
+
+    
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="OutputFileWriter"/> class.
+    ''' </summary>
+    ''' <param name="filePath">
+    ''' The path to which the output file is to be written.    
+    ''' </param>
+    ''' <param name="outputFile">
+    ''' The output file to be written to disk.
+    ''' </param>
+    Friend Sub New(ByVal filePath As String, ByVal outputFile As OutputFile)
+
+        Me.FilePath   = filePath
+        Me.OutputFile = outputFile
 
     End Sub
 
