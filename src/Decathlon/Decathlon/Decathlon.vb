@@ -3179,7 +3179,8 @@ Friend Class ResultProcessor
 
         If Me._inputFile Is Nothing Then
 
-            Throw New InvalidOperationException("Me._inputFile cannot be null.")
+            Throw New InvalidOperationException(
+                "ResultProcessor._inputFile cannot be null.")
 
         End If
 
