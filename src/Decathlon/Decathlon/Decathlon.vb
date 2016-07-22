@@ -2607,6 +2607,38 @@ Friend Class ResultProcessor
 
 
     ''' <summary>
+    ''' Calculates a league table for each combined event.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_combinedEvents" /> was <c>null</c>.
+    ''' </exception>
+    ''' <seealso cref="_combinedEvents" />
+    Private Sub CalculateLeagueTables()
+        
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfCombinedEventsIsNull()
+
+
+        '
+        ' Main work.
+        '
+        
+        For Each combinedEvent In Me._combinedEvents
+
+            Dim leagueTableCalculatorService = 
+                New LeagueTableCalculatorService(combinedEvent)
+
+            leagueTableCalculatorService.Execute()
+
+        Next
+
+    End Sub
+
+
+    ''' <summary>
     ''' Reads the input file.
     ''' </summary>
     Private Sub ReadInputFile()
@@ -2678,7 +2710,9 @@ Friend Class ResultProcessor
         '
         CalculateCombinedEventsPoints()
 
-        'TODO: Build a league table.
+        ' Calculate a league table for all the combined events.
+        '
+        CalculateLeagueTables()
 
         'TODO: Write the output file.
 
