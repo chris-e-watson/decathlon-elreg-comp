@@ -2030,6 +2030,26 @@ Friend Class OutputFileWriter
         ' 2. Prepare properly formatted data.
         ' 3. Write file to disk.
 
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfOutputFileIsNull()
+        ThrowIfFilePathIsEmpty()
+
+
+        '
+        ' Main work.
+        '
+
+        ' Prepare properly formatted file contents from the output file.
+        '
+        BuildFileContents()
+        
+        ' Write the file contents to disk.
+        '
+        WriteFile()
+
     End Sub
 
     #End Region
