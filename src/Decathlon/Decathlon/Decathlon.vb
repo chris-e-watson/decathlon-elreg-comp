@@ -1890,6 +1890,25 @@ Friend Class OutputFileWriter
     #Region "Private Methods"
     
     ''' <summary>
+    ''' Throws <see cref="InvalidOperationException" /> if
+    ''' <see cref="_fileContents" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_fileContents" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfFileContentsIsNull()
+
+        If Me._fileContents Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "OutputFileWriter._fileContents cannot be null.")
+
+        End If
+
+    End Sub
+    
+
+    ''' <summary>
     ''' Throws an <see cref="InvalidOperationException" /> if
     ''' <see cref="OutputFile" /> is <c>null</c>, empty or consists entirely of
     ''' white-space.
@@ -1909,6 +1928,7 @@ Friend Class OutputFileWriter
         End If
 
     End Sub
+
 
     ''' <summary>
     ''' Writes the file.
@@ -1932,8 +1952,7 @@ Friend Class OutputFileWriter
         '
 
         ThrowIfOutputFileIsEmpty()        
-
-        ' TODO: Validate _fileContents.
+        ThrowIfFileContentsIsNull()
 
 
         '
