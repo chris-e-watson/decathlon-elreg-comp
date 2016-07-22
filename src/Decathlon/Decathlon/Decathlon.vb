@@ -1301,6 +1301,84 @@ End Class
 
 
 ''' <summary>
+''' Represents information about a single entrant and their event score/points
+''' for all events in a single decathlon combined event.
+''' </summary>
+Friend Class LeagueTableEntrant
+
+    #Region "Internal Properties"
+    
+    ''' <summary>
+    ''' Gets or sets the name of the entrant.
+    ''' </summary>
+    Friend Property EntrantName As String
+    
+
+    ''' <summary>
+    ''' Gets or sets the total points achieved by this entrant in the decathlon.
+    ''' </summary>
+    Friend Property TotalPoints As Long
+
+    #End Region
+
+    #Region "Public Methods"
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    Public Overrides Function ToString() As String
+        
+        Dim format As String = 
+            "EntrantName: {0}, TotalPoints: {1}"
+
+        Dim value As String = 
+            String.Format(format, _
+                If(Not Me.EntrantName Is Nothing,
+                   """" & Me.EntrantName & """", "null"),
+                Me.TotalPoints)
+
+        Return value
+
+    End Function
+
+    #End Region
+
+    #Region "Internal Constructors"
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="CombinedEventEntrant"/>
+    ''' class.
+    ''' </summary>
+    Friend Sub New()
+    End Sub
+
+
+    ''' <summary>
+    ''' Initialises a new instance of the <see cref="LeagueTableEntrant"/>
+    ''' class.
+    ''' </summary>
+    ''' <param name="entrantName">
+    ''' The name of the entrant.
+    ''' </param>
+    ''' <param name="totalPoints">
+    ''' The total points achieved by this entrant in the decathlon.
+    ''' </param>
+    Friend Sub New(ByVal entrantName As String, ByVal totalPoints As Long)
+
+        Me.EntrantName = entrantName
+        Me.TotalPoints = totalPoints
+
+    End Sub
+
+    #End Region
+
+End Class
+
+
+''' <summary>
 ''' Represents a single output data item.
 ''' </summary>
 Friend Class OutputDataItem
