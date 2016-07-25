@@ -3103,6 +3103,52 @@ Friend Class ResultProcessor
 
     
     ''' <summary>
+    ''' Builds the output file from the combined events.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="_combinedEvents" /> was <c>null</c>.
+    ''' </exception>
+    ''' <seealso cref="_combinedEvents" />
+    ''' <seealso cref="_outputFile" />
+    Private Sub BuildOutputFile()
+
+        '
+        ' Class state validation.
+        '
+
+        ThrowIfCombinedEventsIsNull()
+
+
+        '
+        ' Main work.
+        '
+
+        Me._outputFile = New OutputFile()
+        
+        For Each combinedEvent In Me._combinedEvents
+            
+            Dim dataSet As New OutputDataSet()
+
+            For Each entrant In combinedEvent.LeagueTable.Entrants
+
+                Dim outputDataItem = 
+                    New OutputDataItem(entrant.EntrantName, entrant.TotalPoints)
+
+                dataSet.Items.Add(outputDataItem)
+
+            Next
+
+            _outputFile.DataSets.Add(dataSet)
+
+        Next
+
+        ' TODO: Could this be refactored and extracted into an
+        '       OutputFileBuilderService class?
+
+    End Sub
+
+    
+    ''' <summary>
     ''' Calculates the points for each event score for each entrant in each
     ''' combined event.
     ''' </summary>
@@ -3257,9 +3303,7 @@ Friend Class ResultProcessor
         ' Main work.
         '
 
-        Dim outputFileWriter = New OutputFileWriter("outputFile")
-        ' TODO: The outputFile should be passed, not a string. But there isn't a
-        '       constructor that accepts one yet.
+        Dim outputFileWriter = New OutputFileWriter(Me._outputFile)
 
         outputFileWriter.Write()
 
@@ -3291,7 +3335,9 @@ Friend Class ResultProcessor
         '
         CalculateLeagueTables()
 
-        ' TODO: Build the output file.
+        ' Build the output file.
+        '
+        BuildOutputFile()
 
         ' Write the output file.
         '
