@@ -1914,6 +1914,18 @@ Friend Class OutputFileWriter
         Me._fileContents = New List(Of String)
 
         Const MaxLineLength = 25
+        Dim maxPointsLength = Me.OutputFile.DataSets _
+            .SelectMany(Function(f) f.Items) _
+            .Select(Function (f) f.Points) _
+            .Select(Function (f) f.ToString()) _
+            .Select(Function (f) f.Length) _
+            .OrderByDescending(Function (f) f) _
+            .FirstOrDefault() ' TODO: Works with an empty input?
+
+        ' TODO: Needs work. This causes points to be left aligned to the
+        '       position of the first character of the ^longest^ points.
+        '       E.g Bob 1234
+        '           Jim 123
 
         For Each dataSet In Me.OutputFile.DataSets
 
@@ -1924,7 +1936,8 @@ Friend Class OutputFileWriter
                 Dim entrantName       = dataItem.EntrantName
                 Dim entrantNameLength = entrantName.Length ' TODO: Nulls
                 Dim pointsAsString    = dataItem.Points.ToString()
-                Dim pointsLength      = pointsAsString.Length
+                'Dim pointsLength      = pointsAsString.Length
+                Dim pointsLength      = maxPointsLength
 
                 If entrantNameLength + pointsLength > MaxLineLength Then
 
