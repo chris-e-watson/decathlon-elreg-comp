@@ -2609,6 +2609,10 @@ Friend Class PointsCalculator
 
         Dim points As Long = Convert.ToInt64(pointsRoundedDown)
 
+        ' TODO: A slow score for a 100m event (e.g. 20.1s) results in an
+        '       overflow error here. I think we need to capture this scenario
+        '       and set to 0 points.
+
         Me._points = points
 
     End Sub
