@@ -1946,6 +1946,18 @@ Friend Class OutputFileWriter
 
             Next
 
+
+            ' If this isn't the last data set, then we need to add a blank
+            ' between this and the next data set. We do NOT want a blank line
+            ' after the last data set - this is an automatic fail.
+            '
+            If Not Object.ReferenceEquals(dataSet, 
+                Me.OutputFile.DataSets.Last()) Then
+                
+                _fileContents.Add("")
+
+            End If
+
         Next
 
         ' TODO: Implement OutputFileWriter.BuildFileContents().
