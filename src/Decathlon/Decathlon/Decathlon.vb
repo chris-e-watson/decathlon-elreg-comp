@@ -1915,12 +1915,12 @@ Friend Class OutputFileWriter
 
         Const MaxLineLength = 25
         Dim maxPointsLength = Me.OutputFile.DataSets _
-            .SelectMany(Function(f) f.Items) _
+            .SelectMany(Function (f) f.Items) _
             .Select(Function (f) f.Points) _
             .Select(Function (f) f.ToString()) _
             .Select(Function (f) f.Length) _
-            .OrderByDescending(Function (f) f) _
-            .FirstOrDefault() ' TODO: Works with an empty input?
+            .DefaultIfEmpty() _
+            .Max() ' TODO: Works with an empty input?
 
         For Each dataSet In Me.OutputFile.DataSets
 
