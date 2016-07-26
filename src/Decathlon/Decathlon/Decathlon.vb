@@ -1933,25 +1933,28 @@ Friend Class OutputFileWriter
                 Dim pointsAsString    = dataItem.Points.ToString()
                 'Dim pointsLength      = pointsAsString.Length
                 Dim pointsLength      = maxPointsLength
+                Dim space             = " "
+                Dim spaceLength       = space.Length
 
-                If entrantNameLength + pointsLength > MaxLineLength Then
+                Dim maxEntrantNameLength = 
+                    MaxLineLength - spaceLength - maxPointsLength
+
+                If entrantNameLength > maxEntrantNameLength Then
 
                     ' Need to truncate entrant name.
-                    entrantName = entrantName.Substring(
-                        0, MaxLineLength - pointsLength)
+                    entrantName = entrantName.Substring(0, maxEntrantNameLength)
                     entrantNameLength = entrantName.Length
 
                 End If
 
-                Dim paddingLength = MaxLineLength - 
-                                    entrantNameLength - pointsLength
-                Dim padding = New String(CChar(" "), paddingLength)
+                Dim paddedEntrantName = 
+                    entrantName.PadRight(maxEntrantNameLength)
 
                 Dim paddedPointsAsString = 
                     pointsAsString.PadLeft(maxPointsLength)
 
                 Dim dataLine = String.Format("{0}{1}{2}",
-                    entrantName, padding, paddedPointsAsString)
+                    paddedEntrantName, space, paddedPointsAsString)
 
                 _fileContents.Add(dataLine)
 
