@@ -1922,11 +1922,6 @@ Friend Class OutputFileWriter
             .OrderByDescending(Function (f) f) _
             .FirstOrDefault() ' TODO: Works with an empty input?
 
-        ' TODO: Needs work. This causes points to be left aligned to the
-        '       position of the first character of the ^longest^ points.
-        '       E.g Bob 1234
-        '           Jim 123
-
         For Each dataSet In Me.OutputFile.DataSets
 
             For Each dataItem In dataSet.Items
@@ -1952,8 +1947,11 @@ Friend Class OutputFileWriter
                                     entrantNameLength - pointsLength
                 Dim padding = New String(CChar(" "), paddingLength)
 
+                Dim paddedPointsAsString = 
+                    pointsAsString.PadLeft(maxPointsLength)
+
                 Dim dataLine = String.Format("{0}{1}{2}",
-                    entrantName, padding, pointsAsString)
+                    entrantName, padding, paddedPointsAsString)
 
                 _fileContents.Add(dataLine)
 
