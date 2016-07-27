@@ -17,6 +17,8 @@
 '*   file.                                                                     *
 '*******************************************************************************
 
+Imports System.Globalization
+
 #Region "Enumerations"
 
 ''' <summary>
@@ -1627,6 +1629,7 @@ End Class
 ''' Represents a single output data item.
 ''' </summary>
 Friend Class OutputDataItem
+    Implements IFormattable
 
     #Region "Internal Properties"
 
@@ -1664,6 +1667,55 @@ Friend Class OutputDataItem
                 Me.Points)
 
         Return value
+
+    End Function
+
+
+    ' TODO: Document OutputDataItem.ToString(String, IFormatProvider)
+    Public Overloads Function ToString(format As String,
+        formatProvider As IFormatProvider) As String _
+        Implements IFormattable.ToString
+
+        
+        '
+        ' Parameter validation.
+        '
+
+        ' If format is not specified, default to "G", general format.
+        ' General format MUST be supported and should be equivalent to calling
+        ' the parameterless ToString(), i.e. Object.ToString().
+        '
+        If String.IsNullOrWhiteSpace(format) Then
+            format = "G"
+        End If
+
+        ' If the format provider is not specified, default to the current
+        ' culture.
+        '
+        If formatProvider Is Nothing Then
+            formatProvider = CultureInfo.CurrentCulture
+            ' TODO: Do I have to default to CurrentCulture or can I use
+            '       InvariantCulture?
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        Select Case format.Trim().ToUpperInvariant()
+            
+            Case "G"
+                Return Me.ToString()
+            
+            ' TODO: Add support for more formats.
+            
+            Case Else
+                Throw New FormatException(
+                    String.Format(CultureInfo.InvariantCulture,
+                        "The '{0}' format string is not supported.", format))
+
+        End Select
 
     End Function
 
