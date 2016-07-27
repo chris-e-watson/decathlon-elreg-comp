@@ -1670,8 +1670,15 @@ Friend Class OutputDataItem
 
     End Function
 
+    ' TODO: Document OutputDataItem.ToString(String).
+    Public Overloads Function ToString(ByVal format As String) As String
 
-    ' TODO: Document OutputDataItem.ToString(String, IFormatProvider)
+        Return Me.ToString(format, Nothing)
+
+    End Function
+
+
+    ' TODO: Document OutputDataItem.ToString(String, IFormatProvider).
     Public Overloads Function ToString(format As String,
         formatProvider As IFormatProvider) As String _
         Implements IFormattable.ToString
