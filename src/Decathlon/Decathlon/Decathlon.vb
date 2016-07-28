@@ -2102,50 +2102,33 @@ Friend Class OutputFileWriter
 
         Me._fileContents = New List(Of String)
 
-        Const MaxLineLength = 25
+        ' Obtain the string length of the highest points. All points should be
+        ' the same width in the file (or maybe per league data set?) to make the
+        ' output pretty, i.e. don't overlap the entrant name on one line with
+        ' the points on another line (in the case of very long entrant names).
+        '
         Dim maxPointsLength = Me.OutputFile.DataSets _
             .SelectMany(Function (f) f.Items) _
             .Select(Function (f) f.Points) _
-            .Select(Function (f) f.ToString()) _
+            .Select(Function (f) f.ToString(CultureInfo.InvariantCulture)) _
             .Select(Function (f) f.Length) _
             .DefaultIfEmpty() _
             .Max() ' TODO: Works with an empty input?
+
+        ' The file format for each line is "F0" where 0 is the points length.
+        '
+        Dim fileLineFormat = 
+            String.Format(CultureInfo.InvariantCulture, "F{0}", maxPointsLength)
+
 
         For Each dataSet In Me.OutputFile.DataSets
 
             For Each dataItem In dataSet.Items
 
-                ' TODO: This is messy. New class? Edit OutputDataItem class?
+                Dim dataItemLine = dataItem.ToString(fileLineFormat)
+                ' TODO: Culture?
 
-                Dim entrantName       = dataItem.EntrantName
-                Dim entrantNameLength = entrantName.Length ' TODO: Nulls
-                Dim pointsAsString    = dataItem.Points.ToString()
-                'Dim pointsLength      = pointsAsString.Length
-                Dim pointsLength      = maxPointsLength
-                Dim space             = " "
-                Dim spaceLength       = space.Length
-
-                Dim maxEntrantNameLength = 
-                    MaxLineLength - spaceLength - maxPointsLength
-
-                If entrantNameLength > maxEntrantNameLength Then
-
-                    ' Need to truncate entrant name.
-                    entrantName = entrantName.Substring(0, maxEntrantNameLength)
-                    entrantNameLength = entrantName.Length
-
-                End If
-
-                Dim paddedEntrantName = 
-                    entrantName.PadRight(maxEntrantNameLength)
-
-                Dim paddedPointsAsString = 
-                    pointsAsString.PadLeft(maxPointsLength)
-
-                Dim dataLine = String.Format("{0}{1}{2}",
-                    paddedEntrantName, space, paddedPointsAsString)
-
-                _fileContents.Add(dataLine)
+                _fileContents.Add(dataItemLine)
 
             Next
 
