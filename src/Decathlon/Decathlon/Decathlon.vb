@@ -1166,7 +1166,7 @@ Friend Class InputFileParser
         End If
 
 
-        ' Assembly an InputDataItem.
+        ' Assemble an InputDataItem.
         '
         Dim inputDataItem As InputDataItem =
             New InputDataItem(entrantName, eventType, score)
