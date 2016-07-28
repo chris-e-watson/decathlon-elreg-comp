@@ -2370,7 +2370,7 @@ Friend Class OutputFileWriter
     Public Overrides Function ToString() As String
         
         Dim format As String = 
-            "OutputFile: {0}, FilePath = {1}"
+            "OutputFile: {0}, FilePath: {1}"
 
         Dim value As String = 
             String.Format(CultureInfo.InvariantCulture, format, _
