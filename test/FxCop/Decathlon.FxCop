@@ -59,32 +59,6 @@
       <Namespaces>
        <Namespace Name="Decathlon">
         <Types>
-         <Type Name="CombinedEvent">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'CombinedEvent.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'CombinedEvent.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="CombinedEventEntrant">
           <Members>
            <Member Name="#ToString()">
@@ -94,165 +68,6 @@
                <Item>'Integer.ToString()'</Item>
                <Item>'CombinedEventEntrant.ToString()'</Item>
                <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'CombinedEventEntrant.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="CombinedEventPointsCalculatorService">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'CombinedEventPointsCalculatorService.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="EventScore">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object, Object)'</Item>
-               <Item>'EventScore.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="EventScorePointsCalculatorService">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'EventScorePointsCalculatorService.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="EventTypeHelper">
-          <Members>
-           <Member Name="#GetEventTypeFromAbbreviation(System.String)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'EventTypeHelper.GetEventTypeFromAbbreviation(String)'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetEventTypeGroupFromEventType(Decathlon.EventType)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'EventTypeHelper.GetEventTypeGroupFromEventType(EventType)'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="InputDataItem">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object, Object)'</Item>
-               <Item>'InputDataItem.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="InputDataSet">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'InputDataSet.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'InputDataSet.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="InputFile">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'InputFile.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'InputFile.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
                <Item>'CultureInfo.CurrentCulture()'</Item>
                <Item>'CultureInfo.InvariantCulture()'</Item>
               </Issue>
@@ -295,71 +110,6 @@
                <Item>'String.ToUpper(CultureInfo)'</Item>
               </Issue>
              </Message>
-             <Message Id="System.Decimal.Parse(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternate">
-               <Item>'Decimal.Parse(String)'</Item>
-               <Item>'InputFileParser.ParseFileLine(String)'</Item>
-               <Item>'Decimal.Parse(String, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'InputFileParser.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="LeagueTable">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'LeagueTable.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'LeagueTable.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="LeagueTableCalculatorService">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'LeagueTableCalculatorService.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
             </Messages>
            </Member>
           </Members>
@@ -371,19 +121,6 @@
              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
               <Issue>
                <Item>'LeagueTableEntrant.New(String, Long)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'LeagueTableEntrant.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -400,85 +137,11 @@
                <Item>'Exception'</Item>
               </Issue>
              </Message>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'OutputDataItem.ToFileFormatString(String)'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2016-07-28 16:47:53Z">
               <Issue>
                <Item>'String.StartsWith(String)'</Item>
                <Item>'OutputDataItem.ToFileFormatString(String)'</Item>
                <Item>'String.StartsWith(String, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'OutputDataItem.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="OutputDataSet">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'OutputDataSet.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'OutputDataSet.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="OutputFile">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.Int32.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'Integer.ToString()'</Item>
-               <Item>'OutputFile.ToString()'</Item>
-               <Item>'Integer.ToString(IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'OutputFile.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -540,66 +203,6 @@
              </Accessor>
             </Accessors>
            </Member>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object)'</Item>
-               <Item>'OutputFileWriter.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PointsCalculator">
-          <Members>
-           <Member Name="#SetPointsCalculationEquation()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'PointsCalculator.SetPointsCalculationEquation()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object, Object, Object)'</Item>
-               <Item>'PointsCalculator.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PointsCalculatorConfiguration">
-          <Members>
-           <Member Name="#ToString()">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object[])" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, ParamArray Object())'</Item>
-               <Item>'PointsCalculatorConfiguration.ToString()'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
           </Members>
          </Type>
          <Type Name="PointsCalculatorConfigurationRepository">
@@ -609,19 +212,6 @@
              <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2016-07-28 16:47:53Z">
               <Issue>
                <Item>'PointsCalculatorConfigurationRepository'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#GetByEventType(Decathlon.EventType)">
-            <Messages>
-             <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'String.Format(String, Object)'</Item>
-               <Item>'PointsCalculatorConfigurationRepository.GetByEventType(EventType)'</Item>
-               <Item>'String.Format(IFormatProvider, String, ParamArray Object())'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -658,7 +248,6 @@
     <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'CultureInfo' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify 'CultureInfo.InvariantCulture'.</Resolution>
    </Rule>
    <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
-    <Resolution Name="IFormatProviderAlternate">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be based on input from the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will based on input stored and accessed by software, such as when it is loaded from disk or from a database, specify {4}.</Resolution>
     <Resolution Name="IFormatProviderAlternateString">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, specify {3} as the 'IFormatProvider' parameter. Otherwise, if the result will be stored and accessed by software, such as when it is persisted to disk or to a database, specify {4}.</Resolution>
    </Rule>
    <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">

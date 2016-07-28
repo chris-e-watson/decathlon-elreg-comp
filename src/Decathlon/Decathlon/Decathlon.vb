@@ -164,9 +164,9 @@ Friend Class CombinedEvent
             "Entrants: {0}, LeagueTable: {1}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.Entrants Is Nothing,
-                   Me.Entrants.Count.ToString() & 
+                   Me.Entrants.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.Entrants.Count = 1, " item", " items"), "null"),
                 If(Not Me.LeagueTable Is Nothing,
                    "{" & Me.LeagueTable.ToString() & "}", "null"))
@@ -238,7 +238,7 @@ Friend Class CombinedEventEntrant
             "EntrantName: {0}, EventScores: {1}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.EntrantName Is Nothing,
                    """" & Me.EntrantName & """", "null"),
                 If(Not Me.EventScores Is Nothing,
@@ -386,7 +386,7 @@ Friend Class CombinedEventPointsCalculatorService
             "CombinedEvent: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.CombinedEvent Is Nothing,
                    "{" & Me.CombinedEvent.ToString() & "}", "null"))
 
@@ -557,7 +557,7 @@ Friend NotInheritable Class EventTypeHelper
                 "No event type is mapped to the abbreviation '{0}'."
 
             Dim message As String =
-                String.Format(format, abbreviation)
+                String.Format(CultureInfo.CurrentCulture, format, abbreviation)
 
             Throw New InvalidOperationException(message)
 
@@ -594,7 +594,7 @@ Friend NotInheritable Class EventTypeHelper
                 "No event type group is mapped to the event type '{0}'."
 
             Dim message As String =
-                String.Format(format, eventType)
+                String.Format(CultureInfo.CurrentCulture, format, eventType)
 
             Throw New InvalidOperationException(message)
 
@@ -680,7 +680,7 @@ Friend Class EventScore
             "EventType: {0}, Points: {1}, Score: {2}"
 
         Dim value As String = 
-            String.Format(format,
+            String.Format(CultureInfo.InvariantCulture, format,
                 Me.EventType, Me.Points, Me.Score)
 
         Return value
@@ -799,7 +799,7 @@ Friend Class EventScorePointsCalculatorService
             "EventScore: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.EventScore Is Nothing,
                    "{" & Me.EventScore.ToString() & "}", "null"))
 
@@ -878,7 +878,7 @@ Friend Class InputDataItem
             "EntrantName: {0}, EventType: {1}, Score: {2}"
 
         Dim value As String = 
-            String.Format(format,
+            String.Format(CultureInfo.InvariantCulture, format,
                 If(Not Me.EntrantName Is Nothing,
                    """" & Me.EntrantName & """", "null"),
                 Me.EventType, Me.Score)
@@ -969,9 +969,9 @@ Friend Class InputDataSet
             "Items: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.Items Is Nothing,
-                   Me.Items.Count.ToString() & 
+                   Me.Items.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.Items.Count = 1, " item", " items"), "null"))
 
         Return value
@@ -1035,9 +1035,9 @@ Friend Class InputFile
             "DataSets: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.DataSets Is Nothing,
-                   Me.DataSets.Count.ToString() & 
+                   Me.DataSets.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.DataSets.Count = 1, " item", " items"), "null"))
 
         Return value
@@ -1225,7 +1225,7 @@ Friend Class InputFileParser
         '
         Dim score As Decimal
         If items.Length >= 3 Then
-            score = Decimal.Parse(items(2))
+            score = Decimal.Parse(items(2), CultureInfo.InvariantCulture)
         End If
 
 
@@ -1314,7 +1314,7 @@ Friend Class InputFileParser
             "InputFile: {0}, FilePath = {1}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.InputFile Is Nothing,
                    "{" & Me.InputFile.ToString() & "}", "null"),
                 If(Not Me.FilePath Is Nothing,
@@ -1410,9 +1410,9 @@ Friend Class LeagueTable
             "Entrants: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.Entrants Is Nothing,
-                   Me.Entrants.Count.ToString() & 
+                   Me.Entrants.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.Entrants.Count = 1, " item", " items"), "null"))
 
         Return value
@@ -1567,7 +1567,7 @@ Friend Class LeagueTableCalculatorService
             "CombinedEvent: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.CombinedEvent Is Nothing,
                    "{" & Me.CombinedEvent.ToString() & "}", "null"))
 
@@ -1640,7 +1640,7 @@ Friend Class LeagueTableEntrant
             "EntrantName: {0}, TotalPoints: {1}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.EntrantName Is Nothing,
                    """" & Me.EntrantName & """", "null"),
                 Me.TotalPoints)
@@ -1820,7 +1820,8 @@ Friend Class OutputDataItem
         '
         If line.Length <> lineLength Then
             Throw New Exception(
-                String.Format("The length of the computed line is incorrect." &
+                String.Format(CultureInfo.CurrentCulture,
+                              "The length of the computed line is incorrect." &
                               " Expected: {0}. Actual: {1}.",
                               lineLength, line.Length))
             ' TODO: Exception type?
@@ -1851,7 +1852,7 @@ Friend Class OutputDataItem
             "EntrantName: {0}, Points: {1}"
 
         Dim value As String = 
-            String.Format(format, 
+            String.Format(CultureInfo.InvariantCulture, format, 
                 If(Not Me.EntrantName Is Nothing,
                    """" & Me.EntrantName & """", "null"),
                 Me.Points)
@@ -1995,9 +1996,9 @@ Friend Class OutputDataSet
             "Items: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.Items Is Nothing,
-                   Me.Items.Count.ToString() & 
+                   Me.Items.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.Items.Count = 1, " item", " items"), "null"))
 
         Return value
@@ -2061,9 +2062,9 @@ Friend Class OutputFile
             "DataSets: {0}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.DataSets Is Nothing,
-                   Me.DataSets.Count.ToString() & 
+                   Me.DataSets.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.DataSets.Count = 1, " item", " items"), "null"))
 
         Return value
@@ -2372,7 +2373,7 @@ Friend Class OutputFileWriter
             "OutputFile: {0}, FilePath = {1}"
 
         Dim value As String = 
-            String.Format(format, _
+            String.Format(CultureInfo.InvariantCulture, format, _
                 If(Not Me.OutputFile Is Nothing,
                    "{" & Me.OutputFile.ToString() & "}", "null"),
                 If(Not Me.FilePath Is Nothing,
@@ -2779,7 +2780,8 @@ Friend Class PointsCalculator
                 & " did not contain the a value for the '{0}' event type group."
 
             Dim message As String =
-                String.Format(format, eventTypeGroup)
+                String.Format(CultureInfo.CurrentCulture, format, 
+                    eventTypeGroup)
 
             Throw New InvalidOperationException(message)
 
@@ -2883,7 +2885,7 @@ Friend Class PointsCalculator
             "EventType: {0}, Points: {1}, Score: {2}"
 
         Dim value As String = 
-            String.Format(format,
+            String.Format(CultureInfo.InvariantCulture, format,
                 Me.EventType, Me.Points, Me.Score)
 
         Return value
@@ -3025,7 +3027,7 @@ Friend Class PointsCalculatorConfiguration
             "A: {0}, B: {1}, C: {2}, EventType: {3}"
 
         Dim value As String = 
-            String.Format(format,
+            String.Format(CultureInfo.InvariantCulture, format,
                 Me.A, Me.B, Me.C, Me.EventType)
 
         Return value
@@ -3233,7 +3235,7 @@ Friend Class PointsCalculatorConfigurationRepository
                 " requested event type ({0})."
 
             Dim message As String = 
-                String.Format(format, eventType)
+                String.Format(CultureInfo.CurrentCulture, format, eventType)
 
             Throw New KeyNotFoundException(message)
 
