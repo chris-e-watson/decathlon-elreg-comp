@@ -1720,6 +1720,12 @@ Friend Class OutputDataItem
         pointsWidth = Math.Max(pointsWidth, pointsAsString.Length)
 
 
+        ' If the points does not fill the space available, then points must be
+        ' left padded.
+        '
+        pointsAsString = pointsAsString.PadLeft(pointsWidth)
+
+
         ' Calculate the space available for the entrant name; which is the line
         ' length minus the points width minus the length of the space between
         ' the entrant name and the points.
