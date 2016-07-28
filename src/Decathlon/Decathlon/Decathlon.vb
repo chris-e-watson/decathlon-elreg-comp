@@ -2091,12 +2091,6 @@ End Class
 ''' </summary>
 Friend Class OutputFileWriter
 
-    #Region "Static Private Fields"
-
-    'TODO: Is the "Static Private Fields" region needed?
-
-    #End Region
-
     #Region "Private Fields"
     
     ''' <summary>
@@ -2132,12 +2126,6 @@ Friend Class OutputFileWriter
             _outputFile = Value
         End Set
     End Property
-
-    #End Region
-
-    #Region "Static Private Methods"
-    
-    'TODO: Is the "Static Private Methods" region needed?
 
     #End Region
 
@@ -2382,17 +2370,6 @@ Friend Class OutputFileWriter
         Return value
 
     End Function
-
-    #End Region
-
-    #Region "Static Constructors"
-
-    ''' <summary>
-    ''' Initialises the <see cref="OutputFileWriter"/> class.
-    ''' </summary>
-    Shared Sub New()
-        ' TODO: Is a static constructor required?
-    End Sub
 
     #End Region
 

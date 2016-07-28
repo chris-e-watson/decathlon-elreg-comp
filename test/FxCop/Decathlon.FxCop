@@ -150,15 +150,6 @@
          </Type>
          <Type Name="OutputFileWriter">
           <Members>
-           <Member Name="#.cctor()">
-            <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'OutputFileWriter'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#.ctor(System.String)">
             <Messages>
              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
