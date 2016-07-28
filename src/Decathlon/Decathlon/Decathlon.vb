@@ -1647,6 +1647,132 @@ Friend Class OutputDataItem
     
     #End Region
 
+    #Region "Private Methods"
+
+    ' TODO: Document OutputDataItem.ToFileFormatString().
+    Private Function ToFileFormatString(ByVal format As String) As String
+
+        '
+        ' Parameter validation.
+        '
+
+        '
+        ' The format parameter should be F0 where F means "file format" and 0 is
+        ' the width of the string used to display the points. If the specified
+        ' width is omitted or less than the width required to display the entire
+        ' points value, the actual width will be used.
+        ' E.g.
+        ' Points | Format | Result
+        ' -------+--------+-------
+        ' 123    | F4     | " 123"
+        ' 123    | F3     | "123"
+        ' 123    | F2     | "123"
+        ' 123    | F      | "123"
+        '
+
+        If format Is Nothing Then
+            Throw New ArgumentNullException("format")
+        Else If String.IsNullOrWhiteSpace(format) Then
+            Throw New ArgumentException("Argument cannot be an empty string" &
+                " or consist entirely of white-space.", "format")
+        End If
+
+        If Not format.ToUpperInvariant().StartsWith("F") Then
+            Throw New ArgumentException("Argument should start with 'F'.",
+                "format")
+        End If
+
+        ' Parse the "0" value from "F0". If the "0" value is not a valid integer
+        ' throw an ArgumentException (or should/could I throw a
+        ' FormatException)? This is the requested points width (we may override
+        ' later).
+        '
+        Dim pointsWidthInFormat = format.Substring(1)
+        Dim pointsWidth As Integer
+        If Not Int32.TryParse(pointsWidthInFormat, pointsWidth) Then
+            Throw New ArgumentException("Argument should be in the format" &
+                " 'F0', where 0 is an integer.", "format")
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        ' Put a space between the entrant name and the points, even in the case
+        ' of a long name and a long points string.
+        '
+        Const space      As String  = " "
+        
+        ' The length of the returned string. This is the length of each line in
+        ' the output file format.
+        '
+        Const lineLength As Integer = 25
+
+
+        ' If the specified points width is less than the actual points width,
+        ' use the actual points width.
+        '
+        Dim pointsAsString = Me.Points.ToString(CultureInfo.InvariantCulture)
+        ' TODO: Culture? Invariant, add a method argument to specify? I think
+        '       probably Invariant is the best here. I never want commas, dots
+        '       or spaces in the file, right?
+        pointsWidth = Math.Max(pointsWidth, pointsAsString.Length)
+
+
+        ' Calculate the space available for the entrant name; which is the line
+        ' length minus the points width minus the length of the space between
+        ' the entrant name and the points.
+        '
+        Dim maxEntrantNameLength = lineLength - pointsWidth - space.Length
+        
+
+        ' If the entrant name exceeds the space available, then the entrant name
+        ' must be truncated.
+        '
+        Dim entrantName = If(Me.EntrantName, String.Empty)
+
+        entrantName = If(entrantName.Length <= maxEntrantNameLength,
+                         entrantName,
+                         entrantName.Substring(0, maxEntrantNameLength))
+
+
+        ' If the entrant name does not fill the space available, then the
+        ' entrant name must be right padded.
+        '
+        entrantName = entrantName.PadRight(maxEntrantNameLength)
+
+
+        ' Combine the entrant name, the space and the points to create the final
+        ' line for this OutputDataItem in the file format.
+        '
+        Dim line = String.Format(CultureInfo.InvariantCulture, "{0}{1}{2}",
+            entrantName, space, pointsAsString)
+        ' TODO: Is String.Format or string1 + string2 or StringBuilder the
+        '       fastest?
+
+
+        ' Sanity check - is the line length correct?
+        '
+        If line.Length <> lineLength Then
+            Throw New Exception(
+                String.Format("The length of the computed line is incorrect." &
+                              " Expected: {0}. Actual: {1}.",
+                              lineLength, line.Length))
+            ' TODO: Exception type?
+            ' TODO: Keep in final version? Will removing increase speed of
+            '       execution?
+        End If
+
+
+        Return line
+
+        ' TODO: Tidy the method. And test!
+
+    End Function
+
+    #End Region
+
     #Region "Public Methods"
     
     ''' <summary>
@@ -1669,6 +1795,7 @@ Friend Class OutputDataItem
         Return value
 
     End Function
+
 
     ' TODO: Document OutputDataItem.ToString(String).
     Public Overloads Function ToString(ByVal format As String) As String
@@ -1714,6 +1841,9 @@ Friend Class OutputDataItem
             
             Case "G"
                 Return Me.ToString()
+
+            Case "F"
+                Return Me.ToFileFormatString(format)
             
             ' TODO: Add support for more formats.
             
