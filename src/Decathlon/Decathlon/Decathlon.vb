@@ -432,6 +432,15 @@ Friend NotInheritable Class EventTypeHelper
     #Region "Private Static Fields"
 
     ''' <summary>
+    ''' A map of event types to their abbreviations, as used in an input file.
+    ''' </summary>
+    ''' <remarks>
+    ''' The abbreviations, in the key, are in uppercase.
+    ''' </remarks>
+    Private Shared _eventTypeAbbrMap As Dictionary(Of String, EventType)
+
+
+    ''' <summary>
     ''' The map of event type groups to event types.
     ''' </summary>
     Private Shared _eventTypeGroupEventTypeMap _
@@ -440,7 +449,29 @@ Friend NotInheritable Class EventTypeHelper
     #End Region
 
     #Region "Private Static Methods"
+
+    ''' <summary>
+    ''' Initialises the event type / abbreviation map.
+    ''' </summary>
+    ''' <seealso cref="_eventTypeAbbrMap" />
+    Private Shared Sub InitialiseEventTypeAbbrMap()
+
+        _eventTypeAbbrMap = New Dictionary(Of String, EventType)
+
+        _eventTypeAbbrMap.Add("100M",    EventType.OneHundredMetreSprint)
+        _eventTypeAbbrMap.Add("110M",    EventType.OneHundredAndTenMetreHurdles)
+        _eventTypeAbbrMap.Add("400M",    EventType.FourHundredMetreSprint)
+        _eventTypeAbbrMap.Add("1500M",   EventType.FifteenHundredMetreSprint)
+        _eventTypeAbbrMap.Add("DISCUS",  EventType.Discus)
+        _eventTypeAbbrMap.Add("JAVELIN", EventType.Javelin)
+        _eventTypeAbbrMap.Add("SHOT",    EventType.ShotPut)
+        _eventTypeAbbrMap.Add("LONG",    EventType.LongJump)
+        _eventTypeAbbrMap.Add("HIGH",    EventType.HighJump)
+        _eventTypeAbbrMap.Add("POLE",    EventType.PoleVault)
+
+    End Sub
     
+
     ''' <summary>
     ''' Initialises the event type group / event type map.
     ''' </summary>
@@ -476,6 +507,66 @@ Friend NotInheritable Class EventTypeHelper
     #End Region
 
     #Region "Internal Static Methods"
+
+    ''' <summary>
+    ''' Gets an event type from an abbreviation.
+    ''' </summary>
+    ''' <param name="abbreviation">
+    ''' The abbreviation for an event, as used in an input file.
+    ''' </param>
+    ''' <returns>
+    ''' An <see cref="EventType" /> for the specified
+    ''' <paramref name="abbreviation" />.
+    ''' </returns>
+    ''' <exception cref="ArgumentNullException">
+    ''' <paramref name="abbreviation" /> was <c>null</c>.
+    ''' </exception>
+    ''' <exception cref="InvalidOperationException">
+    ''' No mapping to an event type was configured for the specified
+    ''' abbreviation.
+    ''' </exception>
+    ''' <seealso cref="_eventTypeAbbrMap" />
+    Friend Shared Function GetEventTypeFromAbbreviation(
+        ByVal abbreviation As String) As EventType
+
+        '
+        ' Parameter validation.
+        '
+
+        If abbreviation Is Nothing Then
+
+            Throw New ArgumentNullException("abbreviation")
+
+        Else If String.IsNullOrWhiteSpace(abbreviation) Then
+            
+            Throw New ArgumentException("Argument cannot be empty or consist" &
+                " entirely of white-space.", "abbreviation")
+
+        End If
+
+
+        '
+        ' Main work.
+        '
+
+        Dim eventType As EventType
+        If Not _eventTypeAbbrMap.TryGetValue(abbreviation.ToUpperInvariant(),
+                                             eventType) Then
+
+            Dim format As String = 
+                "No event type is mapped to the abbreviation '{0}'."
+
+            Dim message As String =
+                String.Format(format, abbreviation)
+
+            Throw New InvalidOperationException(message)
+
+        End If
+
+        Return eventType
+
+    End Function
+
     
     ''' <summary>
     ''' Gets an event type group from an event type.
@@ -521,7 +612,12 @@ Friend NotInheritable Class EventTypeHelper
     ''' Initialises the <see cref="EventTypeHelper"/> class.
     ''' </summary>
     Shared Sub New()
-        
+
+        ' Initialise the event type / abbreviation map.
+        '
+        InitialiseEventTypeAbbrMap()
+
+
         ' Initialise the event type group / event type map.
         '
         InitialiseEventTypeGroupEventTypeMap()
@@ -968,18 +1064,6 @@ End Class
 ''' </summary>
 Friend Class InputFileParser
 
-    #Region "Static Private Fields"
-
-    ''' <summary>
-    ''' A map of event types to their abbreviations, as used in an input file.
-    ''' </summary>
-    ''' <remarks>
-    ''' The abbreviations, in the key, are in uppercase.
-    ''' </remarks>
-    Private Shared _eventTypeAbbrMap As Dictionary(Of String, EventType)
-
-    #End Region
-
     #Region "Private Fields"
     
     ''' <summary>
@@ -1016,31 +1100,6 @@ Friend Class InputFileParser
     ''' Gets or sets the path to the input file to be read and parsed.
     ''' </summary>
     Friend Property FilePath() As String
-
-    #End Region
-
-    #Region "Private Static Methods"
-    
-    ''' <summary>
-    ''' Initialises the event type / abbreviation map.
-    ''' </summary>
-    ''' <seealso cref="_eventTypeAbbrMap" />
-    Private Shared Sub InitialiseEventTypeAbbrMap()
-
-        _eventTypeAbbrMap = New Dictionary(Of String, EventType)
-
-        _eventTypeAbbrMap.Add("100M",    EventType.OneHundredMetreSprint)
-        _eventTypeAbbrMap.Add("110M",    EventType.OneHundredAndTenMetreHurdles)
-        _eventTypeAbbrMap.Add("400M",    EventType.FourHundredMetreSprint)
-        _eventTypeAbbrMap.Add("1500M",   EventType.FifteenHundredMetreSprint)
-        _eventTypeAbbrMap.Add("DISCUS",  EventType.Discus)
-        _eventTypeAbbrMap.Add("JAVELIN", EventType.Javelin)
-        _eventTypeAbbrMap.Add("SHOT",    EventType.ShotPut)
-        _eventTypeAbbrMap.Add("LONG",    EventType.LongJump)
-        _eventTypeAbbrMap.Add("HIGH",    EventType.HighJump)
-        _eventTypeAbbrMap.Add("POLE",    EventType.PoleVault)
-
-    End Sub
 
     #End Region
 
@@ -1149,13 +1208,11 @@ Friend Class InputFileParser
         '
         Dim eventAbbr As String = Nothing
         If items.Length >= 2 Then
-            eventAbbr = items(1).ToUpper()
+            eventAbbr = items(1)
         End If
 
-        Dim eventType As EventType
-        If Not _eventTypeAbbrMap.TryGetValue(eventAbbr, eventType) Then
-            eventType = EventType.None
-        End If
+        Dim eventType As EventType = 
+            EventTypeHelper.GetEventTypeFromAbbreviation(eventAbbr)
 
 
         ' Score.
@@ -1269,13 +1326,7 @@ Friend Class InputFileParser
     ''' Initialises the <see cref="InputFileParser"/> class.
     ''' </summary>
     Shared Sub New()
-
-        ' Initialise the event type / abbreviation map.
-        '
-        InitialiseEventTypeAbbrMap()
-
     End Sub
-
 
     #End Region
 
