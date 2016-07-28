@@ -1124,8 +1124,11 @@ Friend Class InputFileParser
             ' If the line starts with "##", this indicates the end of the file.
             ' Stop processing.
             '
-            If Not line Is Nothing AndAlso line.StartsWith("##") Then
+            If Not line Is Nothing AndAlso 
+                line.StartsWith("##", StringComparison.OrdinalIgnoreCase) Then
+                
                 Exit Sub
+
             End If
 
             
@@ -1133,10 +1136,13 @@ Friend Class InputFileParser
             ' set. Add the completed data set to the InputFile. Start a new data
             ' set. Move to the next line.
             '
-            If Not line Is Nothing AndAlso line.StartsWith("#") Then
+            If Not line Is Nothing AndAlso 
+                line.StartsWith("#", StringComparison.OrdinalIgnoreCase) Then
+
                 Me.InputFile.DataSets.Add(dataSet)
                 dataSet = New InputDataSet()
                 Continue For
+
             End If
 
 

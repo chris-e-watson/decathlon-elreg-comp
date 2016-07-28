@@ -281,22 +281,6 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#ParseFileContents()">
-            <Messages>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'String.StartsWith(String)'</Item>
-               <Item>'InputFileParser.ParseFileContents()'</Item>
-               <Item>'String.StartsWith(String, StringComparison)'</Item>
-              </Issue>
-              <Issue>
-               <Item>'String.StartsWith(String)'</Item>
-               <Item>'InputFileParser.ParseFileContents()'</Item>
-               <Item>'String.StartsWith(String, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#ParseFileLine(System.String)">
             <Messages>
              <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2016-07-28 16:47:53Z" FixCategory="NonBreaking">
