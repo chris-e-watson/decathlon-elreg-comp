@@ -1132,8 +1132,9 @@ Friend Class InputFileParser
         '
 
         Dim items() As String = 
-            input.Split(New String() { "\t", " " },
-                        StringSplitOptions.RemoveEmptyEntries)
+            input.Split(
+                New String() { Microsoft.VisualBasic.ControlChars.Tab, " " },
+                StringSplitOptions.RemoveEmptyEntries)
 
 
         ' Entrant name.
