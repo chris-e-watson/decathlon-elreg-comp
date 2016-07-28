@@ -1837,7 +1837,7 @@ Friend Class OutputDataItem
         ' Main work.
         '
 
-        Select Case format.Trim().ToUpperInvariant()
+        Select Case format.Trim().ToUpperInvariant().Substring(0, 1)
             
             Case "G"
                 Return Me.ToString()
