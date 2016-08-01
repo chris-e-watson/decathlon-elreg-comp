@@ -272,4 +272,44 @@ Public Class EventTypeHelperTest
 
     End Sub
 
+
+    <TestMethod()> _
+    <ExpectedException(GetType(ArgumentException))>
+    Public Sub GetEventTypeFromAbbreviation_ZeroLengthAbbreviation_ThrowsException()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = ""
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        ' See 'ExpectedException' attribute.
+
+    End Sub
+
+
+    <TestMethod()> _
+    <ExpectedException(GetType(ArgumentException))>
+    Public Sub GetEventTypeFromAbbreviation_WhiteSpaceAbbreviation_ThrowsException()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = " "
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        ' See 'ExpectedException' attribute.
+
+    End Sub
+
 End Class
