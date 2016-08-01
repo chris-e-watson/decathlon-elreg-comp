@@ -53,10 +53,6 @@ Public Class EventTypeHelperTest
     '
 #End Region
 
-
-    '''<summary>
-    '''A test for GetEventTypeFromAbbreviation
-    '''</summary>
     <TestMethod()> _
     Public Sub GetEventTypeFromAbbreviation_100mAbbreviation_ReturnsEvent()
         
@@ -75,4 +71,185 @@ Public Class EventTypeHelperTest
         Assert.AreEqual(expected, actual)
 
     End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_110mAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "110m"
+        Dim expected As EventType = EventType.OneHundredAndTenMetreHurdles
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_400mAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "400m"
+        Dim expected As EventType = EventType.FourHundredMetreSprint
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_1500mAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "1500m"
+        Dim expected As EventType = EventType.FifteenHundredMetreSprint
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_DiscusAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "Discus"
+        Dim expected As EventType = EventType.Discus
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_JavelinAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "Javelin"
+        Dim expected As EventType = EventType.Javelin
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_ShotAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "Shot"
+        Dim expected As EventType = EventType.ShotPut
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_LongAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "Long"
+        Dim expected As EventType = EventType.LongJump
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_HighAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "High"
+        Dim expected As EventType = EventType.HighJump
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeFromAbbreviation_PoleAbbreviation_ReturnsEvent()
+        
+        ' Arrange.
+        '
+        Dim abbreviation As String = "Pole"
+        Dim expected As EventType = EventType.PoleVault
+        
+        ' Act.
+        '
+        Dim actual As EventType
+        actual = EventTypeHelper.GetEventTypeFromAbbreviation(abbreviation)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 End Class
