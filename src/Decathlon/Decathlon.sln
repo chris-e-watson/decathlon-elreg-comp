@@ -3,16 +3,48 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Decathlon", "Decathlon\Decathlon.vbproj", "{A16991F9-35AB-4798-9A81-BD99D79B4D78}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Decathlon.Tests", "Decathlon.Tests\Decathlon.Tests.vbproj", "{83B2572D-E60D-4484-89A6-DEC9C55BB765}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A425EA31-DE20-4FE0-83E8-595F958DF4C1}"
+	ProjectSection(SolutionItems) = preProject
+		Decathlon.vsmdi = Decathlon.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Decathlon.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Debug|x86.ActiveCfg = Debug|x86
 		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Debug|x86.Build.0 = Debug|x86
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Release|Any CPU.ActiveCfg = Release|x86
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Release|Mixed Platforms.Build.0 = Release|x86
 		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Release|x86.ActiveCfg = Release|x86
 		{A16991F9-35AB-4798-9A81-BD99D79B4D78}.Release|x86.Build.0 = Release|x86
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{83B2572D-E60D-4484-89A6-DEC9C55BB765}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
