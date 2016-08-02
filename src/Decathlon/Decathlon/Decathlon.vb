@@ -17,6 +17,11 @@
 '*   file.                                                                     *
 '*******************************************************************************
 
+Option Explicit On
+Option Compare Binary
+Option Strict On
+Option Infer On
+
 Imports System.Globalization
 
 #Region "Enumerations"
