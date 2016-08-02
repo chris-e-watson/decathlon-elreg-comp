@@ -15,6 +15,9 @@
 '*   single source file called Decathlon.<e>, where <e> must be replaced with  *
 '*   the appropriate extension for the language used." hence the one large     *
 '*   file.                                                                     *
+'*                                                                             *
+'*   Written in Visual Basic .NET 2010 (VB 10.0) targeting the .NET 4 (.NET    *
+'*   Framework 4.0 Client Profile) using Visual Studio 2010 Professional.      *
 '*******************************************************************************
 
 Option Explicit On
