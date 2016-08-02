@@ -10,4 +10,15 @@ Bush 400m 43.2
 Johnson-Thompson 100m 17.1
 Johnson-Thompson-Long-Name 100m 17.5
 #
+Tabby	100m	10
+Spacey 100m 10
+Tabby-Spacey	 100m	 10
+Spacey-Tabby	100m	10
+ LeadingSpace 100m 10
+TrailingSpace 100m 10
+	LeadingTab 100m 10
+ LeadingSpace 100m 10
+	 LeadingTabby-Spacey	100m	10
+ 	LeadingSpacey-Tabby 100m 10
+#
 ##
