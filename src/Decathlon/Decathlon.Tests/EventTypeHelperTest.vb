@@ -312,4 +312,206 @@ Public Class EventTypeHelperTest
 
     End Sub
 
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_DiscusEvent_ReturnsThrowingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.Discus
+        Dim expected As EventTypeGroup = EventTypeGroup.Throwing 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_FifteenHundredMetreSprintEvent_ReturnsRunningEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.FifteenHundredMetreSprint
+        Dim expected As EventTypeGroup = EventTypeGroup.Running 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_FourHundredMetreSprintEvent_ReturnsRunningEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.FourHundredMetreSprint
+        Dim expected As EventTypeGroup = EventTypeGroup.Running 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_HighJumpEvent_ReturnsJumpingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.HighJump
+        Dim expected As EventTypeGroup = EventTypeGroup.Jumping 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_JavelinEvent_ReturnsThrowingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.Javelin
+        Dim expected As EventTypeGroup = EventTypeGroup.Throwing 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_LongJumpEvent_ReturnsJumpingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.LongJump
+        Dim expected As EventTypeGroup = EventTypeGroup.Jumping 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_OneHundredAndTenMetreHurdlesEvent_ReturnsRunningEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.OneHundredAndTenMetreHurdles
+        Dim expected As EventTypeGroup = EventTypeGroup.Running
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_OneHundredMetreSprintEvent_ReturnsRunningEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.OneHundredMetreSprint
+        Dim expected As EventTypeGroup = EventTypeGroup.Running 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_PoleVaultEvent_ReturnsThrowingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.PoleVault
+        Dim expected As EventTypeGroup = EventTypeGroup.Throwing 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetEventTypeGroupFromEventType_ShotPutEvent_ReturnsThrowingEventGroup()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.ShotPut
+        Dim expected As EventTypeGroup = EventTypeGroup.Throwing 
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+    ' TODO: Add test for EventTypeHelper.GetEventTypeGroupFromEventType(EventType.None)?
+
 End Class
