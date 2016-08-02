@@ -474,12 +474,12 @@ Public Class EventTypeHelperTest
 
 
     <TestMethod()> _
-    Public Sub GetEventTypeGroupFromEventType_PoleVaultEvent_ReturnsThrowingEventGroup()
+    Public Sub GetEventTypeGroupFromEventType_PoleVaultEvent_ReturnsJumpingEventGroup()
         
         ' Arrange.
         '
         Dim eventType As EventType = EventType.PoleVault
-        Dim expected As EventTypeGroup = EventTypeGroup.Throwing 
+        Dim expected As EventTypeGroup = EventTypeGroup.Jumping 
         
         ' Act.
         '
