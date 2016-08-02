@@ -2834,13 +2834,36 @@ Friend Class PointsCalculator
                                           Me._pointsCalculationConfiguration.C,
                                           Me._score)
 
+        '
+        ' If the entrant's score is less than the B constant (the B constant
+        ' appears to be baseline performance for each event), this results in a
+        ' negative value being raised to a fractional power in the
+        ' CalculateXEventPoints() methods. This results in an overflow
+        ' (pointsUnrounded is -1.#IND at this point), which will cause an
+        ' OverflowException when we call Convert.ToInt64() later.
+        '
+        ' E.g.
+        ' For 100m, the B value is 18 (18 seconds).
+        ' A score of 18.1 seconds results in the overflow.
+        '
+        ' So, we check for this -1.#IND value, and if we have encountered it, we
+        ' set the points to zero. I have found some explanation for the thinking
+        ' behind the decathlon scoring tables that a score of zero should be
+        ' that of "an untrained schoolboy", there is no mention of a negative
+        ' points value, so zero seems appropriate.
+        ' Note: I have found no mention of an upper limit for an event score.
+        '
+        ' This check could be also be achieved by comparing the score to the B
+        ' constant before attempting the calculation.
+        '
+
+        If Double.IsNaN(pointsUnrounded) Then
+            pointsUnrounded = 0
+        End If
+
         Dim pointsRoundedDown As Double = Math.Floor(pointsUnrounded)
 
         Dim points As Long = Convert.ToInt64(pointsRoundedDown)
-
-        ' TODO: A slow score for a 100m event (e.g. 20.1s) results in an
-        '       overflow error here. I think we need to capture this scenario
-        '       and set to 0 points.
 
         Me._points = points
 
