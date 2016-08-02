@@ -17,7 +17,7 @@ Spacey-Tabby	100m	10
  LeadingSpace 100m 10
 TrailingSpace 100m 10
 	LeadingTab 100m 10
- LeadingSpace 100m 10
+TrailingTab	100m	10	
 	 LeadingTabby-Spacey	100m	10
  	LeadingSpacey-Tabby 100m 10
 #
