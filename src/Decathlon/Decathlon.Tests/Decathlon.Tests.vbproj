@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="EventTypeHelperTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="PointsCalculatorTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Decathlon\Decathlon.vbproj">
