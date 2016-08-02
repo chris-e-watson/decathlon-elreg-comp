@@ -68,8 +68,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -90,8 +90,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -112,8 +112,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -134,8 +134,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -156,8 +156,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -178,8 +178,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -200,8 +200,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -222,8 +222,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -244,8 +244,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
@@ -266,8 +266,8 @@ Public Partial Class PointsCalculatorTest
         
         ' Act.
         '
-        Dim actual As Long = target.Points
         target.CalculatePoints()
+        Dim actual As Long = target.Points
 
         ' Assert.
         '
