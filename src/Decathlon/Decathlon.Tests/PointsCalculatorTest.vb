@@ -57,12 +57,210 @@ Public Class PointsCalculatorTest
 
 
     <TestMethod()> _
+    Public Sub CalculatePoints_DiscusScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.Discus
+        Dim score As Decimal = CDec(3.9)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_FifteenHundredMetreSprintScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.FifteenHundredMetreSprint
+        Dim score As Decimal = CDec(480.1)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_FourHundredMetreSprintScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.FourHundredMetreSprint
+        Dim score As Decimal = CDec(82.1)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_HighJumpScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.HighJump
+        Dim score As Decimal = CDec(74.9)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_JavelinScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.Javelin
+        Dim score As Decimal = CDec(6.9)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_LongJumpScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.LongJump
+        Dim score As Decimal = CDec(219.9)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_OneHundredAndTenMetreHurdlesScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.OneHundredAndTenMetreHurdles
+        Dim score As Decimal = CDec(28.6)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
     Public Sub CalculatePoints_OneHundredMetreSprintScoreIsBelowBConstantValue_ZeroPoints()
         
         ' Arrange.
         '
         Dim eventType As EventType = EventType.OneHundredMetreSprint
         Dim score As Decimal = CDec(18.1)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_PoleVaultScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.PoleVault
+        Dim score As Decimal = CDec(99.9)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 0
+        
+        ' Act.
+        '
+        Dim actual As Long = target.Points
+        target.CalculatePoints()
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_ShotPutScoreIsBelowBConstantValue_ZeroPoints()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.ShotPut
+        Dim score As Decimal = CDec(1.4)
         Dim target As PointsCalculator = New PointsCalculator(eventType, score)
         Dim expected As Long = 0
         
