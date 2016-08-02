@@ -11,7 +11,7 @@ Imports Decathlon
 '''to contain all PointsCalculatorTest Unit Tests
 '''</summary>
 <TestClass()> _
-Public Class PointsCalculatorTest
+Public Partial Class PointsCalculatorTest
 
 
     Private testContextInstance As TestContext
