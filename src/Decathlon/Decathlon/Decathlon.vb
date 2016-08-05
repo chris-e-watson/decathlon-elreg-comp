@@ -2357,11 +2357,6 @@ Friend Class OutputFileWriter
     ''' </summary>
     Friend Sub Write()
 
-        ' TODO: Implement OutputFileWriter.Write().
-        ' 1. Validate class state.
-        ' 2. Prepare properly formatted data.
-        ' 3. Write file to disk.
-
         '
         ' Class state validation.
         '
