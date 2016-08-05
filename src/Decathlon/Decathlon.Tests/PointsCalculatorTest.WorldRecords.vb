@@ -12,7 +12,7 @@ Public Class PointsCalculatorTest
         ' Arrange.
         '
         Dim eventType As EventType = EventType.Discus
-        Dim score As Decimal = CDec(74.08)
+        Dim score As Decimal = CDec(74.08) ' 74.08 m
         Dim target As PointsCalculator = New PointsCalculator(eventType, score)
         Dim expected As Long = 1383
 
@@ -84,7 +84,7 @@ Public Class PointsCalculatorTest
         ' Arrange.
         '
         Dim eventType As EventType = EventType.FourHundredMetreSprint
-        Dim score As Decimal = CDec(43.18)
+        Dim score As Decimal = CDec(43.18) ' 43.18 s
         Dim target As PointsCalculator = New PointsCalculator(eventType, score)
         Dim expected As Long = 1156
 
