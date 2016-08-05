@@ -1900,8 +1900,16 @@ Friend Class OutputDataItem
 
     End Function
 
-
-    ' TODO: Document OutputDataItem.ToString(String).
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <param name="format">
+    ''' The format.
+    ''' </param>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
     Public Overloads Function ToString(ByVal format As String) As String
 
         Return Me.ToString(format, Nothing)
