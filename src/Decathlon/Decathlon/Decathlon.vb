@@ -2478,8 +2478,6 @@ End Class
 Friend Class PointsCalculator
 
     #Region "Nested Types"
-
-    ' TODO: Is a delegate a type?
     
     ''' <summary>
     ''' Represents a method which can calculate the (unrounded) points for a
