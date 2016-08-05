@@ -1712,8 +1712,43 @@ Friend Class OutputDataItem
     #End Region
 
     #Region "Private Methods"
-
-    ' TODO: Document OutputDataItem.ToFileFormatString().
+    
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that contains the information in
+    ''' this instance in a format suitable for a single line in an output file.
+    ''' </summary>
+    ''' <param name="format">
+    ''' The format. A string in the format "F0" where "0" is the width of the
+    ''' string used to display the points.
+    ''' </param>
+    ''' <returns>
+    ''' <see cref="System.String" />
+    ''' <para>
+    ''' A 25 character long string containing the entrant's name left aligned
+    ''' to the first column, an appropriate number of spaces, then the points
+    ''' right aligned to the 25th column.
+    ''' </para>
+    ''' </returns>
+    ''' <exception cref="System.ArgumentNullException">
+    ''' <paramref name="format" /> was <c>null</c>.
+    ''' </exception>
+    ''' <exception cref="System.ArgumentException">
+    ''' <paramref name="format" /> was an empty string or consisted entirely of
+    ''' white-space.
+    ''' <para>
+    ''' -or-
+    ''' </para>
+    ''' <para>
+    ''' <paramref name="format" /> did not start with 'F'.
+    ''' </para>
+    ''' <para>
+    ''' -or-
+    ''' </para>
+    ''' <para>
+    ''' <paramref name="format" /> was not in format 'F0', where 0 is an
+    ''' integer.
+    ''' </para>
+    ''' </exception>
     Private Function ToFileFormatString(ByVal format As String) As String
 
         '
