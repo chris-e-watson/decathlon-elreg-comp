@@ -1908,8 +1908,22 @@ Friend Class OutputDataItem
 
     End Function
 
-
-    ' TODO: Document OutputDataItem.ToString(String, IFormatProvider).
+ 
+    ''' <summary>
+    ''' Returns a <see cref="System.String" /> that represents this instance.
+    ''' </summary>
+    ''' <param name="format">
+    ''' The format.
+    ''' </param>
+    ''' <param name="formatProvider">
+    ''' The format provider.
+    ''' </param>
+    ''' <returns>
+    ''' A <see cref="System.String" /> that represents this instance.
+    ''' </returns>
+    ''' <exception cref="System.FormatException">
+    ''' The specified <paramref name="format" /> is not supported.
+    ''' </exception>
     Public Overloads Function ToString(format As String,
         formatProvider As IFormatProvider) As String _
         Implements IFormattable.ToString
