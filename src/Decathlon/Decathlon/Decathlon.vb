@@ -1951,8 +1951,6 @@ Friend Class OutputDataItem
             Case "F"
                 Return Me.ToFileFormatString(format)
             
-            ' TODO: Add support for more formats.
-            
             Case Else
                 Throw New FormatException(
                     String.Format(CultureInfo.InvariantCulture,
