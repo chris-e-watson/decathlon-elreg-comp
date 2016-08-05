@@ -1853,8 +1853,6 @@ Friend Class OutputDataItem
         '
         Dim line = String.Format(CultureInfo.InvariantCulture, "{0}{1}{2}",
             entrantName, space, pointsAsString)
-        ' TODO: Is String.Format or string1 + string2 or StringBuilder the
-        '       fastest?
 
 
         ' Sanity check - is the line length correct?
