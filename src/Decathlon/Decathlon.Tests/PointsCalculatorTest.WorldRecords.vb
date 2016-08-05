@@ -77,4 +77,28 @@ Public Class PointsCalculatorTest
 
     End Sub
 
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_FourHundredMetreSprintWorldRecordScore_Returns1156Points()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.FourHundredMetreSprint
+        Dim score As Decimal = CDec(43.18)
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 1156
+
+        ' 1.53775 * ((82 - 43.18) ^ 1.81) = 1,156.3152...
+        
+        ' Act.
+        '
+        target.CalculatePoints()
+        Dim actual As Long = target.Points
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 End Class
