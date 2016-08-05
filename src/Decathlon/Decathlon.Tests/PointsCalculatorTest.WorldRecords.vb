@@ -103,6 +103,30 @@ Public Class PointsCalculatorTest
 
 
     <TestMethod()> _
+    Public Sub CalculatePoints_HighJumpWorldRecordScore_Returns1244Points()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.HighJump
+        Dim score As Decimal = CDec(245) ' 2.45 m
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 1244
+
+        ' 0.8465 * ((245 - 75) ^ 1.42) = 1,244.1262...
+        
+        ' Act.
+        '
+        target.CalculatePoints()
+        Dim actual As Long = target.Points
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
     Public Sub CalculatePoints_JavelinWorldRecordScore_Returns1430Points()
         
         ' Arrange.
