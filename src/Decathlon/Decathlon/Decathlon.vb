@@ -2205,7 +2205,7 @@ Friend Class OutputFileWriter
             .Select(Function (f) f.ToString(CultureInfo.InvariantCulture)) _
             .Select(Function (f) f.Length) _
             .DefaultIfEmpty() _
-            .Max() ' TODO: Works with an empty input?
+            .Max()
 
         ' The file format for each line is "F0" where 0 is the points length.
         '
