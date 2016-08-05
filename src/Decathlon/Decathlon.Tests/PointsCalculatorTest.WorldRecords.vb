@@ -197,4 +197,28 @@ Public Class PointsCalculatorTest
 
     End Sub
 
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_PoleVaultWorldRecordScore_Returns1284Points()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.PoleVault
+        Dim score As Decimal = CDec(616) ' 6.16 m
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 1284
+
+        ' 0.2797 * ((616 - 100) ^ 1.35) = 1,284.6049...
+        
+        ' Act.
+        '
+        target.CalculatePoints()
+        Dim actual As Long = target.Points
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 End Class
