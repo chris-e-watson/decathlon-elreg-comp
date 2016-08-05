@@ -25,7 +25,10 @@ Option Compare Binary
 Option Strict On
 Option Infer On
 
+Imports System
+Imports System.Collections.Generic
 Imports System.Globalization
+Imports System.Linq
 
 #Region "Enumerations"
 
