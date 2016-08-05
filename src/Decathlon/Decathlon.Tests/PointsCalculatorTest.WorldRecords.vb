@@ -173,4 +173,28 @@ Public Class PointsCalculatorTest
 
     End Sub
 
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_OneHundredAndTenMetreHurdlesWorldRecordScore_Returns1135Points()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.OneHundredAndTenMetreHurdles
+        Dim score As Decimal = CDec(12.80) ' 12.80 s
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 1135
+
+        ' 5.74352 * ((28.5 - 12.8) ^ 1.92) = 1,135.8094...
+        
+        ' Act.
+        '
+        target.CalculatePoints()
+        Dim actual As Long = target.Points
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 End Class
