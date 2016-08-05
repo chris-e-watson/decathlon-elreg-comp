@@ -2197,6 +2197,12 @@ Friend Class OutputFileWriter
     ''' <seealso cref="_fileContents" />
     ''' <exception cref="InvalidOperationException">
     ''' <see cref="OutputFile" /> was <c>null</c>.
+    ''' <para>
+    ''' -or-
+    ''' </para>
+    ''' <para>
+    ''' <see cref="OutputFile.DataSets" /> was <c>null</c>.
+    ''' </para>
     ''' </exception>
     Private Sub BuildFileContents()
 
@@ -2205,7 +2211,7 @@ Friend Class OutputFileWriter
         '
 
         ThrowIfOutputFileIsNull()
-        ' TODO: Validate OutputFile.DataSets is present.
+        ThrowIfOutputFileDataSetsIsNull()
 
 
         '
@@ -2298,6 +2304,26 @@ Friend Class OutputFileWriter
             Throw New InvalidOperationException(
                 "OutputFileWriter.FilePath cannot be null, empty or consist" _
                 & " entirely of white-space.")
+
+        End If
+
+    End Sub
+
+
+    ''' <summary>
+    ''' Throws an <see cref="InvalidOperationException" /> if
+    ''' <see cref="OutputFile.DataSets" /> is <c>null</c>.
+    ''' </summary>
+    ''' <exception cref="InvalidOperationException">
+    ''' <see cref="OutputFile.DataSets" /> was <c>null</c>.
+    ''' </exception>
+    Private Sub ThrowIfOutputFileDataSetsIsNull()
+
+        If Me.OutputFile Is Nothing OrElse _
+           Me.OutputFile.DataSets Is Nothing Then
+
+            Throw New InvalidOperationException(
+                "OutputFileWriter.OutputFile.DataSets cannot be null.")
 
         End If
 
