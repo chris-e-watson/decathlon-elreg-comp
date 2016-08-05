@@ -1292,19 +1292,14 @@ Friend Class InputFileParser
     ''' </summary>
     Friend Sub Parse()
 
-        'TODO: Implement InputFileParser.Parse().
-        ' 1. Read file.
-        ' 2. Iterate over lines of data in the file.
-        ' 3. Parse each line in to entrant, event and score.
-        ' 4. Start new data set on a line starting with "#".
-        ' 5. Stop processing on a line starting with "##".
-
         Me.InputFile = New InputFile()
 
         ' Read the file, obtain the contents.
         '
         Me.ReadFile()
 
+        ' Parse the file contents into an InputFile.
+        '
         Me.ParseFileContents()
 
     End Sub
