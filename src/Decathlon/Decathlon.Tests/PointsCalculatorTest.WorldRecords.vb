@@ -221,4 +221,28 @@ Public Class PointsCalculatorTest
 
     End Sub
 
+
+    <TestMethod()> _
+    Public Sub CalculatePoints_ShotPutWorldRecordScore_Returns1295Points()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.ShotPut
+        Dim score As Decimal = CDec(23.12) ' 23.12 m
+        Dim target As PointsCalculator = New PointsCalculator(eventType, score)
+        Dim expected As Long = 1295
+
+        ' 51.39 * ((23.12 - 1.5) ^ 1.05) = 1,295.6184...
+        
+        ' Act.
+        '
+        target.CalculatePoints()
+        Dim actual As Long = target.Points
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 End Class
