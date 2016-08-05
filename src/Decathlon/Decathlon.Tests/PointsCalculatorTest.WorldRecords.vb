@@ -1,4 +1,10 @@
-﻿Public Class PointsCalculatorTest
+﻿'
+' These World Record scores are calculated manually and checked with the scoring
+' calculator at:
+' http://cheshireaa.com/statistics/CEscoring.htm
+'
+
+Public Class PointsCalculatorTest
 
     <TestMethod()> _
     Public Sub CalculatePoints_DiscusWorldRecordScore_Returns1383Points()
