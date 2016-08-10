@@ -512,6 +512,24 @@ Public Class EventTypeHelperTest
 
     End Sub
 
-    ' TODO: Add test for EventTypeHelper.GetEventTypeGroupFromEventType(EventType.None)?
+
+    <TestMethod()> _
+    <ExpectedException(GetType(InvalidOperationException))>
+    Public Sub GetEventTypeGroupFromEventType_NoneEventType_ThrowsException()
+        
+        ' Arrange.
+        '
+        Dim eventType As EventType = EventType.None
+        
+        ' Act.
+        '
+        Dim actual As EventTypeGroup
+        actual = EventTypeHelper.GetEventTypeGroupFromEventType(eventType)
+        
+        ' Assert.
+        '
+        ' See ExpectedExceptionAttribute above.
+
+    End Sub
 
 End Class
