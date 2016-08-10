@@ -1935,8 +1935,6 @@ Friend Class OutputDataItem
         '
         If formatProvider Is Nothing Then
             formatProvider = CultureInfo.CurrentCulture
-            ' TODO: Do I have to default to CurrentCulture or can I use
-            '       InvariantCulture?
         End If
 
 
