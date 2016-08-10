@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="EventTypeHelperTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="OutputDataItemTest.vb" />
     <Compile Include="PointsCalculatorTest.vb" />
     <Compile Include="PointsCalculatorTest.WorldRecords.vb" />
   </ItemGroup>
