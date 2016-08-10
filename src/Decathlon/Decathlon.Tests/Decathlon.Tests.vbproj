@@ -76,6 +76,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecathlonTest.vb" />
     <Compile Include="EventTypeHelperTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="OutputDataItemTest.vb" />
