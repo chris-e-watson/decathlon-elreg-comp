@@ -2380,13 +2380,29 @@ Friend Class OutputFileWriter
 
         Using streamWriter = New System.IO.StreamWriter(Me.FilePath)
 
-            For Each line In Me._fileContents
+            Dim lastLineIndex = Me._fileContents.Count - 1
 
-                streamWriter.WriteLine(line)
+            For lineIndex = 0 To lastLineIndex
 
-                ' TODO: This will result in a new line character after the last
-                '       line in the file. Re-read the rules and decide if this
-                '       is correct.
+                Dim line = Me._fileContents(lineIndex)
+
+                streamWriter.Write(line)
+
+                ' Unless this is the last line to be written to the file, write
+                ' a new line character after each line. Why? Well, the rules
+                ' state that a blank line should be written between datasets but
+                ' not after the last dataset. The HTML mark-up for the sample
+                ' output shows there ^is^ a new line character after the last
+                ' line but this doesn't render in the browser. If the output
+                ' file is displayed at the command line (i.e. "type
+                ' Decathlon.out"), then subjectively this causes the file to
+                ' appear as though it has a blank line after the last data set.
+                ' Thus, after much soul searching, I have decided to *not*
+                ' append a new line character after the last line in the file.
+                '
+                If lineIndex < lastLineIndex Then
+                    streamWriter.WriteLine()
+                End If
 
             Next
         
