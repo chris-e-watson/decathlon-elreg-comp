@@ -150,6 +150,33 @@ Public Class OutputDataItemTest
 
     End Sub
 
+    
+    ''' <summary>
+    ''' A test to verify that long entrant name's are truncated in a file
+    ''' format.
+    ''' </summary>
+    <TestMethod()> _
+    Public Sub ToString_FileFormatWithLongEntrantName_EntrantNameIsTruncated()
+        
+        ' Arrange.
+        '
+        Dim target As IFormattable =
+            New OutputDataItem("AN-ENTRANT-WITH-A-LONG-NAME", 1234)
+        Dim format As String = "F4"
+        Dim formatProvider As IFormatProvider = CultureInfo.InvariantCulture
+        Dim expected As String = "AN-ENTRANT-WITH-A-LO 1234"
+        
+        ' Act.
+        '
+        Dim actual As String
+        actual = target.ToString(format, formatProvider)
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 
     <TestMethod()> _
     <ExpectedException(GetType(FormatException))>
