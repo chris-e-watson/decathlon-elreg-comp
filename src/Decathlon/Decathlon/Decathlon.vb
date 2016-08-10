@@ -2243,8 +2243,8 @@ Friend Class OutputFileWriter
 
             For Each dataItem In dataSet.Items
 
-                Dim dataItemLine = dataItem.ToString(fileLineFormat)
-                ' TODO: Culture?
+                Dim dataItemLine = dataItem.ToString(fileLineFormat, 
+                                       CultureInfo.InvariantCulture)
 
                 _fileContents.Add(dataItemLine)
 
