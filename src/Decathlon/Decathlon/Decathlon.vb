@@ -1813,9 +1813,7 @@ Friend Class OutputDataItem
         ' use the actual points width.
         '
         Dim pointsAsString = Me.Points.ToString(CultureInfo.InvariantCulture)
-        ' TODO: Culture? Invariant, add a method argument to specify? I think
-        '       probably Invariant is the best here. I never want commas, dots
-        '       or spaces in the file, right?
+
         pointsWidth = Math.Max(pointsWidth, pointsAsString.Length)
 
 
