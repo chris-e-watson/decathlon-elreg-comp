@@ -1854,8 +1854,6 @@ Friend Class OutputDataItem
 
         Return line
 
-        ' TODO: Tidy the method. And test!
-
     End Function
 
     #End Region
