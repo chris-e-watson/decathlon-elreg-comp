@@ -1852,21 +1852,6 @@ Friend Class OutputDataItem
         Dim line = String.Format(CultureInfo.InvariantCulture, "{0}{1}{2}",
             entrantName, space, pointsAsString)
 
-
-        ' Sanity check - is the line length correct?
-        '
-        If line.Length <> lineLength Then
-            Throw New Exception(
-                String.Format(CultureInfo.CurrentCulture,
-                              "The length of the computed line is incorrect." &
-                              " Expected: {0}. Actual: {1}.",
-                              lineLength, line.Length))
-            ' TODO: Exception type?
-            ' TODO: Keep in final version? Will removing increase speed of
-            '       execution?
-        End If
-
-
         Return line
 
         ' TODO: Tidy the method. And test!
