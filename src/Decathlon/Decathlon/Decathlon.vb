@@ -1749,24 +1749,24 @@ Friend Class OutputDataItem
     ''' integer.
     ''' </para>
     ''' </exception>
+    ''' <remarks>
+    ''' The <paramref name="format" /> parameter should be F0 where F means
+    ''' "file format" and 0 is the width of the string used to display the 
+    ''' points. If the specified width is omitted or less than the width
+    ''' required to display the entire points value, the actual width will be
+    ''' used.
+    ''' E.g.
+    ''' Points | Format | Result
+    ''' -------+--------+-------
+    ''' 123    | F4     | " 123"
+    ''' 123    | F3     | "123"
+    ''' 123    | F2     | "123"
+    ''' 123    | F      | "123"
+    ''' </remarks>
     Private Function ToFileFormatString(ByVal format As String) As String
 
         '
         ' Parameter validation.
-        '
-
-        '
-        ' The format parameter should be F0 where F means "file format" and 0 is
-        ' the width of the string used to display the points. If the specified
-        ' width is omitted or less than the width required to display the entire
-        ' points value, the actual width will be used.
-        ' E.g.
-        ' Points | Format | Result
-        ' -------+--------+-------
-        ' 123    | F4     | " 123"
-        ' 123    | F3     | "123"
-        ' 123    | F2     | "123"
-        ' 123    | F      | "123"
         '
 
         If format Is Nothing Then
