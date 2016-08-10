@@ -2262,8 +2262,6 @@ Friend Class OutputFileWriter
 
         Next
 
-        ' TODO: Implement OutputFileWriter.BuildFileContents().
-
     End Sub
 
     
