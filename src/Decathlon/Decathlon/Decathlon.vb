@@ -3636,9 +3636,6 @@ Friend Class ResultProcessor
 
         Next
 
-        ' TODO: Could this be refactored and extracted into an
-        '       OutputFileBuilderService class?
-
     End Sub
 
     
