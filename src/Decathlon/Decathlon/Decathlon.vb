@@ -1781,7 +1781,7 @@ Friend Class OutputDataItem
                 " or consist entirely of white-space.", "format")
         End If
 
-        If Not format.ToUpperInvariant().StartsWith("F") Then
+        If Not format.StartsWith("F", StringComparison.OrdinalIgnoreCase) Then
             Throw New ArgumentException("Argument should start with 'F'.",
                 "format")
         End If
