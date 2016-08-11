@@ -87,15 +87,6 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#.ctor(System.String)">
-            <Messages>
-             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'InputFileParser.New(String)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
            <Member Name="#ParseFileLine(System.String)">
             <Messages>
              <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2016-07-28 16:47:53Z" FixCategory="NonBreaking">
@@ -114,29 +105,10 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="LeagueTableEntrant">
-          <Members>
-           <Member Name="#.ctor(System.String,System.Int64)">
-            <Messages>
-             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'LeagueTableEntrant.New(String, Long)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
          <Type Name="OutputDataItem">
           <Members>
            <Member Name="#ToFileFormatString(System.String)">
             <Messages>
-             <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Created="2016-07-28 16:47:53Z">
-              <Issue Name="TooGeneric">
-               <Item>'OutputDataItem.ToFileFormatString(String)'</Item>
-               <Item>'Exception'</Item>
-              </Issue>
-             </Message>
              <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2016-07-28 16:47:53Z">
               <Issue>
                <Item>'String.StartsWith(String)'</Item>
@@ -145,54 +117,6 @@
               </Issue>
              </Message>
             </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="OutputFileWriter">
-          <Members>
-           <Member Name="#.ctor(System.String)">
-            <Messages>
-             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'OutputFileWriter.New(String)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#.ctor(System.String,Decathlon.OutputFile)">
-            <Messages>
-             <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'OutputFileWriter.New(String, OutputFile)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#BuildFileContents()">
-            <Messages>
-             <Message Id="Decathlon.OutputDataItem.ToString(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Created="2016-07-28 16:47:53Z">
-              <Issue Name="IFormatProviderAlternateString">
-               <Item>'OutputDataItem.ToString(String)'</Item>
-               <Item>'OutputFileWriter.BuildFileContents()'</Item>
-               <Item>'OutputDataItem.ToString(String, IFormatProvider)'</Item>
-               <Item>'CultureInfo.CurrentCulture()'</Item>
-               <Item>'CultureInfo.InvariantCulture()'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#OutputFile">
-            <Accessors>
-             <Accessor Name="#set_OutputFile(Decathlon.OutputFile)">
-              <Messages>
-               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2016-07-28 16:47:53Z">
-                <Issue>
-                 <Item>'OutputFileWriter.OutputFile.Set(OutputFile)'</Item>
-                </Issue>
-               </Message>
-              </Messages>
-             </Accessor>
-            </Accessors>
            </Member>
           </Members>
          </Type>
@@ -219,12 +143,6 @@
   <Rules>
    <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
     <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
-   </Rule>
-   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
-    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
-   </Rule>
-   <Rule TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201">
-    <Resolution Name="TooGeneric">{0} creates an exception of type {1}, an exception type that is not sufficiently specific and should never be raised by user code. If this exception instance might be thrown, use a different exception type.</Resolution>
    </Rule>
    <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
     <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
