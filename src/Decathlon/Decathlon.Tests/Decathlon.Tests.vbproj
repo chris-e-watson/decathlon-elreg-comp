@@ -81,6 +81,7 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="OutputDataItemTest.vb" />
     <Compile Include="PointsCalculatorConfigurationRepositoryTest.vb" />
+    <Compile Include="PointsCalculatorConfigurationTest.vb" />
     <Compile Include="PointsCalculatorTest.vb" />
     <Compile Include="PointsCalculatorTest.WorldRecords.vb" />
   </ItemGroup>
