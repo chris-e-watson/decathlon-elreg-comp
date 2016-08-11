@@ -3010,7 +3010,8 @@ End Class
 ''' Represents configuration information for a points calculator for a specific
 ''' event type.
 ''' </summary>
-Friend Class PointsCalculatorConfiguration
+Friend Class PointsCalculatorConfiguration 
+    Implements IEquatable(Of PointsCalculatorConfiguration)
 
     #Region "Private Fields"
     
@@ -3085,7 +3086,83 @@ Friend Class PointsCalculatorConfiguration
     #End Region
 
     #Region "Public Methods"
+
+    ''' <summary>
+    ''' Determines whether the specified
+    ''' <see cref="PointsCalculatorConfiguration" />, is equal to this instance.
+    ''' </summary>
+    ''' <param name="other">
+    ''' The <see cref="PointsCalculatorConfiguration" /> to compare with this
+    ''' instance.
+    ''' </param>
+    ''' <returns>
+    ''' <c>true</c> if the specified
+    ''' <see cref="PointsCalculatorConfiguration" /> is equal to this instance;
+    ''' otherwise, <c>false</c>.
+    ''' </returns>
+    Public Overloads Function Equals(other As PointsCalculatorConfiguration) _
+        As Boolean Implements _
+        System.IEquatable(Of PointsCalculatorConfiguration).Equals
+
+
+        If other Is Nothing Then
+            Return False
+        End If
+
+        Dim isEqual As Boolean =
+            Me.A = other.A And 
+            Me.B = other.B And 
+            Me.C = other.C And 
+            Me.EventType = other.EventType
+
+        Return isEqual
+
+    End Function
+
+
+    ''' <summary>
+    ''' Determines whether the specified <see cref="System.Object" />, is equal
+    ''' to this instance.
+    ''' </summary>
+    ''' <param name="obj">
+    ''' The <see cref="System.Object" /> to compare with this instance.
+    ''' </param>
+    ''' <returns>
+    ''' <c>true</c> if the specified <see cref="System.Object" /> is equal to
+    ''' this instance; otherwise, <c>false</c>.
+    ''' </returns>
+    Public Overrides Function Equals(obj As Object) As Boolean
+        
+        If obj Is Nothing Then
+            Return False
+        End If
+
+        Dim otherPointsCalculatorConfiguration = 
+            TryCast(obj, PointsCalculatorConfiguration)
+        
+        If Not otherPointsCalculatorConfiguration Is Nothing Then
+            Return Me.Equals(otherPointsCalculatorConfiguration)
+        End If
+
+        Return False
+
+    End Function
+
+
+    ''' <summary>
+    ''' Returns a hash code for this instance.
+    ''' </summary>
+    ''' <returns>
+    ''' A hash code for this instance, suitable for use in hashing algorithms
+    ''' and data structures like a hash table. 
+    ''' </returns>
+    Public Overrides Function GetHashCode() As Integer
+
+        Return Me.A.GetHashCode()
+
+    End Function
     
+
     ''' <summary>
     ''' Returns a <see cref="System.String" /> that represents this instance.
     ''' </summary>
