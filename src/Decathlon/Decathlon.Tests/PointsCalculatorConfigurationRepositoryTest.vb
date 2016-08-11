@@ -60,7 +60,9 @@ Public Class PointsCalculatorConfigurationRepositoryTest
         '
         Dim target As PointsCalculatorConfigurationRepository =
             PointsCalculatorConfigurationRepository.Default
+
         Dim eventType As EventType = EventType.Discus
+
         Dim expected As PointsCalculatorConfiguration =
             New PointsCalculatorConfiguration(
                 eventType, CDec(12.91), 4, CDec(1.1))
@@ -73,8 +75,265 @@ Public Class PointsCalculatorConfigurationRepositoryTest
         ' Assert.
         '
         Assert.AreEqual(expected, actual)
-        Assert.Inconclusive("Verify the correctness of this test method.")
 
     End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_FifteenHundredMetreSprintEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.FifteenHundredMetreSprint
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(0.03768), 480, CDec(1.85))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_FourHundredMetreSprintEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.FourHundredMetreSprint
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(1.53775), 82, CDec(1.81))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_HighJumpEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.HighJump
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(0.8465), 75, CDec(1.42))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_JavelinEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.Javelin
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(10.14), 7, CDec(1.08))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_LongJumpEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.LongJump
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(0.14354), 220, CDec(1.4))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    <ExpectedException(GetType(KeyNotFoundException))>
+    Public Sub GetByEventType_NoneEventType_ThrowsKeyNotFoundException()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.None
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        ' See ExpectedException attribute above.
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_OneHundredAndTenMetreHurdlesEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.OneHundredAndTenMetreHurdles
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(5.74352), CDec(28.5), CDec(1.92))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_OneHundredMetreSprintEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.OneHundredMetreSprint
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(25.4347), 18, CDec(1.81))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_PoleVaultEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.PoleVault
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(0.2797), 100, CDec(1.35))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
+    Public Sub GetByEventType_ShotPutEventType_ReturnsConfiguration()
+        
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+        
+        Dim eventType As EventType = EventType.ShotPut
+
+        Dim expected As PointsCalculatorConfiguration =
+            New PointsCalculatorConfiguration(
+                eventType, CDec(51.39), CDec(1.5), CDec(1.05))
+        
+        ' Act.
+        '
+        Dim actual As PointsCalculatorConfiguration
+        actual = target.GetByEventType(eventType)
+        
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
 
 End Class
