@@ -3449,8 +3449,8 @@ Friend Class PointsCalculatorConfigurationRepository
     ''' specified in <paramref name="eventType" />.
     ''' </returns>
     ''' <exception cref="KeyNotFoundException">
-    ''' A PointsCalculatorConfiguration could not be found for the event type
-    ''' specified in <paramref name="eventType" />.
+    ''' A <see cref="PointsCalculatorConfiguration" /> could not be found for
+    ''' the event type specified in <paramref name="eventType" />.
     ''' </exception>
     Friend Function GetByEventType(ByVal eventType As EventType) _
         As PointsCalculatorConfiguration 
