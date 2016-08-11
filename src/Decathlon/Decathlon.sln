@@ -12,6 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{354D00F8-CEA2-4EF6-9E4A-85EE1B7474D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FxCop", "FxCop", "{B76D68AF-C966-46C2-BDEE-B4C514D0F930}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\test\FxCop\Decathlon.FxCop = ..\..\test\FxCop\Decathlon.FxCop
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Decathlon.vsmdi
@@ -48,5 +55,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B76D68AF-C966-46C2-BDEE-B4C514D0F930} = {354D00F8-CEA2-4EF6-9E4A-85EE1B7474D9}
 	EndGlobalSection
 EndGlobal
