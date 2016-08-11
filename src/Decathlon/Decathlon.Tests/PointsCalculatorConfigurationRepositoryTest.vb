@@ -336,4 +336,123 @@ Public Class PointsCalculatorConfigurationRepositoryTest
     End Sub
 
 
+    <TestMethod()>
+    Public Sub InitialiseItems_Configurations_NotEmpty()
+
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+
+        ' Wrap an already existing instance.
+        '
+        Dim accessor As PrivateObject = New PrivateObject(target)
+
+        ' Retrieve a private field.
+        '
+        Dim _items As List(Of PointsCalculatorConfiguration) =
+            DirectCast(accessor.GetField("_items"), 
+                List(Of PointsCalculatorConfiguration))
+
+        ' Act.
+        '
+        ' Umm...
+
+        ' Assert.
+        '
+        ' _items collection cannot be empty.
+        '
+        Assert.IsTrue(_items.Any(),
+            "PointsCalculatorConfigurationRepository._items is empty.")
+
+    End Sub
+
+
+    <TestMethod()>
+    Public Sub InitialiseItems_Configurations_NotNull()
+
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+
+        ' Wrap an already existing instance.
+        '
+        Dim accessor As PrivateObject = New PrivateObject(target)
+
+        ' Retrieve a private field.
+        '
+        Dim _items As List(Of PointsCalculatorConfiguration) =
+            DirectCast(accessor.GetField("_items"), 
+                List(Of PointsCalculatorConfiguration))
+
+        ' Act.
+        '
+        ' Umm...
+
+        ' Assert.
+        '
+        Assert.IsNotNull(_items,
+            "PointsCalculatorConfigurationRepository._items is null.")
+
+    End Sub
+
+
+    <TestMethod()>
+    Public Sub InitialiseItems_Configurations_OneForEachEventType()
+
+        ' Arrange.
+        '
+        Dim target As PointsCalculatorConfigurationRepository =
+            PointsCalculatorConfigurationRepository.Default
+
+        ' Wrap an already existing instance.
+        '
+        Dim accessor As PrivateObject = New PrivateObject(target)
+
+        ' Retrieve a private field.
+        '
+        Dim _items As List(Of PointsCalculatorConfiguration) =
+            DirectCast(accessor.GetField("_items"), 
+                List(Of PointsCalculatorConfiguration))
+
+        ' List of all event types from enum (apart from None).
+        '
+        Dim eventTypes0 = [Enum].GetValues(GetType(EventType))
+        Dim eventTypes = New List(Of EventType)(
+            DirectCast(eventTypes0, IEnumerable(Of EventType))) _
+            .Where(Function(f) f <> EventType.None)
+
+        ' Act.
+        '
+        ' Um...
+
+        ' Assert.
+        '
+
+        For Each eventType As EventType In eventTypes
+
+            Dim eType = eventType
+
+            Dim eventTypeConfigurationCount =
+                _items.AsEnumerable().Count(Function(f) f.EventType = eType)
+
+            If eventTypeConfigurationCount <> 1 Then
+
+                Dim format As String =
+                    "EventType '{0}' has an invalid amount of configurations." &
+                    " Expected: <1>. Found: <{1}>."
+                Dim message As String =
+                    String.Format(CultureInfo.CurrentCulture, format,
+                                  eType, eventTypeConfigurationCount)
+
+                Assert.Fail(message)
+
+            End If
+
+        Next
+
+    End Sub
+
+
 End Class
