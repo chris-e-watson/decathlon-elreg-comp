@@ -253,7 +253,7 @@ Friend Class CombinedEventEntrant
                 If(Not Me.EntrantName Is Nothing,
                    """" & Me.EntrantName & """", "null"),
                 If(Not Me.EventScores Is Nothing,
-                   Me.EventScores.Count.ToString() & 
+                   Me.EventScores.Count.ToString(CultureInfo.InvariantCulture) & 
                    If(Me.EventScores.Count = 1, " item", " items"), "null"))
 
         Return value
