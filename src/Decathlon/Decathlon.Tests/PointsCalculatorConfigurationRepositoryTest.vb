@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
+Imports System.Globalization
 Imports Decathlon
 
 
