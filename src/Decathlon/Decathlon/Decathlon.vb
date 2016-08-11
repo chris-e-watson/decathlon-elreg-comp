@@ -29,6 +29,30 @@ Imports System
 Imports System.Collections.Generic
 Imports System.Globalization
 Imports System.Linq
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+#Region "Attributes"
+
+'
+' The assembly attributes below are those typically specified in
+' AssemblyInfo.vb, but as we must submit only the single file, there are defined
+' here.
+'
+
+<Assembly: AssemblyTitle("Decathlon")>
+<Assembly: AssemblyDescription("Decathlon")>
+<Assembly: AssemblyCompany("Chris Watson")>
+<Assembly: AssemblyProduct("Decathlon")>
+<Assembly: AssemblyCopyright("Copyright © Chris Watson 2016")>
+<Assembly: AssemblyTrademark("")>
+
+<Assembly: ComVisible(False)>
+
+<Assembly: AssemblyVersion("1.0.0.0")>
+<Assembly: AssemblyFileVersion("1.0.0.0")>
+
+#End Region
 
 #Region "Enumerations"
 

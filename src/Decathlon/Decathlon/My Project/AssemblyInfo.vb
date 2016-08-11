@@ -2,20 +2,14 @@
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
+' Note: Most assembly attributes are now set in the Decathlon.vb source file due
+'       to the nature of the single file only rule.
+
 ' General Information about an assembly is controlled through the following 
 ' set of attributes. Change these attribute values to modify the information
 ' associated with an assembly.
 
 ' Review the values of the assembly attributes
-
-<Assembly: AssemblyTitle("Decathlon")> 
-<Assembly: AssemblyDescription("Decathlon")> 
-<Assembly: AssemblyCompany("Chris Watson")> 
-<Assembly: AssemblyProduct("Decathlon")> 
-<Assembly: AssemblyCopyright("Copyright © Chris Watson 2016")> 
-<Assembly: AssemblyTrademark("")> 
-
-<Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("3db5780f-2452-485d-b7d9-49ff527b10f0")> 
@@ -30,6 +24,3 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
-
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
