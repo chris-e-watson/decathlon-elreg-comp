@@ -56,53 +56,6 @@
         </Issue>
        </Message>
       </Messages>
-      <Namespaces>
-       <Namespace Name="Decathlon">
-        <Types>
-         <Type Name="InputFileParser">
-          <Members>
-           <Member Name="#.cctor()">
-            <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'InputFileParser'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="OutputDataItem">
-          <Members>
-           <Member Name="#ToFileFormatString(System.String)">
-            <Messages>
-             <Message Id="System.String.StartsWith(System.String)" TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'String.StartsWith(String)'</Item>
-               <Item>'OutputDataItem.ToFileFormatString(String)'</Item>
-               <Item>'String.StartsWith(String, StringComparison)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="PointsCalculatorConfigurationRepository">
-          <Members>
-           <Member Name="#.cctor()">
-            <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Created="2016-07-28 16:47:53Z">
-              <Issue>
-               <Item>'PointsCalculatorConfigurationRepository'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-        </Types>
-       </Namespace>
-      </Namespaces>
      </Module>
     </Modules>
    </Target>
@@ -111,14 +64,8 @@
    <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
     <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
    </Rule>
-   <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
-    <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
-   </Rule>
    <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
     <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
-   </Rule>
-   <Rule TypeName="SpecifyStringComparison" Category="Microsoft.Globalization" CheckId="CA1307">
-    <Resolution Name="Default">Because the behavior of {0} could vary based on the current user's locale settings, replace this call in {1} with a call to {2}. If the result of {2} will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.</Resolution>
    </Rule>
   </Rules>
  </FxCopReport>

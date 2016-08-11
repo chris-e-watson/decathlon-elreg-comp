@@ -1337,16 +1337,6 @@ Friend Class InputFileParser
 
     #End Region
 
-    #Region "Static Constructors"
-
-    ''' <summary>
-    ''' Initialises the <see cref="InputFileParser"/> class.
-    ''' </summary>
-    Shared Sub New()
-    End Sub
-
-    #End Region
-
     #Region "Internal Constructors"
 
     ''' <summary>
@@ -3476,17 +3466,6 @@ Friend Class PointsCalculatorConfigurationRepository
 
     End Function
     
-    #End Region
-
-    #Region "Static Constructors"
-
-    ''' <summary>
-    ''' Initialises the <see cref="PointsCalculatorConfigurationRepository"/>
-    ''' class.
-    ''' </summary>
-    Shared Sub New()
-    End Sub
-
     #End Region
 
     #Region "Internal Constructors"
