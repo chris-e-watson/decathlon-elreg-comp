@@ -115,6 +115,7 @@ Friend Enum EventType
     ''' The pole vault event.
     ''' </summary>
     PoleVault                    = 10
+    
 End Enum
 
 
