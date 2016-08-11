@@ -36,7 +36,7 @@ Imports System.Runtime.InteropServices
 
 '
 ' The assembly attributes below are those typically specified in
-' AssemblyInfo.vb, but as we must submit only the single file, there are defined
+' AssemblyInfo.vb, but as we must submit only the single file, they are defined
 ' here.
 '
 
