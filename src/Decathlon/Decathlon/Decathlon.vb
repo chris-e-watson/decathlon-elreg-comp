@@ -1165,7 +1165,7 @@ Friend Class InputFileParser
         '
         Dim entrantName As String = Nothing
         If items.Length >= 1 Then
-            entrantName = items(0).ToUpper()
+            entrantName = items(0).ToUpper(CultureInfo.InvariantCulture)
         End If
 
 
