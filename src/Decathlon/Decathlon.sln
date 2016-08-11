@@ -19,6 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FxCop", "FxCop", "{B76D68AF
 		..\..\test\FxCop\Decathlon.FxCop = ..\..\test\FxCop\Decathlon.FxCop
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{C2C6AC8E-D0B4-4C7C-B529-FA35F087FD1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specification", "Specification", "{F634A07C-73D2-41DC-80B1-3F1D44B077DE}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\doc\spec\comp-rules.htm = ..\..\doc\spec\comp-rules.htm
+		..\..\doc\spec\comp-terms.htm = ..\..\doc\spec\comp-terms.htm
+		..\..\doc\spec\readme.txt = ..\..\doc\spec\readme.txt
+		..\..\doc\spec\reg-article-1.pdf = ..\..\doc\spec\reg-article-1.pdf
+		..\..\doc\spec\reg-article-2.pdf = ..\..\doc\spec\reg-article-2.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Decathlon.vsmdi
@@ -58,5 +69,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B76D68AF-C966-46C2-BDEE-B4C514D0F930} = {354D00F8-CEA2-4EF6-9E4A-85EE1B7474D9}
+		{F634A07C-73D2-41DC-80B1-3F1D44B077DE} = {C2C6AC8E-D0B4-4C7C-B529-FA35F087FD1A}
 	EndGlobalSection
 EndGlobal

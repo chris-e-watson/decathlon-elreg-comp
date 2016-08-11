@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>The Register: IBM Developer Competition 2016</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link rel="stylesheet" href="comp-rules_files/styles.css">
+    <script src="comp-rules_files/jquery-1.js"></script>
+    <script>
+        var menu_links_disabled=0;
+        var smoothScrollRunning=0;
+        var pages = {'#one':1,'#two':2,'#three':3,'#four':4,'#five':5,'#six':6,'#seven':7};
+        var current_page = location.hash!='' ? pages[location.hash] : 1;
+        $(function() {
+            var isIE = document.all && document.addEventListener && !window.atob;
+            if (isIE) $('body').addClass('old');
+            var isIE9_or_10 = document.all && document.addEventListener;
+            var isIE11 = '-ms-scroll-limit' in document.documentElement.style && '-ms-ime-align' in document.documentElement.style;
+            var isIE9 = isIE9_or_10 && !window.requestAnimationFrame;
+
+            if (isIE9_or_10 || isIE11) {
+                ie_height();
+                $(window).resize(function() { ie_height(); });
+                function ie_height() {
+                    var view_port = $(window).height();
+                    $('section, footer#seven').each(function() {
+                        ie_set_height(view_port, $(this));
+                    });
+                }
+            }
+
+            // Form submission is not supported on IE9
+            if (isIE9)
+                $('#sbmtfrm > div:not(.feedback)').on('click', function() {
+                    // show message once; prevent manual tampering with 'disabled' attribute
+                    if ($('#sbmtfrm input').attr('disabled') == 'disabled') return false;
+                    $('#sbmtfrm input').attr('disabled', 'true');
+                    $("#sbmtfrm .feedback").html("<h4>Unsupported Browser!</h4><p>Please use a more recent browser to submit your application or <a href=mailto:ibm2016comp@theregister.com>email us</a> your answers.</p>");
+                    ie_set_height($(window).height(), $('#six'));
+                    $("#sbmtfrm .feedback").addClass('unsupported');
+                    $('#sbmtfrm > div:not(.feedback)').animate({
+                        opacity: 0.3
+                    }, 400);
+                    $('html, body').animate({
+                        scrollTop: $("#sbmtfrm .feedback").offset().top - $(window).height()/2 + $("#sbmtfrm .feedback").outerHeight(true)
+                    }, 500);
+                    return false;
+                });
+
+            // Checks if there is a hash on the URL on first access
+            var initial_hash = location.hash;
+            if (location.hash && !isIE9) {
+                $(document).scrollTop(0);
+                location.hash = '' ;
+                current_page = 1; // see smoothScroll
+                smoothScroll(initial_hash);
+            }
+
+            // use smoothScroll for all links to other pages
+            if (!isIE9) $('.content a[href^="#"]').on('click', function(e){
+                e.preventDefault();
+                smoothScroll($(this).attr('href'));
+            })
+
+            $('#mob_menu').on('click', function() {
+                if (menu_links_disabled || smoothScrollRunning) return false;
+                mob_menu_slide_toggle();
+            });
+
+            $('nav a').on('click', function() {
+                if ($('#mob_menu').css('display')!='none') {
+                    mob_menu_slide_toggle();
+                }
+                var destination=$(this).attr('href');
+                if (!isIE9) {
+                    smoothScroll(destination);
+                    return false;
+                }
+            });
+
+            var iScrollPos = 0;
+            // HTML4-only browsers do not support pushState
+            if (!isIE9)
+                $(window).scroll(function () {
+                    var iCurScrollPos = $(this).scrollTop();
+                    var updateTo;
+                    $.each(pages, function(index, value){
+                      // use a pixel to trigger the "entrance" in the page
+                      if ( (iCurScrollPos+1) >= $(""+index+"").offset().top)
+                        updateTo = index;
+                    })
+                    current_page = updateTo;
+                    if (window.location.hash!=updateTo)
+                      window.history.pushState(null, null, updateTo);
+                    else if(typeof updateTo == 'undefined')
+                      window.history.pushState(null, null, updateTo);
+
+                    if (iCurScrollPos > iScrollPos) {
+                        // Scrolling Down
+                    } else {
+                        // Scrolling Up
+                    }
+                    iScrollPos = iCurScrollPos;
+                });
+
+
+        });
+        function smoothScroll(element_id, callback) {
+            if (smoothScrollRunning) return false;
+            if (current_page == pages[element_id]) return false;
+            smoothScrollRunning=1;
+
+            // calculate a good animation time for an element, depending on
+            // how "far" it is. Animations always take between 2 and 4s.
+            anim_time = $(element_id).offset().top / $(window).height() < 2 ? 2
+                      : $(element_id).offset().top / $(window).height() > 4 ? 4
+                      : $(element_id).offset().top / $(window).height()
+
+            $('html, body').animate({
+                scrollTop: $(element_id).offset().top
+            }, anim_time * 1000, function(){
+                location.hash = element_id;
+                current_page = pages[element_id];
+                smoothScrollRunning=0;
+                if (jQuery.isFunction(callback)) callback();
+            });
+        }
+        function ie_set_height(view_port, i) {
+            i.css('height', 'auto');
+            var content_height = i.height();
+            if (content_height > view_port) i.css('height', content_height);
+            else                            i.css('height', '100%');
+        }
+        function mob_menu_slide_toggle(){
+          menu_links_disabled=1;
+          $('nav ul').slideToggle(700, function(){
+            menu_links_disabled=0;
+            if ($(this).attr('style')=='display: none;') $(this).removeAttr('style');
+          })
+        }
+
+    </script>
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body>
+    <header>
+        <a href="http://www.theregister.co.uk/" id="logo">
+            <img alt="The Register®" src="comp-rules_files/masthead300.png" height="23" width="150">
+        </a>
+        <nav>
+            <div id="mob_menu">
+                <img alt="nav" src="comp-rules_files/mob_nav.png" height="30" width="30">
+            </div>
+            <ul>
+                <li>
+                    <a href="#one">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#two">
+                        About Cloudant
+                    </a>
+                </li>
+                <li>
+                    <a href="#three">
+                        Prize
+                    </a>
+                </li>
+                <li>
+                    <a href="#four">
+                        Instructions
+                    </a>
+                </li>
+                <li>
+                    <a href="#five">
+                        Question
+                    </a>
+                </li>
+                <li>
+                    <a href="#six">
+                        Enter
+                    </a>
+                </li>
+                <li>
+                    <a href="#seven">
+                        Ts&amp;Cs
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="one">
+        <div class="content">
+            <h2>
+                <span class="col_b">IBM</span> / <span class="col_r">The Register</span>
+            </h2>
+            <h3>
+                Programming Competition 2016
+            </h3>
+            <h4>
+                <span class="col_g">STARTS:</span> 28th June 2016
+            </h4>
+            <h4>
+                <span class="col_g">ENDS:</span> 28th August 2016
+            </h4>
+            <p>Welcome to The Register's IBM Cloudant programming competition 2016</p>
+            <p>Please take a look at the <a href="#four">instructions</a> to get started.</p>
+            <img class="cloudant_logo" alt="IBM Cloudant logo" src="comp-rules_files/ibm_cloudant.png">
+        </div>
+    </section>
+
+    <section id="two">
+        <div class="content">
+            <h2>
+                So what is Cloudant?
+            </h2>
+            <div class="text">
+                <h3>
+                    New opportunities equal new data challenges
+                </h3>
+
+                <p>
+                    Immediate and continuous access to data is no longer a luxury;
+                    it is a requirement. Today's applications are expected to run
+                    24x7 and manage a variety of structured and unstructured data
+                    accessed by massive global networks of users, devices, sensors,
+                    vehicles and Internet-enabled goods. The need for scalable and
+                    globally accessible data has led to the rise of NoSQL
+                    technology as a practical alternative to relational databases.
+                    However, as the need for data access continually expands to the
+                    network edge, most databases are still grounded in a central
+                    data center.
+                </p>
+
+                <p>
+                    IT budget killers such as moving databases to more powerful
+                    hardware, or bigger clusters, and constantly re-designing them
+                    in order to perform adequately, can be extremely costly and
+                    time consuming. Important planning considerations regarding
+                    the cost, scalability, and availability of your data layer now, will
+                    likely have a significant impact on the ROI of your data layer.
+                </p>
+
+                <a target="_blank" rel="nofollow" href="http://reg.cx/2mde">
+                    More info
+                </a>
+
+                <a target="_blank" rel="nofollow" href="http://reg.cx/2mek">
+                    About Cloudant
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="three">
+        <div class="content">
+            <h2>
+                Win an Alienware gaming computer and Oculus rift goggles!
+            </h2>
+            <img class="prize_img" src="comp-rules_files/prize.png" alt="Win an Alienware gaming computer and Oculus rift goggles!">
+            <div class="text">
+                <p>
+                    The lucky winner, judged by our expert,
+                    will win an Alienware gaming computer and Oculus rift goggles!
+                </p>
+
+                <p>
+                    What are you waiting for?
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="four">
+        <div class="content">
+            <div class="text">
+                <h2 class="">
+                    <span class="col_b">Competition</span> Instructions
+                </h2>
+
+                <h3>
+                    Programming languages
+                </h3>
+
+                <p>Your entry may be submitted in any of the following languages:</p>
+                <p>Java, VB, Swift, C'Dent, Node, PHP, Python</p>
+
+                <h3>
+                    Class and file names
+                </h3>
+
+                <p>Entries must be submitted only in one of the languages specified.</p>
+ 
+                <p>The entry for a question must be a single zipped text
+ file containing the source code of the program; you may not include 
+binary files such as executables or Java archives.</p>
+ 
+                <p>As the question relates to Decathlon scoring, the main class name (if the language you are using uses one) must be Decathlon.</p>
+ 
+                <p>You must submit the solution for each question as a 
+single source file called Decathlon.&lt;e&gt;, where &lt;e&gt; must be 
+replaced with the appropriate extension for the language used.</p>
+ 
+                <h3>
+                    Input and output files
+                </h3>
+
+                <p>Your program must read its input from a file called 
+Decathlon.dat and send its output to a file called Decathlon.out. The 
+main class must be named as noted above in order that the compiled 
+executable can be run in the manner described above.</p>
+ 
+                <p>Your program must produce no screen output. If, for 
+example, your program displays debugging or information messages on the 
+screen it will be deemed to have failed regardless of the correctness of
+ the content of the output file. By all means use this type of output 
+for debugging during development, but be sure to remove it before you 
+submit the solutions for judging.</p>
+ 
+                <p>Similarly the output file must be formatted precisely
+ as per the specification in the question with regard to content, 
+spacing and capitalisation. Again, extraneous output will cause an 
+automatic failure. So if, for instance, the question asks for two blank 
+lines between items and your program only leaves one, it will be classed
+ as a failure. Similarly, if the question asks (say) for a certain 
+number of space characters between items on a line, or for a column of 
+numbers to be right-aligned with the rightmost character in a particular
+ column, you must conform to these requirements or your solution will 
+fail.</p>
+ 
+                <p>You may assume that the data lines within the input 
+file (i.e. the items that your program is expected to process) are 
+formatted correctly and are within the bounds specified in the question.
+ You should, however, be prepared for the possibility that there may be 
+extra characters and/or lines after the marker that denotes the end of 
+the input file.</p>
+ 
+                <h3>
+                    Time limit
+                </h3>
+
+                <p>The time limit for any submitted program to run to 
+completion on the judges' computer is 60 seconds. All questions have 
+been devised such that they are able to run to completion within this 
+time limit so long as a sufficiently efficient algorithm is used.</p>
+ 
+                <h3>
+                    Multiple submissions
+                </h3>
+
+                <p>If you have submitted your entry and you wish to 
+submit another, that's absolutely fine (for instance, you may have done 
+further testing after submission and found a bug). The judges will, 
+however, mark only the last entry you submit.</p>
+
+                <h3>
+                    Entries and judging
+                </h3>
+
+                <p>You should submit your solution via this web page. 
+The judge will run your programme using test data (which is not 
+published). No feedback will be given prior to the end of the 
+competition.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="five">
+        <div class="content">
+            <h2>
+                The Question - Decathlon
+            </h2>
+            <div class="text">
+
+                <p>The Decathlon is a sporting competition comprising 
+ten events which is usually run over the course of two days. The events 
+are of three types:</p>
+
+                <ul>
+                    <li>
+                        Running: 100m, 110m hurdles, 400m and 1,500m.
+                    </li>
+                    <li>
+                        Throwing: Discus, javelin and shot put.
+                    </li>
+                    <li>
+                        Jumping: Long jump, high jump and pole vault.
+                    </li>
+                </ul>
+
+                <p>
+                    When calculating the scores for competitors:
+                </p>
+
+                <ul>
+                    <li>
+                        Running events are measured in seconds (the time taken to run from start to finish).
+                    </li>
+                    <li>
+                        Throwing events are measured in metres (the distance the piece of equipment is thrown).
+                    </li>
+                    <li>
+                        Jumping events are measured in centimetres (the height or distance jumped/vaulted).
+                    </li>
+                </ul>
+
+                <p>
+                    The points formulae are as follows, and are taken 
+from the scoring template of the International Association of Athletics 
+Federations (IAAF). Note that:
+                </p>
+
+                <ul>
+                    <li>
+                        <b>P</b> is the number of points scored for the event in question by a competitor.
+                    </li>
+                    <li>
+                        <b>T</b> is the time in seconds the competitor took to run a race.
+                    </li>
+                    <li>
+                        <b>M</b> is the measurement in centimetres for jumps.
+                    </li>
+                    <li>
+                        <b>D</b> is the distance in metres achieved in a throwing event.
+                    </li><li>
+                        <b>T</b> is the time in seconds for running events.
+                    </li>
+                    <li>
+                        <b>A</b>, <b>B</b> and <b>C</b> are taken from the table below.
+                        <div class="table_wrap">
+                            <table>
+                                <tbody><tr>
+                                    <td>Event</td>
+                                    <td>Abbreviation</td>
+                                    <td>A</td>
+                                    <td>B</td>
+                                    <td>C</td>
+                                </tr>
+                                <tr>
+                                    <td>100m</td>
+                                    <td>100m</td>
+                                    <td>25.4347</td>
+                                    <td>18</td>
+                                    <td>1.81</td>
+                                </tr>
+                                <tr>
+                                    <td>110m hurdles</td>
+                                    <td>110m</td>
+                                    <td>5.74352</td>
+                                    <td>28.5</td>
+                                    <td>1.92</td>
+                                </tr>
+                                <tr>
+                                    <td>400m</td>
+                                    <td>400m</td>
+                                    <td>1.53775</td>
+                                    <td>82</td>
+                                    <td>1.81</td>
+                                </tr>
+                                <tr>
+                                    <td>1500m</td>
+                                    <td>1500m</td>
+                                    <td>0.03768</td>
+                                    <td>480</td>
+                                    <td>1.85</td>
+                                </tr>
+                                <tr>
+                                    <td>Discus</td>
+                                    <td>Discus</td>
+                                    <td>12.91</td>
+                                    <td>4</td>
+                                    <td>1.1</td>
+                                </tr>
+                                <tr>
+                                    <td>Javelin</td>
+                                    <td>Javelin</td>
+                                    <td>10.14</td>
+                                    <td>7</td>
+                                    <td>1.08</td>
+                                </tr>
+                                <tr>
+                                    <td>Shot put</td>
+                                    <td>Shot</td>
+                                    <td>51.39</td>
+                                    <td>1.5</td>
+                                    <td>1.05</td>
+                                </tr>
+                                <tr>
+                                    <td>Long jump</td>
+                                    <td>Long</td>
+                                    <td>0.14354</td>
+                                    <td>220</td>
+                                    <td>1.4</td>
+                                </tr>
+                                <tr>
+                                    <td>High jump</td>
+                                    <td>High</td>
+                                    <td>0.8465</td>
+                                    <td>75</td>
+                                    <td>1.42</td>
+                                </tr>
+                                <tr>
+                                    <td>Pole vault</td>
+                                    <td>Pole</td>
+                                    <td>0.2797</td>
+                                    <td>100</td>
+                                    <td>1.35</td>
+                                </tr>
+
+                            </tbody></table>
+                        </div>
+                    </li>
+                    <li>
+                        For running events: P = A(B-T)<span class="small_top">C</span>
+                    </li>
+                    <li>
+                        For throwing events: P = A(D-B)<span class="small_top">C</span>
+                    </li>
+                    <li>
+                        For jumping events: P = A(M-B)<span class="small_top">C</span>
+                    </li>
+                </ul>
+
+                <p>
+                    In all cases P should be rounded down if it is not already an integer.
+                    So for instance 49.99 would round down to 49.
+                </p>
+
+                <p>
+                    For example, a 100m time of 10.2 seconds would be calculated as
+                    25.4347 x (18-10.2)<span class="small_top">1.81</span>, which works
+                    out to 1047.412736, which in turn rounds down to 1047 points.
+                </p>
+
+                <h4>
+                    Input data
+                </h4>
+
+                <p>
+                    You will be presented with several data sets.
+                    Each data set will comprise a number of lines, with each line
+                    representing a competitor's score for an event and of the form:
+                </p>
+                <ul>
+                    <li>
+                        The competitor's name, which will be a sequence of letters
+                        and may be hyphenated.
+                    </li>
+                    <li>
+                        The abbreviation for the event (as per the previous table).
+                    </li>
+                    <li>
+                        The time or distance achieved by the competitor in the event.
+                    </li>
+                </ul>
+
+                <p>
+                    The items on each line will be separated by one or more whitespace
+                    characters (tabs and/or spaces) and may have trailing whitespace.
+                    Names and event abbreviations must be treated as case-insensitive.
+                </p>
+
+                <p>
+                    Each data set will be followed by a line starting with a # mark and
+                    followed by zero or more whitespace characters. The end of the input
+                    data file will be signified by a line starting with two # marks and
+                    followed by zero or more whitespace characters. Data sets do not
+                    relate to each other (that is, scores do not carry over from one data
+                    set to the next).
+                </p>
+
+                <p>
+                    You may assume that there will be no more than one entry in each data
+                    set for a given event for a given competitor, and that there will not
+                    be more than one competitor with the same name. You may also assume
+                    that there is at least one line in each data set, though data sets
+                    may not represent all ten decathlon events and may have different
+                    combinations of events for each competitor.
+                </p>
+
+                <h4>
+                    Output data
+                </h4>
+                <p>
+                    Your program must calculate the total scores and 
+output a league table showing the competitors and their overall scores, 
+in descending order of score. You may assume that there will not be any 
+competitors with the same total score. Names must start in the first 
+column of the output and be capitalised, and scores must be separated 
+from names by the appropriate number of space characters to enable them 
+to be right-justified with the rightmost digit of the score in the 25<span class="small_top">th</span> column.
+                </p>
+
+                <p>
+                    The output for data sets must be separated by a 
+single blank line, though there should be no blank line after the output
+ for the last data set.
+                </p>
+
+                <h4>
+                    Sample input
+                </h4>
+
+                <pre><code>Carter 100m 10.64
+Bush 100m 10.20
+Reagan 100m 10.3
+#
+Reagan Javelin 60.4
+Carter Javelin 64.3
+REAGAN Long 690
+Bush 400m 43.2
+#
+##</code></pre>
+
+                <h4>
+                    Sample output
+                </h4>
+
+                <pre><code>BUSH                 1047
+REAGAN               1023
+CARTER                942
+
+REAGAN               1534
+BUSH                 1155
+CARTER                803
+</code></pre>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="six">
+        <div class="content">
+            <header>
+                <h2>
+                    Enter the competition here
+                </h2>
+                Please submit your entry below. Our terms &amp; conditions are available <a href="#seven">here</a>.
+            </header>
+            <form class="text" id="sbmtfrm" action="http://forms.theregister.co.uk/misc/ibm2016/">
+                <div class="left_col">
+                    <div class="row">
+                        <label for="q1_code">Code (a ZIP file):</label>
+                        <input id="q1_code" name="q1_code" size="34" type="file">
+                    </div>
+                </div>
+                <div class="right_col">
+                    <div class="row">
+                        <label for="first_name">First name</label>
+                        <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAwZJREFUWAntVktoE2EQntlNugkltYoKgtDYrMdasQpFPOjBS7WmisWDoOBFEBE8Ciql2IsXEREEwYPWi4U+RMV6aY+tGkWK0NS0RjQ+KsVIbdrS7P5+G7qb3WRTY00EsT8k/7x2vsm8skQrZyUD/3sG2EjAI1Wtmk+LdhK8n0jUCqKMvDzJ4Q9wPuBRpHPNY2MJHgju9iXp/VMhqK48gAW8Mk0q5KuXW6o9pwF+rIBZOcWVOmuVHiA0uqEw8zwJMQJdUjDXg17nZkfM9yGfd9XlCJF6nxCi2SZuRAAiYBNkSCZ+ICnyyXA0+tEQiNZWue/ZyzPI1GVBwgg6e3yeE4dGR6eygsJUf2jL+pn0zBfLQlDA6czQML9SPHS4KRq1fhV3dWnQXOmtUf1o0A7LQQmIvAAkpptNsZgFbseolFdd/6ElLzmmZHZhpLtGNQL85cGvl3ON8gLQmd/lGpn83onI956aUBL8alOGewOKZGN/j5RyzSVd7MiVmXyPqoYAZQc3Vcu+8zIAgLMAun0wFhu3e0X3cu8m9ZpdZtDo7Ofom4VcuSsvhBf+t9t13BMMPUR3NzmExFMYvfNM8mNMTpKkVANpejsmYKfdLkP7vWuXOwWYtlheCTJOmcZZoq+yItgb0Jh03WiyF/joGX0Jv/JKIElSR/j40Yvc1mYHGwTmYG9wcyey8ATlqDJj4NmF/u6gWlQJUukZr/mceTsCwPbrD0+MXcDt2tYt8TfDfbXqKU2jTtMBDBuwJU12ydvNylECZqmjELjpOTwRu8tMcZP/09ueAU1eE4jQ22Jc8jBmP7ho+QmzUNQiwjPGIsLeyB4rAHTkt+ZIJJVVLUExJazd4/fWLXcKDARHCZaALJsKGeBpY5UKpip0871ikDAFWy27ufQtPOf632HZLBIpLeVzyJimjRIM4XMEnVyBu9VhUAwjxIFizAwblykYkqpp4w10tfHi8XcPXskqSGmX9sQH5xQP70IQV9GI49jtLoGWMjZOAOeOt0Leti/++nMpPa/4+jcz8BPw4Pa6no/fzAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" id="first_name" name="first_name" placeholder="First Name" size="34" type="text">
+                    </div>
+                    <div class="row">
+                        <label for="last_name">Last name</label>
+                        <input id="last_name" name="last_name" placeholder="Last name" size="34" type="text">
+                    </div>
+                    <div class="row">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" placeholder="Email" size="34" type="text">
+                    </div>
+                    <div class="row">
+                        <label for="country">Country</label>
+                        <input id="country" name="country" placeholder="Country" size="34" type="text">
+                    </div>
+                </div>
+                <div class="button">
+                    <input class="download" value="Submit Entry!" type="submit">
+                    <p>
+                        <small>
+                            Problems sending? <a href="mailto:ibm2016comp@theregister.com">Get in touch</a>
+                        </small>
+                    </p>
+                </div>
+                <div class="feedback"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer id="seven">
+        <div class="content">
+            <h2>
+                Terms and conditions
+            </h2>
+            <div class="text">
+                By entering this competition you are agreeing to our full terms and
+                conditions included here.
+            </div>
+            <div class="button">
+                <a href="http://www.theregister.co.uk/Design/page/hub/ibm2016/terms.html" class="download">
+                    Read terms and conditions
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="comp-rules_files/enter.js"></script>
+
+
+</body></html>
