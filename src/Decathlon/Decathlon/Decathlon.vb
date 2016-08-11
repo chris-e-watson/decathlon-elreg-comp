@@ -3427,10 +3427,6 @@ Friend Class PointsCalculatorConfigurationRepository
                        CDec(0.2797),
                        CDec(100),
                        CDec(1.35)))
-        
-        ' TODO: Validate that each event has only one configuration?
-        '       Validate that each event has a configuration?
-        '       Would a dictionary help here?
 
     End Sub
     
