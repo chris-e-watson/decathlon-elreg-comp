@@ -1114,62 +1114,8 @@ Friend Class InputFileParser
 
     #End Region
 
-    #Region "Private Methods"
+    #Region "Private Static Methods"
 
-    ''' <summary>
-    ''' Parses an <see cref="InputFile" /> from the file contents.
-    ''' </summary>
-    ''' <seealso cref="_fileContents" />
-    ''' <seealso cref="InputFile" />
-    Private Sub ParseFileContents()
-
-        ' Create an initial data set in the input file.
-        '
-        Dim dataSet As InputDataSet = New InputDataSet()
-
-
-        ' Iterate over each line from the file.
-        '
-        For Each line As String In Me._fileContents
-
-            ' If the line starts with "##", this indicates the end of the file.
-            ' Stop processing.
-            '
-            If Not line Is Nothing AndAlso 
-                line.StartsWith("##", StringComparison.OrdinalIgnoreCase) Then
-                
-                Exit Sub
-
-            End If
-
-            
-            ' If the line starts with "#", this indicates the end of the data
-            ' set. Add the completed data set to the InputFile. Start a new data
-            ' set. Move to the next line.
-            '
-            If Not line Is Nothing AndAlso 
-                line.StartsWith("#", StringComparison.OrdinalIgnoreCase) Then
-
-                Me.InputFile.DataSets.Add(dataSet)
-                dataSet = New InputDataSet()
-                Continue For
-
-            End If
-
-
-            ' Parse entrant name, event type and score from this line.
-            '
-            Dim inputDataItem As InputDataItem = ParseFileLine(line)
-
-            ' Append to current data set.
-            '
-            dataSet.Items.Add(inputDataItem)
-
-        Next
-
-    End Sub
-
-    
     ''' <summary>
     ''' Parses a single line from an input file in to a
     ''' <see cref="InputDataItem" />.
@@ -1187,7 +1133,9 @@ Friend Class InputFileParser
     ''' <exception cref="ArgumentNullException">
     ''' <paramref name="input" /> was <c>null</c>.
     ''' </exception>
-    Private Function ParseFileLine(ByVal input As String) As InputDataItem
+    Private Shared Function ParseFileLine(ByVal input As String) _
+        As InputDataItem
+
 
         '
         ' Parameter validation.
@@ -1248,6 +1196,63 @@ Friend Class InputFileParser
         Return inputDataItem
 
     End Function
+
+    #End Region
+
+    #Region "Private Methods"
+
+    ''' <summary>
+    ''' Parses an <see cref="InputFile" /> from the file contents.
+    ''' </summary>
+    ''' <seealso cref="_fileContents" />
+    ''' <seealso cref="InputFile" />
+    Private Sub ParseFileContents()
+
+        ' Create an initial data set in the input file.
+        '
+        Dim dataSet As InputDataSet = New InputDataSet()
+
+
+        ' Iterate over each line from the file.
+        '
+        For Each line As String In Me._fileContents
+
+            ' If the line starts with "##", this indicates the end of the file.
+            ' Stop processing.
+            '
+            If Not line Is Nothing AndAlso 
+                line.StartsWith("##", StringComparison.OrdinalIgnoreCase) Then
+                
+                Exit Sub
+
+            End If
+
+            
+            ' If the line starts with "#", this indicates the end of the data
+            ' set. Add the completed data set to the InputFile. Start a new data
+            ' set. Move to the next line.
+            '
+            If Not line Is Nothing AndAlso 
+                line.StartsWith("#", StringComparison.OrdinalIgnoreCase) Then
+
+                Me.InputFile.DataSets.Add(dataSet)
+                dataSet = New InputDataSet()
+                Continue For
+
+            End If
+
+
+            ' Parse entrant name, event type and score from this line.
+            '
+            Dim inputDataItem As InputDataItem = ParseFileLine(line)
+
+            ' Append to current data set.
+            '
+            dataSet.Items.Add(inputDataItem)
+
+        Next
+
+    End Sub
 
 
     ''' <summary>
