@@ -3184,6 +3184,88 @@ Friend Class PointsCalculatorConfiguration
 
     #End Region
 
+    #Region "Public Static Operators"
+
+    ''' <summary>
+    ''' Determines whether two <see cref="PointsCalculatorConfiguration" />
+    ''' instances are not equal.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The first <see cref="PointsCalculatorConfiguration" /> instance to
+    ''' compare.
+    ''' </param>
+    ''' <param name="b">
+    ''' The second <see cref="PointsCalculatorConfiguration" /> instance to
+    ''' compare.
+    ''' </param>
+    ''' <returns>
+    ''' <c>true</c> if the specified
+    ''' <see cref="PointsCalculatorConfiguration" />, <paramref name="a" />, is
+    ''' not equal to the specified
+    ''' <see cref="PointsCalculatorConfiguration" />, <paramref name="b" />;
+    ''' otherwise, <c>false</c>.
+    ''' </returns>
+    Public Shared Operator <> (ByVal a As PointsCalculatorConfiguration, _
+                               ByVal b As PointsCalculatorConfiguration) _
+        As Boolean
+
+
+        Return Not (a = b)
+
+    End Operator
+
+
+    ''' <summary>
+    ''' Determines whether two <see cref="PointsCalculatorConfiguration" />
+    ''' instances are equal.
+    ''' </summary>
+    ''' <param name="a">
+    ''' The first <see cref="PointsCalculatorConfiguration" /> instance to
+    ''' compare.
+    ''' </param>
+    ''' <param name="b">
+    ''' The second <see cref="PointsCalculatorConfiguration" /> instance to
+    ''' compare.
+    ''' </param>
+    ''' <returns>
+    ''' <c>true</c> if the specified
+    ''' <see cref="PointsCalculatorConfiguration" />, <paramref name="a" />, is
+    ''' equal to the specified
+    ''' <see cref="PointsCalculatorConfiguration" />, <paramref name="b" />;
+    ''' otherwise, <c>false</c>.
+    ''' </returns>
+    Public Shared Operator = (ByVal a As PointsCalculatorConfiguration, _
+                              ByVal b As PointsCalculatorConfiguration) _
+        As Boolean
+
+        
+        ' If both are null, or both are same instance, return true.
+        '
+        If Object.ReferenceEquals(a, b) Then
+
+            Return True
+
+        End If
+
+
+        ' If one is null, but not both, return false.
+        '
+        If DirectCast(a, Object) Is Nothing Or _
+           DirectCast(b, Object) Is Nothing Then
+
+            Return False
+
+        End If
+
+
+        ' Compare a and b via Object.Equals(Object).
+        '
+        Return a.Equals(b)
+
+    End Operator
+
+    #End Region
+
     #Region "Internal Constructors"
 
     ''' <summary>
