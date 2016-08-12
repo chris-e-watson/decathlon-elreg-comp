@@ -107,6 +107,32 @@ Public Class OutputDataItemTest
     End Sub
 
 
+    ''' <summary>
+    ''' A test to verify that the specified points length will accept its
+    ''' maximum limit, which is 23: 1 + 1 + 23 = 25.
+    ''' </summary>
+    <TestMethod()> _
+    Public Sub ToString_FileFormatStringHasMaximumNumericPointsLength_Formatted()
+        
+        ' Arrange.
+        '
+        Dim target As IFormattable = New OutputDataItem("ENTRANT-NAME", 1234)
+        Dim format As String = "F23" ' Length cannot exceed 23: 1 + 1 + 23 = 25.
+        Dim formatProvider As IFormatProvider = CultureInfo.InvariantCulture
+        Dim expected As String = "E                    1234"
+        
+        ' Act.
+        '
+        Dim actual As String
+        actual = target.ToString(format, formatProvider)
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
     <TestMethod()> _
     <ExpectedException(GetType(ArgumentException))>
     Public Sub ToString_FileFormatStringHasNonNumericPointsLength_ThrowsArgumentException()
@@ -115,6 +141,32 @@ Public Class OutputDataItemTest
         '
         Dim target As IFormattable = New OutputDataItem("ENTRANT-NAME", 1234)
         Dim format As String = "FX" ' Supposed to be "F0", e.g. "F4".
+        Dim formatProvider As IFormatProvider = CultureInfo.InvariantCulture
+        
+        ' Act.
+        '
+        Dim actual As String
+        actual = target.ToString(format, formatProvider)
+
+        ' Assert.
+        '
+        ' See ExpectedException attribute.
+
+    End Sub
+
+    
+    ''' <summary>
+    ''' A test to verify that the specified points length cannot exceed its
+    ''' maximum limit, which is 23: 1 + 1 + 23 = 25.
+    ''' </summary>
+    <TestMethod()> _
+    <ExpectedException(GetType(ArgumentOutOfRangeException))>
+    Public Sub ToString_FileFormatStringHasTooHighNumericPointsLength_ThrowsArgumentOutOfRangeException()
+        
+        ' Arrange.
+        '
+        Dim target As IFormattable = New OutputDataItem("ENTRANT-NAME", 1234)
+        Dim format As String = "F24" ' Length cannot exceed 23: 1 + 1 + 23 = 25.
         Dim formatProvider As IFormatProvider = CultureInfo.InvariantCulture
         
         ' Act.
