@@ -1769,6 +1769,9 @@ Friend Class OutputDataItem
     ''' integer.
     ''' </para>
     ''' </exception>
+    ''' <exception cref="System.ArgumentOutOfRangeException">
+    ''' The points width in <paramref name="format" /> was greater than 23.
+    ''' </exception>
     ''' <remarks>
     ''' The <paramref name="format" /> parameter should be F0 where F means
     ''' "file format" and 0 is the width of the string used to display the 
@@ -1784,6 +1787,26 @@ Friend Class OutputDataItem
     ''' 123    | F      | "123"
     ''' </remarks>
     Private Function ToFileFormatString(ByVal format As String) As String
+
+        '
+        ' Constant declaration.
+        '
+
+        ' Put a space between the entrant name and the points, even in the case
+        ' of a long name and a long points string.
+        '
+        Const space          As String  = " "
+        
+        ' The length of the returned string. This is the length of each line in
+        ' the output file format.
+        '
+        Const lineLength     As Integer = 25
+
+        ' The maximum permitted points width.
+        ' 23 = 25 (line length) - 1 (space) - 1 (entrant name).
+        '
+        Const maxPointsWidth As Integer = lineLength - 1 - 1
+
 
         '
         ' Parameter validation.
@@ -1813,21 +1836,30 @@ Friend Class OutputDataItem
                 " 'F0', where 0 is an integer.", "format")
         End If
 
+        ' The maximum supported points width is 23 (1 character for the entrant
+        ' name, 1 character for the space and 23 characters for the points).
+        ' This is a pretty weird value, but I have to limit it to avoid, for
+        ' example, "F25" causing an ArgumentOutOfRangeException in a call to
+        ' String.Substring() later. If a value greater than 23 is specified,
+        ' throw our own ArgumentOutOfRangeException.
+        '
+        If pointsWidth > maxPointsWidth Then
+            
+            Dim exMessageFormat As String = 
+                "The points width cannot be greater than {0}."
+
+            Dim message As String =
+                String.Format(CultureInfo.CurrentCulture, exMessageFormat, 
+                    maxPointsWidth)
+
+            Throw New ArgumentOutOfRangeException("format", format, message)
+
+        End If
+
 
         '
         ' Main work.
         '
-
-        ' Put a space between the entrant name and the points, even in the case
-        ' of a long name and a long points string.
-        '
-        Const space      As String  = " "
-        
-        ' The length of the returned string. This is the length of each line in
-        ' the output file format.
-        '
-        Const lineLength As Integer = 25
-
 
         ' If the specified points width is less than the actual points width,
         ' use the actual points width.
