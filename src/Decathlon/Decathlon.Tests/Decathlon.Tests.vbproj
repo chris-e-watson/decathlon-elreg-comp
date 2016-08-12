@@ -93,10 +93,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="test-data\london-2012\Decathlon.dat" />
+    <None Include="test-data\london-2012\Decathlon.out" />
     <None Include="test-data\sample\Decathlon.dat" />
   </ItemGroup>
   <ItemGroup>
     <None Include="test-data\sample\Decathlon.out" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="test-data\london-2012\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

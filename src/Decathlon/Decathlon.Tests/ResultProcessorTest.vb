@@ -114,6 +114,26 @@ Public Class ResultProcessorTest
 
 
     <TestMethod()> _
+    Public Sub Execute_London2012Input_ProducesLondon2012Output()
+
+        ' Arrange.
+        '
+        Dim target As ResultProcessor = New ResultProcessor()
+        Dim expected As String = CopyTestData("london-2012")
+
+        ' Act.
+        '
+        target.Execute()
+        Dim actual As String = File.ReadAllText("Decathlon.out")
+
+        ' Assert.
+        '
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+
+    <TestMethod()> _
     Public Sub Execute_SampleInput_ProducesSampleOutput()
 
         ' Arrange.
