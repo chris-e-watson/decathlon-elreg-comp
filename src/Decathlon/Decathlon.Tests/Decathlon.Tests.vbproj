@@ -84,12 +84,19 @@
     <Compile Include="PointsCalculatorConfigurationTest.vb" />
     <Compile Include="PointsCalculatorTest.vb" />
     <Compile Include="PointsCalculatorTest.WorldRecords.vb" />
+    <Compile Include="ResultProcessorTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Decathlon\Decathlon.vbproj">
       <Project>{A16991F9-35AB-4798-9A81-BD99D79B4D78}</Project>
       <Name>Decathlon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test-data\sample\Decathlon.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test-data\sample\Decathlon.out" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
