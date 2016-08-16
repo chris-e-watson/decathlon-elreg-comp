@@ -20,13 +20,15 @@
 '*   Framework 4.0 Client Profile) using Visual Studio 2010 Professional.      *
 '*                                                                             *
 '*   How to compile:                                                           *
-'*     From the command line, run "C:\path\vbc.exe Decathlon.vb" to output     *
-'*     "Decathlon.exe", e.g.                                                   *
-'*     "C:\Windows\Microsoft.NET\Framework\v4.0.30319\vbc.exe Decathlon.vb"    *
+'*     From the command line, with the current working directory set to that   *
+'*     which contains the Decathlon.vb source file, run                        *
+'*     "C:\path\vbc.exe Decathlon.vb" to output "Decathlon.exe",               *
+'*     e.g.                                                                    *
+'*     C:\Windows\Microsoft.NET\Framework\v4.0.30319\vbc.exe Decathlon.vb      *
 '*                                                                             *
 '*   How to run:                                                               *
 '*     Run the compiled Decathlon.exe. A Decathlon.dat file will be read from  *
-'*     the current working directory and processed. A Decathon.out file will   *
+'*     the current working directory and processed. A Decathlon.out file will  *
 '*     be written to the current working directory.                            *
 '*******************************************************************************
 
