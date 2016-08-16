@@ -2871,7 +2871,7 @@ Friend Class PointsCalculator
         Dim eventTypeGroup As EventTypeGroup =
             EventTypeHelper.GetEventTypeGroupFromEventType(Me._eventType)
 
-        Dim pointsCalculationEquation As PointsCalculationEquation
+        Dim pointsCalculationEquation As PointsCalculationEquation = Nothing
         If Not _pointsCalculationEquationEventTypeGroupMap.TryGetValue(
             eventTypeGroup, pointsCalculationEquation) Then
 
