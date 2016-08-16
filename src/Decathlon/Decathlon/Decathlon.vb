@@ -22,7 +22,7 @@
 '*   How to compile:                                                           *
 '*     From the command line, with the current working directory set to that   *
 '*     which contains the Decathlon.vb source file, run                        *
-'*     "C:\path\vbc.exe Decathlon.vb" to output "Decathlon.exe",               *
+'*     "C:\path\vbc.exe Decathlon.vb" to output "Decathlon.exe".               *
 '*     e.g.                                                                    *
 '*     C:\Windows\Microsoft.NET\Framework\v4.0.30319\vbc.exe Decathlon.vb      *
 '*                                                                             *
