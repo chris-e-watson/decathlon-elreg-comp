@@ -130,6 +130,18 @@ Public Class ResultProcessorTest
         '
         Assert.AreEqual(expected, actual)
 
+        ' Comment out above, and uncomment below to narrow down to a particular
+        ' line in the output file.
+        '
+        'Dim expecteds = expected.Split(New String() { Environment.NewLine }, 
+        '                               StringSplitOptions.None)
+        'Dim actuals   = actual.Split(New String() { Environment.NewLine }, 
+        '                             StringSplitOptions.None)
+
+        'For iExpected = 0 To expecteds.Length - 1
+        '    Assert.AreEqual(expecteds(iExpected), actuals(iExpected))
+        'Next
+
     End Sub
 
 
