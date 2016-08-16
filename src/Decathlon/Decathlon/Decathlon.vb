@@ -2877,7 +2877,7 @@ Friend Class PointsCalculator
 
             Dim format As String = 
                 "Couldn't determine a 'PointsCalculationEquation'. The map" _
-                & " did not contain the a value for the '{0}' event type group."
+                & " did not contain a value for the '{0}' event type group."
 
             Dim message As String =
                 String.Format(CultureInfo.CurrentCulture, format, 
