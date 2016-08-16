@@ -95,6 +95,7 @@
   <ItemGroup>
     <None Include="test-data\london-2012\Decathlon.dat" />
     <None Include="test-data\london-2012\Decathlon.out" />
+    <None Include="test-data\london-2012\London-2012.xlsx" />
     <None Include="test-data\sample\Decathlon.dat" />
   </ItemGroup>
   <ItemGroup>
