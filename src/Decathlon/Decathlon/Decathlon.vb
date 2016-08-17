@@ -145,13 +145,11 @@ Friend Enum EventTypeGroup
     ''' The jumping event type group.
     ''' </summary>
     Jumping  = 1
-    
 
     ''' <summary>
     ''' The running event type group.
     ''' </summary>
     Running  = 2
-    
 
     ''' <summary>
     ''' The throwing event type group.
